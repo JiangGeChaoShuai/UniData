@@ -18,8 +18,8 @@ import utils.CustomizationTool;
 public abstract class State extends JFrame implements ActionListener {
 
 	// final variables
-	public static final int WIDTH = 1280;
-	public static final int HEIGHT = 800;
+	public static final int WIDTH = 1200;
+	public static final int HEIGHT = 750;
 	public static final int SHIFT_AMOUNT = 60;
 	public static final int SHIFT_SPEED = 14;
 
