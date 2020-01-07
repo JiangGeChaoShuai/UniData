@@ -1,0 +1,23 @@
+T
+10001
+David Neals
+1972/02/28
+Mathmatic
+david.neals@ICS4U1.com
+
+T
+10002
+Chris Wang
+1969/01/07
+Computer Science
+chris.wang@ICS4U1.com
+
+
+T
+10003
+Ruby Vasanthan
+1965/05/22
+Mathmatic
+ruby.vasanthan@ICS4U1.com
+
+
