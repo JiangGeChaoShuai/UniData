@@ -3,12 +3,17 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-public class LoginFrame {
+public class LoginFrame implements ActionListener {
 
 	private JFrame inputFrame = new JFrame();
+	
+	private JButton login = new JButton("login");
+	private JButton signup = new JButton("sign up");
 
 	public static void main(String[] args) {
 
@@ -25,7 +30,7 @@ public class LoginFrame {
 
 	private void initialize() {
 
-		inputFrame.setSize(1280, 800);
+		inputFrame.setSize(1200, 750);
 		createLayout();
 
 	}
@@ -38,6 +43,17 @@ public class LoginFrame {
 		title.setBounds(inputFrame.getWidth()/2-150, 50, 300, 50);
 		title.setVisible(true);
 		inputFrame.add(title);
+		
+		
+		
+		JComboBox TeacherOrStudents = new JComboBox();
+		TeacherOrStudents.setBounds(inputFrame.getWidth()/2-150, 100, 300, 25);
+		TeacherOrStudents.addItem("Teacher");
+		TeacherOrStudents.addItem("Student");
+		
+		inputFrame.add(TeacherOrStudents);
+		
+		
 		
 		JLabel username = new JLabel("username", SwingConstants.CENTER);
 		username.setBounds(inputFrame.getWidth()/2-150, 150, 300, 50);
@@ -63,7 +79,30 @@ public class LoginFrame {
 		
 		
 		
+		login.setBounds(inputFrame.getWidth()/2-150,500,100,50);
+		login.setVisible(true);
+		login.addActionListener(this);
+		inputFrame.add(login);
 		
+		
+		signup.setBounds(inputFrame.getWidth()/2+50, 500,100,50);
+		signup.setVisible(true);
+		signup.addActionListener(this);
+		inputFrame.add(signup);
+		
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+		if (e.getSource() == login){
+			
+		}
+		if (e.getSource() == signup) {
+			
+		}
 	}
 
 }
