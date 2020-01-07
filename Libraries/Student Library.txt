@@ -1,0 +1,69 @@
+S
+00000001
+Anni Zhou
+2000/03/25
+2018/09
+Mathematics
+
+S
+00000002
+Ben Badkaran
+1999/4/16
+2017/09
+Computer Science
+
+S
+00000003
+Colvin Sivakaran
+2000/06/19
+2018/09
+Mathematics
+
+S
+00000004
+Heba Huynh
+1999/03/28
+2017/09
+Mathematics
+
+S
+00000005
+Tegwen Cham
+2000/12/17
+2018/09
+Mathematics
+
+S
+00000006
+Ranik Illeperuma
+1999/07/15
+2017/09
+Computer Science
+
+S
+00000007
+Nirushi Lee
+2000/08/05
+2018/09
+Computer Science
+
+S
+00000008
+Hamza Punni
+1999/02/18
+2017/09
+Mathematics
+
+S
+00000009
+Sidra Fong
+1999/09/30
+2017/09
+Computer Science
+
+S
+00000010
+Vehara Rupasinghe
+2000/5/20
+2018/09
+Mathematics
