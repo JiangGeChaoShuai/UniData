@@ -25,59 +25,45 @@ public class LoginFrame {
 
 	private void initialize() {
 
-		inputFrame.setSize(1000, 600);
+		inputFrame.setSize(1280, 800);
 		createLayout();
 
 	}
 
 	private void createLayout() {
 
-		inputFrame.setLayout(new GridLayout(4, 1));
+		inputFrame.setLayout(null);
 
-		JPanel titlePanel = new JPanel();
-
-		titlePanel.setLayout(new BoxLayout(titlePanel, BoxLayout.Y_AXIS));
-
-		JLabel title = new JLabel("Login Frame");
-
-		title.setPreferredSize(new Dimension(200, 100));
-		title.setAlignmentX(Component.CENTER_ALIGNMENT);
+		JLabel title = new JLabel("Login Frame",SwingConstants.CENTER);
+		title.setBounds(inputFrame.getWidth()/2-150, 50, 300, 50);
 		title.setVisible(true);
-
-		titlePanel.add(title, BorderLayout.CENTER);
-		titlePanel.setVisible(true);
-
-		JPanel usernamePanel = new JPanel();
-		usernamePanel.setLayout(new GridLayout(2, 1));
-		usernamePanel.setBorder(BorderFactory.createEmptyBorder(0, usernamePanel.getWidth() / 2 - 200, 0,
-				usernamePanel.getWidth() / 2 - 200));
-
-		JLabel usernameTitle = new JLabel("USERNAME");
-		usernameTitle.setVisible(true);
-		usernameTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-		JTextField username = new JTextField(20);
+		inputFrame.add(title);
+		
+		JLabel username = new JLabel("username", SwingConstants.CENTER);
+		username.setBounds(inputFrame.getWidth()/2-150, 150, 300, 50);
 		username.setVisible(true);
-		username.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-		username.setOpaque(true);
-		username.setPreferredSize(new Dimension(400, 50));
-
-		// set text
-		username.setFont(new Font("Serif", Font.LAYOUT_LEFT_TO_RIGHT, 16));
-		usernamePanel.add(usernameTitle);
-		usernamePanel.add(username);
-		usernamePanel.setVisible(true);
-
-		JPanel password = new JPanel();
-
-		JPanel buttons = new JPanel();
-
-		inputFrame.add(titlePanel);
-		inputFrame.add(usernamePanel);
+		inputFrame.add(username);
+		
+		JTextField usernameEntry = new JTextField();
+		usernameEntry.setBounds(inputFrame.getWidth()/2-150, 225, 300, 50);
+		usernameEntry.setVisible(true);
+		inputFrame.add(usernameEntry);
+		
+		JLabel password = new JLabel("password", SwingConstants.CENTER);
+		password.setBounds(inputFrame.getWidth()/2-150, 300, 300, 50);
+		password.setVisible(true);
 		inputFrame.add(password);
-		inputFrame.add(buttons);
-
+		
+		
+		JPasswordField passwordEntry = new JPasswordField();
+		passwordEntry.setBounds(inputFrame.getWidth()/2-150, 375, 300, 50);
+		passwordEntry.setVisible(true);
+		inputFrame.add(passwordEntry);
+		
+		
+		
+		
+		
 	}
 
 }
