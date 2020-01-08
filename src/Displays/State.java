@@ -65,7 +65,7 @@ public abstract class State extends JFrame implements ActionListener {
 		controlMenu.add(menuOption);
 		
 		// creating the exit option under the control menu
-		JMenuItem databaseOption = new JMenuItem("Back to Database");
+		JMenuItem databaseOption = new JMenuItem("Back to Home Page");
 
 		// add an action listener for button actions when clicked
 		databaseOption.addActionListener(new ActionListener() {
