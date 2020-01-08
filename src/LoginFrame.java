@@ -3,12 +3,17 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-public class LoginFrame {
+public class LoginFrame implements ActionListener {
 
 	private JFrame inputFrame = new JFrame();
+	
+	private JButton login = new JButton("login");
+	private JButton signup = new JButton("sign up");
 
 	public static void main(String[] args) {
 
@@ -25,59 +30,79 @@ public class LoginFrame {
 
 	private void initialize() {
 
-		inputFrame.setSize(1000, 600);
+		inputFrame.setSize(1200, 750);
 		createLayout();
 
 	}
 
 	private void createLayout() {
 
-		inputFrame.setLayout(new GridLayout(4, 1));
+		inputFrame.setLayout(null);
 
-		JPanel titlePanel = new JPanel();
-
-		titlePanel.setLayout(new BoxLayout(titlePanel, BoxLayout.Y_AXIS));
-
-		JLabel title = new JLabel("Login Frame");
-
-		title.setPreferredSize(new Dimension(200, 100));
-		title.setAlignmentX(Component.CENTER_ALIGNMENT);
+		JLabel title = new JLabel("Login Frame",SwingConstants.CENTER);
+		title.setBounds(inputFrame.getWidth()/2-150, 50, 300, 50);
 		title.setVisible(true);
-
-		titlePanel.add(title, BorderLayout.CENTER);
-		titlePanel.setVisible(true);
-
-		JPanel usernamePanel = new JPanel();
-		usernamePanel.setLayout(new GridLayout(2, 1));
-		usernamePanel.setBorder(BorderFactory.createEmptyBorder(0, usernamePanel.getWidth() / 2 - 200, 0,
-				usernamePanel.getWidth() / 2 - 200));
-
-		JLabel usernameTitle = new JLabel("USERNAME");
-		usernameTitle.setVisible(true);
-		usernameTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-		JTextField username = new JTextField(20);
+		inputFrame.add(title);
+		
+		
+		
+		JComboBox TeacherOrStudents = new JComboBox();
+		TeacherOrStudents.setBounds(inputFrame.getWidth()/2-150, 100, 300, 25);
+		TeacherOrStudents.addItem("Teacher");
+		TeacherOrStudents.addItem("Student");
+		
+		inputFrame.add(TeacherOrStudents);
+		
+		
+		
+		JLabel username = new JLabel("username", SwingConstants.CENTER);
+		username.setBounds(inputFrame.getWidth()/2-150, 150, 300, 50);
 		username.setVisible(true);
-		username.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-		username.setOpaque(true);
-		username.setPreferredSize(new Dimension(400, 50));
-
-		// set text
-		username.setFont(new Font("Serif", Font.LAYOUT_LEFT_TO_RIGHT, 16));
-		usernamePanel.add(usernameTitle);
-		usernamePanel.add(username);
-		usernamePanel.setVisible(true);
-
-		JPanel password = new JPanel();
-
-		JPanel buttons = new JPanel();
-
-		inputFrame.add(titlePanel);
-		inputFrame.add(usernamePanel);
+		inputFrame.add(username);
+		
+		JTextField usernameEntry = new JTextField();
+		usernameEntry.setBounds(inputFrame.getWidth()/2-150, 225, 300, 50);
+		usernameEntry.setVisible(true);
+		inputFrame.add(usernameEntry);
+		
+		JLabel password = new JLabel("password", SwingConstants.CENTER);
+		password.setBounds(inputFrame.getWidth()/2-150, 300, 300, 50);
+		password.setVisible(true);
 		inputFrame.add(password);
-		inputFrame.add(buttons);
+		
+		
+		JPasswordField passwordEntry = new JPasswordField();
+		passwordEntry.setBounds(inputFrame.getWidth()/2-150, 375, 300, 50);
+		passwordEntry.setVisible(true);
+		inputFrame.add(passwordEntry);
+		
+		
+		
+		
+		login.setBounds(inputFrame.getWidth()/2-150,500,100,50);
+		login.setVisible(true);
+		login.addActionListener(this);
+		inputFrame.add(login);
+		
+		
+		signup.setBounds(inputFrame.getWidth()/2+50, 500,100,50);
+		signup.setVisible(true);
+		signup.addActionListener(this);
+		inputFrame.add(signup);
+		
+		
+	}
 
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+		if (e.getSource() == login){
+			
+		}
+		if (e.getSource() == signup) {
+			
+		}
 	}
 
 }
