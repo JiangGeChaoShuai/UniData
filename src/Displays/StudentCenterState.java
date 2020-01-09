@@ -25,13 +25,14 @@ public class StudentCenterState {
 
 		StudentCenterState window = new StudentCenterState();
 
-		window.mainFrame.setVisible(true);
+		
 
 	}
 
 	public StudentCenterState() {
 
 		initialize();
+		mainFrame.setVisible(true);
 	}
 
 	private void initialize() {

@@ -13,8 +13,12 @@ import Displays.StudentCenterState;
 import utils.PasswordReader;
 
 public class LoginFrame implements ActionListener {
+	
+	private final int width = 1200;
+	private final int height = 750;
 
-	private JFrame inputFrame = new JFrame();
+	
+	public JFrame Frame = new JFrame();
 
 	private JButton login = new JButton("login");
 	private JButton signup = new JButton("sign up");
@@ -24,6 +28,8 @@ public class LoginFrame implements ActionListener {
 
 	private PasswordReader checkPassword = new PasswordReader();
 
+	private JPanel inputPanel = new JPanel();
+	
 	@SuppressWarnings("rawtypes")
 	private JComboBox TeacherOrStudents = new JComboBox();
 
@@ -32,7 +38,7 @@ public class LoginFrame implements ActionListener {
 		LoginFrame window = new LoginFrame();
 		
 		
-		window.inputFrame.setVisible(true);
+		window.Frame.setVisible(true);
 
 	}
 
@@ -43,53 +49,58 @@ public class LoginFrame implements ActionListener {
 
 	private void initialize() {
 
-		inputFrame.setSize(1200, 750);
+		Frame.setSize(1200, 750);
 		createLayout();
 
 	}
 
 	private void createLayout() {
 
-		inputFrame.setLayout(null);
+		Frame.setLayout(null);
 
+		inputPanel.setBounds(0,0,width, height);
+		inputPanel.setLayout(null);
+		
+		Frame.add(inputPanel);
+		
 		JLabel title = new JLabel("Login Frame", SwingConstants.CENTER);
-		title.setBounds(inputFrame.getWidth() / 2 - 150, 50, 300, 50);
+		title.setBounds(Frame.getWidth() / 2 - 150, 50, 300, 50);
 		title.setVisible(true);
-		inputFrame.add(title);
+		inputPanel.add(title);
 
-		TeacherOrStudents.setBounds(inputFrame.getWidth() / 2 - 150, 100, 300, 25);
+		TeacherOrStudents.setBounds(Frame.getWidth() / 2 - 150, 100, 300, 25);
 		TeacherOrStudents.addItem("Teacher");
 		TeacherOrStudents.addItem("Student");
 
-		inputFrame.add(TeacherOrStudents);
+		inputPanel.add(TeacherOrStudents);
 
 		JLabel username = new JLabel("username", SwingConstants.CENTER);
-		username.setBounds(inputFrame.getWidth() / 2 - 150, 175, 300, 50);
+		username.setBounds(Frame.getWidth() / 2 - 150, 175, 300, 50);
 		username.setVisible(true);
-		inputFrame.add(username);
+		inputPanel.add(username);
 
-		usernameEntry.setBounds(inputFrame.getWidth() / 2 - 150, 225, 300, 50);
+		usernameEntry.setBounds(Frame.getWidth() / 2 - 150, 225, 300, 50);
 		usernameEntry.setVisible(true);
-		inputFrame.add(usernameEntry);
+		inputPanel.add(usernameEntry);
 
 		JLabel password = new JLabel("password", SwingConstants.CENTER);
-		password.setBounds(inputFrame.getWidth() / 2 - 150, 325, 300, 50);
+		password.setBounds(Frame.getWidth() / 2 - 150, 325, 300, 50);
 		password.setVisible(true);
-		inputFrame.add(password);
+		inputPanel.add(password);
 
-		passwordEntry.setBounds(inputFrame.getWidth() / 2 - 150, 375, 300, 50);
+		passwordEntry.setBounds(Frame.getWidth() / 2 - 150, 375, 300, 50);
 		passwordEntry.setVisible(true);
-		inputFrame.add(passwordEntry);
+		inputPanel.add(passwordEntry);
 
-		login.setBounds(inputFrame.getWidth() / 2 - 150, 500, 100, 50);
+		login.setBounds(Frame.getWidth() / 2 - 150, 500, 100, 50);
 		login.setVisible(true);
 		login.addActionListener(this);
-		inputFrame.add(login);
+		inputPanel.add(login);
 
-		signup.setBounds(inputFrame.getWidth() / 2 + 50, 500, 100, 50);
+		signup.setBounds(Frame.getWidth() / 2 + 50, 500, 100, 50);
 		signup.setVisible(true);
 		signup.addActionListener(this);
-		inputFrame.add(signup);
+		inputPanel.add(signup);
 
 	}
 
@@ -101,6 +112,8 @@ public class LoginFrame implements ActionListener {
 		}
 		if (e.getSource() == signup) {
 
+			inputPanel.setVisible(false);
+			
 		}
 	}
 
@@ -115,7 +128,10 @@ public class LoginFrame implements ActionListener {
 			
 			if (checkPassword.checkStudentPasswords(usernameEntry.getText(), temp)) {
 				System.out.println("asd");
-				new StudentCenterState();
+				StudentCenterState window = new StudentCenterState();
+
+				
+				System.out.println("asd");
 				return;
 			}
 			System.out.println("invalid username or password");
@@ -123,6 +139,18 @@ public class LoginFrame implements ActionListener {
 		}
 		if (x.equals("Teacher")) {
 
+			String temp = String.valueOf(passwordEntry.getPassword());
+			
+			System.out.println(usernameEntry.getText());
+			System.out.println(temp);
+			
+			if (checkPassword.checkTeacherPasswords(usernameEntry.getText(), temp)) {
+				System.out.println("asd");
+				new StudentCenterState();
+				System.out.println("asd");
+				return;
+			}
+			System.out.println("invalid username or password");
 		}
 
 	}
