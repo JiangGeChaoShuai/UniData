@@ -25,11 +25,14 @@ public class PasswordReader {
 
 				temporary = input.next();
 				temp = input.next();
-				input.nextLine();
+				System.out.print(temporary);
+				System.out.println(","+ temp);
+
 
 				studentAccounts.add(new StoredPasswords(temporary, temp));
+				
 
-			} while (input.hasNextLine());// check if the file has ended
+			} while (input.hasNext());// check if the file has ended
 
 			input.close();// close the scanner
 
@@ -48,7 +51,7 @@ public class PasswordReader {
 
 				temporary = input.next();
 				temp = input.next();
-				input.nextLine();
+				
 
 				teacherAccounts.add(new StoredPasswords(temporary, temp));
 

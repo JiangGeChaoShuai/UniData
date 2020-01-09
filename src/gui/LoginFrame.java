@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import Displays.StudentCenterState;
 import utils.PasswordReader;
 
 public class LoginFrame implements ActionListener {
@@ -30,13 +31,14 @@ public class LoginFrame implements ActionListener {
 	public static void main(String[] args) {
 
 		LoginFrame window = new LoginFrame();
-
+		
+		
 		window.inputFrame.setVisible(true);
 
 	}
 
 	public LoginFrame() {
-
+		checkPassword.loadPassword();
 		initialize();
 	}
 
@@ -104,20 +106,26 @@ public class LoginFrame implements ActionListener {
 	}
 
 	private void checkPassword() {
-		
+		System.out.println("as");
 		String x = (String) TeacherOrStudents.getSelectedItem();
-		if (x.equals("Students")){
+		if (x.equals("Student")) {
+			String temp = String.valueOf(passwordEntry.getPassword());
 			
-			if(checkPassword.checkStudentPasswords(usernameEntry.getText(), passwordEntry)) {
-				
+			System.out.println(usernameEntry.getText());
+			System.out.println(temp);
+			
+			if (checkPassword.checkStudentPasswords(usernameEntry.getText(), temp)) {
+				System.out.println("asd");
+				new StudentCenterState();
+				return;
 			}
-			
-			
-		}if(x.equals("Teachers")) {
-			
+			System.out.println("invalid username or password");
+
 		}
-		
-		
+		if (x.equals("Teacher")) {
+
+		}
+
 	}
 
 }
