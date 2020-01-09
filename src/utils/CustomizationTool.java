@@ -19,7 +19,7 @@ public class CustomizationTool {
 	public static void frameSetup(JFrame frame) {
 
 		// set the name and size of the frame, and now allowing user to resize
-		frame.setTitle("Material Hazard Database");
+		frame.setTitle("UNI Databases");
 		frame.setSize(State.WIDTH, State.HEIGHT);
 		frame.setResizable(false);
 
