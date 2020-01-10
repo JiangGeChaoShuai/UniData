@@ -19,7 +19,7 @@ public class StudentCenter implements ActionListener {
 	private JPanel mainPanel, infoPanel,currentCoursePanel,creditPanel,futureCoursePanel,schedulePanel,
 					courseListPanel,selectedCoursePanel;
 	private JLabel titleLabel, subTitle, photo, nameLabel, birth, studentNum, timeEnroll, email, major,scheduleImage,
-					courseName,courseMark;
+					searchLabel,courseName,courseMark;
 	private JButton logout, currentCourse, creditInfo, selectCourse,schedule,
 					back1,back2,back3,back4,search,addCourse,cancel;
 	private JTextField searchBar;
