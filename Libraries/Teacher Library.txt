@@ -1,23 +1,24 @@
 T
-10001
-David Neals
-1972/02/28
-Mathmatic
-david.neals@ICS4U1.com
+username 10001
+password 0228
+name David Neals
+birthday 1972/02/28
+email david.neals@ICS4U1.com
+major Mathmatic
 
 T
-10002
-Chris Wang
-1969/01/07
-Computer Science
-chris.wang@ICS4U1.com
-
+username 10002
+password 0107
+name Chris Wang
+birthday 1969/01/07
+email chris.wang@ICS4U1.com
+major Computer Science
 
 T
-10003
-Ruby Vasanthan
-1965/05/22
-Mathmatic
-ruby.vasanthan@ICS4U1.com
-
+username 10003
+password 0522
+name Ruby Vasanthan
+birthday 1965/05/22
+email ruby.vasanthan@ICS4U1.com
+major Mathmatic
 
