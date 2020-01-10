@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import Displays.StudentCenterState;
-import utils.PasswordReader;
+import utils.ReadFile;
 
 public class LoginFrame implements ActionListener {
 	
@@ -26,7 +26,7 @@ public class LoginFrame implements ActionListener {
 	private JTextField usernameEntry = new JTextField();
 	private JPasswordField passwordEntry = new JPasswordField();
 
-	private PasswordReader checkPassword = new PasswordReader();
+	private ReadFile checkPassword = new ReadFile();
 
 	private JPanel inputPanel = new JPanel();
 	
@@ -128,7 +128,7 @@ public class LoginFrame implements ActionListener {
 			
 			if (checkPassword.checkStudentPasswords(usernameEntry.getText(), temp)) {
 				System.out.println("asd");
-				StudentCenterState window = new StudentCenterState();
+				new StudentCenterState();
 
 				
 				System.out.println("asd");

@@ -8,28 +8,48 @@ import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class PasswordReader {
+public class ReadFile {
 
-	private ArrayList<StoredPasswords> teacherAccounts = new ArrayList<StoredPasswords>();
-	private ArrayList<StoredPasswords> studentAccounts = new ArrayList<StoredPasswords>();
+	public static ArrayList<StudentInformation> teacherAccounts = new ArrayList<StudentInformation>();
+	public static ArrayList<AccountInformation> studentAccounts = new ArrayList<AccountInformation>();
 
 	public void loadPassword() {// method to scan file
 
 		try {
-			Scanner input = new Scanner(new FileReader("Accounts/students"));// try to create a scanner
+			Scanner input = new Scanner(new FileReader("Libraries/Student Library.txt"));// try to create a scanner
 
-			String temporary;
-			String temp;
-
+			String username;
+			String password;
+			String name;
+			String birthday;
+			String dateEnrolled;
+			String Email;
+			String major;
+			
 			do {// continue scanning while there is a next line
+				input.nextLine();
+				username = input.nextLine();
+				password = input.nextLine();
+				name = input.nextLine();
+				birthday = input.nextLine();
+				dateEnrolled = input.nextLine();
+				Email = input.nextLine();
+				major = input.nextLine();
+				input.nextLine();
+				
+				
+				System.out.print(username);
+				System.out.println(","+ password);
+				System.out.println(name);
+				System.out.println(birthday);
+				System.out.println(dateEnrolled);
+				System.out.println(Email);
+				System.out.println(major);
+				System.out.println();
+				
 
-				temporary = input.next();
-				temp = input.next();
-				System.out.print(temporary);
-				System.out.println(","+ temp);
 
-
-				studentAccounts.add(new StoredPasswords(temporary, temp));
+				studentAccounts.add(new StudentInformation(username, password, name, birthday, Email, dateEnrolled, major));
 				
 
 			} while (input.hasNext());// check if the file has ended
@@ -53,7 +73,7 @@ public class PasswordReader {
 				temp = input.next();
 				
 
-				teacherAccounts.add(new StoredPasswords(temporary, temp));
+				//teacherAccounts.add(new AccountInformation(temporary, temp));
 
 			} while (input.hasNextLine());// check if the file has ended
 			input.close();// close the scanner
