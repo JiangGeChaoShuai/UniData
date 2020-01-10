@@ -16,9 +16,14 @@ public class StudentCenter implements ActionListener {
 
 	//JCompnent
 	private JFrame mainFrame = new JFrame("Student Center");
-	private JPanel mainPanel, infoPanel,currentCoursePanel,creditPanel,futureCoursePanel;
-	private JLabel titleLabel, subTitle, photo, nameLabel, birth, studentNum, timeEnroll, email, major;
-	private JButton logout, currentCourse, creditInfo, selectCourse,schedule,back;
+	private JPanel mainPanel, infoPanel,currentCoursePanel,creditPanel,futureCoursePanel,schedulePanel,
+					courseListPanel,selectedCoursePanel;
+	private JLabel titleLabel, subTitle, photo, nameLabel, birth, studentNum, timeEnroll, email, major,scheduleImage,
+					courseName,courseMark;
+	private JButton logout, currentCourse, creditInfo, selectCourse,schedule,
+					back1,back2,back3,back4,search,addCourse,cancel;
+	private JTextField searchBar;
+	private JScrollPane courseListScrollpane,selectedCourseScrollpane;
 	
 	private int WIDTH = 1200;
 	private int HEIGHT = 750;
@@ -43,9 +48,10 @@ public class StudentCenter implements ActionListener {
 		mainFrame.setLayout(null);
 		addMainJCompents();
 		addInfoJCompents();
-		addCurrentCourse();
+		addCurrentCourseJComponents();
 		addCreditInfoJComponents();
-		addFutureCourse();
+		addFutureCourseJComponents();
+		addScheduleJComponents();
 
 	}
 
@@ -77,25 +83,25 @@ public class StudentCenter implements ActionListener {
 		//the buttons
 		currentCourse = new JButton(new ImageIcon(new ImageIcon("images/currentCourse.png").getImage().getScaledInstance(180, 180, 0)));
 		currentCourse.setBackground(new Color(85, 130, 139));
-		currentCourse.setBounds(100, 200, 200, 200);
+		currentCourse.setBounds(100, 180, 200, 200);
 		currentCourse.addActionListener(this);
 		mainPanel.add(currentCourse);
 
 		creditInfo = new JButton(new ImageIcon(new ImageIcon("images/credit.png").getImage().getScaledInstance(180, 180, 0)));
 		creditInfo.setBackground(new Color(85, 130, 139));
-		creditInfo.setBounds(350, 200, 200, 200);
+		creditInfo.setBounds(350, 180, 200, 200);
 		creditInfo.addActionListener(this);
 		mainPanel.add(creditInfo);
 
 		selectCourse = new JButton(new ImageIcon(new ImageIcon("images/futureCourse.png").getImage().getScaledInstance(180, 180, 0)));
 		selectCourse.setBackground(new Color(85, 130, 139));
-		selectCourse.setBounds(600, 200, 200, 200);
+		selectCourse.setBounds(600, 180, 200, 200);
 		selectCourse.addActionListener(this);
 		mainPanel.add(selectCourse);
 		
 		schedule = new JButton(new ImageIcon(new ImageIcon("images/schedule.png").getImage().getScaledInstance(180, 80, 0)));
 		schedule.setBackground(new Color(85, 130, 139));
-		schedule.setBounds(100, 450, 200, 100);
+		schedule.setBounds(100, 430, 200, 100);
 		schedule.addActionListener(this);
 		mainPanel.add(schedule);
 
@@ -166,28 +172,36 @@ public class StudentCenter implements ActionListener {
 		mainFrame.add(infoPanel);
 	}
 	
-	private void addCurrentCourse() {
+	private void addCurrentCourseJComponents() {
 		// TODO Auto-generated method stub
+		//set the panel of current course
 		currentCoursePanel = new JPanel();
 		currentCoursePanel.setLayout(null);
 		currentCoursePanel.setBackground(new Color(135, 187, 162));
 		currentCoursePanel.setBounds(300, 0, WIDTH - 300, HEIGHT);
 
+		//set the title of current course panel
 		titleLabel = new JLabel("Current Course:");
 		titleLabel.setBounds(10, 20, 900, 60);
 		titleLabel.setFont(new Font("Aileron", Font.PLAIN, 50));
 		titleLabel.setForeground(new Color(54, 73, 88));
 		titleLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		currentCoursePanel.add(titleLabel, BorderLayout.CENTER);
+
+		//set the back button on this panel
+		back1 = new JButton(new ImageIcon(new ImageIcon("images/back.png").getImage().getScaledInstance(100, 50, 0)));
+		back1.setBackground(new Color(85, 130, 139));
+		back1.setBounds(750,30,100,50);
+		back1.addActionListener(this);
+		currentCoursePanel.add(back1);
 		
-		back = new JButton(new ImageIcon(new ImageIcon("images/back.png").getImage().getScaledInstance(100, 50, 0)));
-		back.setBackground(new Color(85, 130, 139));
-		back.setBounds(750,30,100,50);
-		back.addActionListener(this);
-		currentCoursePanel.add(back);
-		
+		//add this panel to the main frame
 		mainFrame.add(currentCoursePanel);
 		currentCoursePanel.setVisible(false);
+		
+		//add the schedule of this student
+		
+
 		
 	}
 
@@ -205,24 +219,24 @@ public class StudentCenter implements ActionListener {
 		titleLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		creditPanel.add(titleLabel, BorderLayout.CENTER);
 		
-		back = new JButton(new ImageIcon(new ImageIcon("images/back.png").getImage().getScaledInstance(100, 50, 0)));
-		back.setBackground(new Color(85, 130, 139));
-		back.setBounds(750,30,100,50);
-		back.addActionListener(this);
-		currentCoursePanel.add(back);
+		back2 = new JButton(new ImageIcon(new ImageIcon("images/back.png").getImage().getScaledInstance(100, 50, 0)));
+		back2.setBackground(new Color(85, 130, 139));
+		back2.setBounds(750,30,100,50);
+		back2.addActionListener(this);
+		creditPanel.add(back2);
 		
 		mainFrame.add(creditPanel);
 		creditPanel.setVisible(false);
 	}
 
-	private void addFutureCourse() {
+	private void addFutureCourseJComponents() {
 		// TODO Auto-generated method stub
 		futureCoursePanel = new JPanel();
 		futureCoursePanel.setLayout(null);
 		futureCoursePanel.setBackground(new Color(135, 187, 162));
 		futureCoursePanel.setBounds(300, 0, WIDTH - 300, HEIGHT);
 		
-
+		//set the title of future course selection panel
 		titleLabel = new JLabel("Future Course Selection:");
 		titleLabel.setBounds(0, 20, 900, 60);
 		titleLabel.setFont(new Font("Aileron", Font.PLAIN, 50));
@@ -230,38 +244,84 @@ public class StudentCenter implements ActionListener {
 		titleLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		futureCoursePanel.add(titleLabel, BorderLayout.CENTER);
 		
-		back = new JButton(new ImageIcon(new ImageIcon("images/back.png").getImage().getScaledInstance(100, 50, 0)));
-		back.setBackground(new Color(85, 130, 139));
-		back.setBounds(750,30,100,50);
-		back.addActionListener(this);
-		currentCoursePanel.add(back);
+		//set the back button on this panel
+		back3 = new JButton(new ImageIcon(new ImageIcon("images/back.png").getImage().getScaledInstance(100, 50, 0)));
+		back3.setBackground(new Color(85, 130, 139));
+		back3.setBounds(750,30,100,50);
+		back3.addActionListener(this);
+		futureCoursePanel.add(back3);
 		
+		//add this panel to the main frame
 		mainFrame.add(futureCoursePanel);
 		futureCoursePanel.setVisible(false);
+		
+		searchBar = new JTextField();
+		searchBar.setBounds(50,200,200,40);
+		searchBar.setFont(new Font("Aileron", Font.PLAIN, 50));
+		futureCoursePanel.add(searchBar);
+		
+		
+	}
+	
+	private void addScheduleJComponents() {
+		
+		schedulePanel = new JPanel();
+		schedulePanel.setLayout(null);
+		schedulePanel.setBackground(new Color(135, 187, 162));
+		schedulePanel.setBounds(300, 0, WIDTH - 300, HEIGHT);
+		
+		scheduleImage = new JLabel(new ImageIcon(new ImageIcon("images/scheduleImage.png").getImage().getScaledInstance(100, 100, 0)));
+		scheduleImage.setBackground(new Color(85, 130, 139));
+		scheduleImage.setBounds(10,10,100,100);
+		schedulePanel.add(scheduleImage);
+		
+		back4 = new JButton(new ImageIcon(new ImageIcon("images/back.png").getImage().getScaledInstance(100, 50, 0)));
+		back4.setBackground(new Color(85, 130, 139));
+		back4.setBounds(750,30,100,50);
+		back4.addActionListener(this);
+		schedulePanel.add(back4);
+		
+		mainFrame.add(schedulePanel);
+		schedulePanel.setVisible(false);
+		
 	}
 
 	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==logout) {
 			new LoginFrame();
-		}else if(e.getSource()==back){
-			mainPanel.setVisible(true);
-			
-			currentCoursePanel.setVisible(false);
-			creditPanel.setVisible(false);
-			futureCoursePanel.setVisible(false);
-			
 		}else if(e.getSource()==currentCourse) {
 			mainPanel.setVisible(false);
 			currentCoursePanel.setVisible(true);
+			
+		}else if(e.getSource()==back1){
+			mainPanel.setVisible(true);
+			currentCoursePanel.setVisible(false);
 			
 		}else if(e.getSource()==creditInfo) {
 			mainPanel.setVisible(false);
 			creditPanel.setVisible(true);
 			
+		}else if(e.getSource()==back2){
+			mainPanel.setVisible(true);
+			creditPanel.setVisible(false);
+			
 		}else if(e.getSource()==selectCourse) {
 			mainPanel.setVisible(false);
 			futureCoursePanel.setVisible(true);
+			
+		}else if(e.getSource()==back3) {
+			mainPanel.setVisible(true);
+			futureCoursePanel.setVisible(false);
+			
+		}else if(e.getSource()==schedule) {
+			mainPanel.setVisible(false);
+			schedulePanel.setVisible(true);
+			
+		}else if(e.getSource()==back4) {
+			mainPanel.setVisible(true);
+			schedulePanel.setVisible(false);
+			
 		}
 		
 	}
