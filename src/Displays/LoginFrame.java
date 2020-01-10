@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import Displays.StudentCenterState;
+import Displays.StudentCenter;
 import utils.ReadFile;
 
 public class LoginFrame implements ActionListener {
@@ -128,7 +128,7 @@ public class LoginFrame implements ActionListener {
 			
 			if (checkPassword.checkStudentPasswords(usernameEntry.getText(), temp)) {
 				System.out.println("asd");
-				new StudentCenterState();
+				new StudentCenter();
 
 				
 				System.out.println("asd");
@@ -146,7 +146,7 @@ public class LoginFrame implements ActionListener {
 			
 			if (checkPassword.checkTeacherPasswords(usernameEntry.getText(), temp)) {
 				System.out.println("asd");
-				new StudentCenterState();
+				new StudentCenter();
 				System.out.println("asd");
 				return;
 			}

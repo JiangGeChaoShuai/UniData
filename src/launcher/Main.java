@@ -1,11 +1,13 @@
 package launcher;
 
 import Displays.LoginFrame;
-import Displays.StudentCenterState;
+import Displays.StudentCenter;
+import Displays.TeacherCenter;
 
 public class Main {
 	public static void main(String[] args) {
-		new StudentCenterState();
+		new StudentCenter();
+//		new TeacherCenter();
 //		new LoginFrame();
 	}
 
