@@ -39,6 +39,7 @@ public class StudentCenter implements ActionListener {
 	public StudentCenter() {
 
 		initialize();
+		mainFrame.setVisible(true);
 	}
 
 	private void initialize() {

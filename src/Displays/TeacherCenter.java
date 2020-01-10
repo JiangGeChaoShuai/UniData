@@ -28,6 +28,8 @@ public class TeacherCenter extends JFrame implements ActionListener {
 	public TeacherCenter() {
 
 		initialize();
+		
+		mainFrame.setVisible(true);
 	}
 
 	private void initialize() {
