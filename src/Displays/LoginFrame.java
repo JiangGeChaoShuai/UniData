@@ -11,8 +11,13 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+<<<<<<< HEAD
 import readFile.ReadFile;
 import readFile.SaveFile;
+=======
+import Displays.StudentCenter;
+import utils.ReadFile;
+>>>>>>> 56452396a1edb406f3874aa28d3f30b4ec323f20
 
 public class LoginFrame implements ActionListener {
 	
@@ -131,7 +136,7 @@ public class LoginFrame implements ActionListener {
 			
 			if (checkPassword.checkStudentPasswords(usernameEntry.getText(), temp)) {
 				System.out.println("asd");
-				new StudentCenterState();
+				new StudentCenter();
 
 				
 				System.out.println("asd");
@@ -149,7 +154,7 @@ public class LoginFrame implements ActionListener {
 			
 			if (checkPassword.checkTeacherPasswords(usernameEntry.getText(), temp)) {
 				System.out.println("asd");
-				new StudentCenterState();
+				new StudentCenter();
 				System.out.println("asd");
 				return;
 			}
