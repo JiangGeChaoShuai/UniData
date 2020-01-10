@@ -1,89 +1,90 @@
 S
-00000001
-0805
-Anni Zhou
-2000/03/25
-2018/09
-00000001@ICS4U.com
-Mathematics
+username 00000001
+password 0805
+name Anni Zhou
+birthday 2000/03/25
+dateEnrolled 2018/09
+email 00000001@ICS4U.com
+major Mathematics
 
 S
-00000002
-0416
-Ben Badkaran
-1999/4/16
-2017/09
-00000002@ICS4U.com
-Computer Science
+username 00000002
+password 0416
+name Ben Badkaran
+birthday 1999/4/16
+dateEnrolled 2017/09
+email 00000002@ICS4U.com
+major Computer Science
 
 S
-00000003
-0619
-Colvin Sivakaran
-2000/06/19
-2018/09
-00000003@ICS4U.com
-Mathematics
+username 00000003
+password 0619
+name Colvin Sivakaran
+birthday 2000/06/19
+dateEnrolled 2018/09
+email 00000003@ICS4U.com
+major Mathematics
 
 S
-00000004
-0328
-Heba Huynh
-1999/03/28
-2017/09
-00000004@ICS4U.com
-Mathematics
+username 00000004
+password 0328
+name Heba Huynh
+birthday 1999/03/28
+dateEnrolled 2017/09
+email 00000004@ICS4U.com
+major Mathematics
 
 S
-00000005
-1217
-Tegwen Cham
-2000/12/17
-2018/09
-00000005@ICS4U.com
-Mathematics
+username 00000005
+password 1217
+name Tegwen Cham
+birthday 2000/12/17
+dateEnrolled 2018/09
+email 00000005@ICS4U.com
+major Mathematics
 
 S
-00000006
-0715
-Ranik Illeperuma
-1999/07/15
-2017/09
-00000006@ICS4U.com
-Computer Science
+username 00000006
+password 0715
+name Ranik Illeperuma
+birthday 1999/07/15
+dateEnrolled 2017/09
+email 00000006@ICS4U.com
+major Computer Science
 
 S
-00000007
-0805
-Nirushi Lee
-2000/08/05
-2018/09
-00000007@ICS4U.com
-Computer Science
+username 00000007
+password 0805
+name Nirushi Lee
+birthday 2000/08/05
+dateEnrolled 2018/09
+email 00000007@ICS4U.com
+major Computer Science
 
 S
-00000008
-0218
-Hamza Punni
-1999/02/18
-2017/09
-00000008@ICS4U.com
-Mathematics
+username 00000008
+password 0218
+name Hamza Punni
+birthday 1999/02/18
+dateEnrolled 2017/09
+email 00000008@ICS4U.com
+major Mathematics
 
 S
-00000009
-0930
-Sidra Fong
-1999/09/30
-2017/09
-00000009@ICS4U.com
-Computer Science
+username 00000009
+password 0930
+name Sidra Fong
+birthday 1999/09/30
+dateEnrolled 2017/09
+email 00000009@ICS4U.com
+major Computer Science
 
 S
-00000010
-0520
-Vehara Rupasinghe
-2000/5/20
-2018/09
-00000010@ICS4U.com
-Mathematics
+username 00000010
+password 0520
+name Vehara Rupasinghe
+birthday 2000/5/20
+dateEnrolled 2018/09
+email 00000010@ICS4U.com
+major Mathematics
+

@@ -1,4 +1,4 @@
-package utils;
+package readFile;
 
 public class StudentInformation extends AccountInformation {
 
