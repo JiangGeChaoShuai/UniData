@@ -1,10 +1,11 @@
 package Displays;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
+import javax.swing.JFrame;	
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -14,15 +15,14 @@ import javax.swing.SwingConstants;
 import readFile.ReadFile;
 import readFile.SaveFile;
 import Displays.StudentCenter;
-import utils.ReadFile;
 
 public class LoginFrame implements ActionListener {
-	
+
 	private final int width = 1200;
 	private final int height = 750;
 
-	
-	public JFrame Frame = new JFrame();
+	public JFrame Frame = new JFrame("Log in page");
+	public JPanel Panel = new JPanel();
 
 	private JButton login = new JButton("login");
 	private JButton signup = new JButton("sign up");
@@ -33,15 +33,14 @@ public class LoginFrame implements ActionListener {
 	private ReadFile checkPassword = new ReadFile();
 
 	private JPanel inputPanel = new JPanel();
-	
+
 	@SuppressWarnings("rawtypes")
 	private JComboBox TeacherOrStudents = new JComboBox();
 
 	public static void main(String[] args) {
 
 		LoginFrame window = new LoginFrame();
-		
-		
+
 		window.Frame.setVisible(true);
 
 	}
@@ -62,11 +61,11 @@ public class LoginFrame implements ActionListener {
 
 		Frame.setLayout(null);
 
-		inputPanel.setBounds(0,0,width, height);
+		inputPanel.setBounds(0, 0, width, height);
 		inputPanel.setLayout(null);
-		
+
 		Frame.add(inputPanel);
-		
+
 		JLabel title = new JLabel("Login Frame", SwingConstants.CENTER);
 		title.setBounds(Frame.getWidth() / 2 - 150, 50, 300, 50);
 		title.setVisible(true);
@@ -116,9 +115,9 @@ public class LoginFrame implements ActionListener {
 		}
 		if (e.getSource() == signup) {
 
-			//inputPanel.setVisible(false);
+			// inputPanel.setVisible(false);
 			SaveFile.SaveInformation();
-			
+
 		}
 	}
 
@@ -127,15 +126,14 @@ public class LoginFrame implements ActionListener {
 		String x = (String) TeacherOrStudents.getSelectedItem();
 		if (x.equals("Student")) {
 			String temp = String.valueOf(passwordEntry.getPassword());
-			
+
 			System.out.println(usernameEntry.getText());
 			System.out.println(temp);
-			
+
 			if (checkPassword.checkStudentPasswords(usernameEntry.getText(), temp)) {
 				System.out.println("asd");
 				new StudentCenter();
 
-				
 				System.out.println("asd");
 				return;
 			}
@@ -145,10 +143,10 @@ public class LoginFrame implements ActionListener {
 		if (x.equals("Teacher")) {
 
 			String temp = String.valueOf(passwordEntry.getPassword());
-			
+
 			System.out.println(usernameEntry.getText());
 			System.out.println(temp);
-			
+
 			if (checkPassword.checkTeacherPasswords(usernameEntry.getText(), temp)) {
 				System.out.println("asd");
 				new StudentCenter();

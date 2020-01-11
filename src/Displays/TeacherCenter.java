@@ -10,9 +10,14 @@ public class TeacherCenter extends JFrame implements ActionListener {
 
 	// JCompnent
 	private JFrame mainFrame = new JFrame("Teacher Center");
-	private JPanel mainPanel, infoPanel, currentCoursePanel, classroomPanel, futureCoursePanel, schedulePanel;
-	private JLabel titleLabel, subTitle, photo, nameLabel, birth, teacherNum, email, major, scheduleImage;
-	private JButton logout, currentCourse, classroom, selectCourse, schedule, back1, back2, back3, back4;
+	private JPanel mainPanel, infoPanel, currentCoursePanel, classroomPanel, futureCoursePanel, schedulePanel,
+					courseListPanel,selectedCoursePanel;
+	private JLabel titleLabel, subTitle, photo, nameLabel, birth, teacherNum, email, major, scheduleImage,
+					searchLabel,selectCourseLabel;
+	private JTextField searchBar;
+	private JScrollPane courseList,selectedCourse;
+	private JButton logout, currentCourse, classroom, selectCourse, schedule, back1, back2, back3, back4,
+			search;
 
 	private int WIDTH = 1200;
 	private int HEIGHT = 750;
@@ -68,7 +73,7 @@ public class TeacherCenter extends JFrame implements ActionListener {
 		// log out button
 		logout = new JButton("Log Out");
 		logout.setForeground(Color.WHITE);
-		logout.setBackground(new Color(85, 130, 139));
+		logout.setBackground(new Color(59, 96, 100));
 		logout.setFont(new Font("Aileron", Font.PLAIN, 30));
 		logout.setBounds(700, 45, 150, 50);
 		logout.addActionListener(this);
@@ -171,13 +176,13 @@ public class TeacherCenter extends JFrame implements ActionListener {
 		currentCoursePanel.setBounds(300, 0, WIDTH - 300, HEIGHT);
 
 		titleLabel = new JLabel("Current Course:");
-		titleLabel.setBounds(10,20, 900, 60);
+		titleLabel.setBounds(10, 20, 900, 60);
 		titleLabel.setFont(new Font("Aileron", Font.PLAIN, 50));
 		titleLabel.setForeground(new Color(54, 73, 88));
 		titleLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		currentCoursePanel.add(titleLabel, BorderLayout.CENTER);
 
-		back1 = new JButton(new ImageIcon(new ImageIcon("images/back.png").getImage().getScaledInstance(100, 50, 0)));
+		back1 = new JButton(new ImageIcon(new ImageIcon("images/back2.png").getImage().getScaledInstance(100, 50, 0)));
 		back1.setBackground(new Color(85, 130, 139));
 		back1.setBounds(750, 30, 100, 50);
 		back1.addActionListener(this);
@@ -202,7 +207,7 @@ public class TeacherCenter extends JFrame implements ActionListener {
 		titleLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		classroomPanel.add(titleLabel, BorderLayout.CENTER);
 
-		back2 = new JButton(new ImageIcon(new ImageIcon("images/back.png").getImage().getScaledInstance(100, 50, 0)));
+		back2 = new JButton(new ImageIcon(new ImageIcon("images/back2.png").getImage().getScaledInstance(100, 50, 0)));
 		back2.setBackground(new Color(85, 130, 139));
 		back2.setBounds(750, 30, 100, 50);
 		back2.addActionListener(this);
@@ -226,11 +231,57 @@ public class TeacherCenter extends JFrame implements ActionListener {
 		titleLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		futureCoursePanel.add(titleLabel, BorderLayout.CENTER);
 
-		back3 = new JButton(new ImageIcon(new ImageIcon("images/back.png").getImage().getScaledInstance(100, 50, 0)));
+		back3 = new JButton(new ImageIcon(new ImageIcon("images/back2.png").getImage().getScaledInstance(100, 50, 0)));
 		back3.setBackground(new Color(85, 130, 139));
 		back3.setBounds(750, 30, 100, 50);
 		back3.addActionListener(this);
 		futureCoursePanel.add(back3);
+
+		// add the course search JComponents
+		searchLabel = new JLabel("Search Course:");
+		searchLabel.setBounds(50, 125, 900, 40);
+		searchLabel.setFont(new Font("Aileron", Font.PLAIN, 30));
+		searchLabel.setForeground(new Color(54, 73, 88));
+		searchLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		futureCoursePanel.add(searchLabel, BorderLayout.CENTER);
+
+		searchBar = new JTextField();
+		searchBar.setBounds(50, 180, 350, 40);
+		searchBar.setFont(new Font("Aileron", Font.PLAIN, 30));
+		futureCoursePanel.add(searchBar);
+
+		search = new JButton(new ImageIcon(new ImageIcon("images/search2.png").getImage().getScaledInstance(35, 35, 0)));
+		search.setBounds(410, 180, 40, 40);
+		search.setBackground(new Color(85, 130, 139));
+		search.addActionListener(this);
+		futureCoursePanel.add(search);
+
+		// set the list of courses that the student can select
+		courseListPanel = new JPanel();
+		courseListPanel.setLayout(new BoxLayout(courseListPanel, BoxLayout.X_AXIS));
+		courseListPanel.setBounds(0, 0, WIDTH, HEIGHT);
+
+		courseList = new JScrollPane(courseListPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		courseList.setBounds(50, 240, 400, 400);
+		futureCoursePanel.add(courseList);
+
+		// set the list of courses that student already selected
+		selectCourseLabel = new JLabel("Selected Course");
+		selectCourseLabel.setBounds(480, 250, 380, 40);
+		selectCourseLabel.setFont(new Font("Aileron", Font.PLAIN, 30));
+		selectCourseLabel.setForeground(new Color(54, 73, 88));
+		selectCourseLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		futureCoursePanel.add(selectCourseLabel, BorderLayout.CENTER);
+
+		selectedCoursePanel = new JPanel();
+		selectedCoursePanel.setLayout(new BoxLayout(selectedCoursePanel, BoxLayout.X_AXIS));
+		selectedCoursePanel.setBounds(0, 0, WIDTH, HEIGHT);
+
+		selectedCourse = new JScrollPane(selectedCoursePanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		selectedCourse.setBounds(480, 300, 380, 300);
+		futureCoursePanel.add(selectedCourse);
 
 		mainFrame.add(futureCoursePanel);
 		futureCoursePanel.setVisible(false);
@@ -249,7 +300,7 @@ public class TeacherCenter extends JFrame implements ActionListener {
 		scheduleImage.setBounds(10, 10, 100, 100);
 		schedulePanel.add(scheduleImage);
 
-		back4 = new JButton(new ImageIcon(new ImageIcon("images/back.png").getImage().getScaledInstance(100, 50, 0)));
+		back4 = new JButton(new ImageIcon(new ImageIcon("images/back2.png").getImage().getScaledInstance(100, 50, 0)));
 		back4.setBackground(new Color(85, 130, 139));
 		back4.setBounds(750, 30, 100, 50);
 		back4.addActionListener(this);
