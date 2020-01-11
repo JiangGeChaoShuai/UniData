@@ -48,7 +48,7 @@ public class SignUpFrame implements ActionListener {
 
 	private static JTextField emailEntry = new JTextField("enter email");
 
-	private static JButton goBack = new JButton("return");
+	private static JButton goBack = new JButton("Return");
 
 	public SignUpFrame() {
 
@@ -62,14 +62,18 @@ public class SignUpFrame implements ActionListener {
 		mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 
 		topPanel.setLayout(null);
-		topPanel.setBackground(new Color(201, 228, 202));
+		topPanel.setBackground(new Color(135, 187, 162));
 
 		topPanel.setMinimumSize(new Dimension(LoginFrame.width, 100));
 		topPanel.setMaximumSize(new Dimension(LoginFrame.width, 100));
 		topPanel.setPreferredSize(new Dimension(LoginFrame.width, 100));
 
-		goBack.setBounds(25, 25, 100, 50);
+		goBack.setBounds(25, 25, 200, 50);
 		goBack.addActionListener(this);
+		goBack.setFont(new Font("Aileron", Font.PLAIN, 30));
+		goBack.setAlignmentX(Component.CENTER_ALIGNMENT);
+		goBack.setForeground(new Color(255, 255, 255));
+		goBack.setBackground(new Color(54, 73, 88));
 
 		topPanel.add(goBack);
 
