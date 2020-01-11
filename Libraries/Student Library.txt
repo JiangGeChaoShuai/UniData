@@ -88,3 +88,12 @@ dateEnrolled 2018/09
 email 00000010@ICS4U.com
 major Mathematics
 
+S
+username 00000011
+password 0504
+name Lawrence Zhang
+birthday 1974/05/04
+dateEnrolled 2020/JANUARY
+email Lawrence.Zhang@ICS4U1.com
+major Computer Science
+

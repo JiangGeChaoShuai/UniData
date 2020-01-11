@@ -22,3 +22,11 @@ birthday 1965/05/22
 email ruby.vasanthan@ICS4U1.com
 major Mathmatic
 
+T
+username 10004
+password 0504
+name Lawrence Zhang
+birthday 1974/05/04
+email Lawrence.Zhang@ICS4U1.com
+major Computer Science
+
