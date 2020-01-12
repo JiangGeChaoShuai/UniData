@@ -143,10 +143,14 @@ public class LoginFrame implements ActionListener {
 		if (e.getSource() == signup) {
 
 			//inputPanel.setVisible(false);
-			SignUpFrame signUp = new SignUpFrame();
-			signUp.getPanel().setVisible(true);
+//			SignUpFrame signUp = new SignUpFrame();
+//			signUp.getPanel().setVisible(true);
 			Frame.setLayout(new BorderLayout());
-			Frame.getContentPane().add(signUp.getPanel());
+//			Frame.getContentPane().add(signUp.getPanel());
+			
+			
+			ClassroomPanel panel = new ClassroomPanel();
+			Frame.add(panel.returnJPanel());
 			
 			inputPanel.setVisible(false);
 		}
