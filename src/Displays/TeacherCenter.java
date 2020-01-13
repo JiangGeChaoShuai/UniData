@@ -11,13 +11,12 @@ public class TeacherCenter extends JFrame implements ActionListener {
 	// JCompnent
 	private JFrame mainFrame = new JFrame("Teacher Center");
 	private JPanel mainPanel, infoPanel, currentCoursePanel, classroomPanel, futureCoursePanel, schedulePanel,
-					courseListPanel,selectedCoursePanel;
-	private JLabel titleLabel, subTitle, photo, nameLabel, birth, teacherNum, email, major, scheduleImage,
-					searchLabel,selectCourseLabel;
+			courseListPanel, selectedCoursePanel;
+	private JLabel titleLabel, subTitle, photo, nameLabel, birth, teacherNum, email, major, scheduleImage, searchLabel,
+			selectCourseLabel;
 	private JTextField searchBar;
-	private JScrollPane courseList,selectedCourse;
-	private JButton logout, currentCourse, classroom, selectCourse, schedule, back1, back2, back3, back4,
-			search;
+	private JScrollPane courseList, selectedCourse;
+	private JButton logout, currentCourse, classroom, selectCourse, schedule, back1, back2, back3, back4, search;
 
 	private int WIDTH = 1200;
 	private int HEIGHT = 750;
@@ -33,6 +32,8 @@ public class TeacherCenter extends JFrame implements ActionListener {
 	public TeacherCenter() {
 
 		initialize();
+
+		mainFrame.setVisible(true);
 	}
 
 	private void initialize() {
@@ -250,7 +251,8 @@ public class TeacherCenter extends JFrame implements ActionListener {
 		searchBar.setFont(new Font("Aileron", Font.PLAIN, 30));
 		futureCoursePanel.add(searchBar);
 
-		search = new JButton(new ImageIcon(new ImageIcon("images/search2.png").getImage().getScaledInstance(35, 35, 0)));
+		search = new JButton(
+				new ImageIcon(new ImageIcon("images/search2.png").getImage().getScaledInstance(35, 35, 0)));
 		search.setBounds(410, 180, 40, 40);
 		search.setBackground(new Color(85, 130, 139));
 		search.addActionListener(this);

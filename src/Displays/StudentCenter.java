@@ -8,8 +8,10 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.*;
+
 
 public class StudentCenter implements ActionListener {
 
@@ -18,7 +20,7 @@ public class StudentCenter implements ActionListener {
 	private JPanel mainPanel, infoPanel, currentCoursePanel, creditPanel, futureCoursePanel, schedulePanel,
 			courseListPanel, selectedCourseListPanel;
 	private JLabel titleLabel, subTitle, photo, nameLabel, birth, studentNum, timeEnroll, email, major, scheduleImage,
-			searchLabel,selectCourseLabel, courseName, courseMark;
+			searchLabel, selectCourseLabel, courseName, courseMark;
 	private JButton logout, currentCourse, creditInfo, selectCourse, schedule, back1, back2, back3, back4, search,
 			addCourse, cancel;
 	private JTextField searchBar;
@@ -38,6 +40,7 @@ public class StudentCenter implements ActionListener {
 	public StudentCenter() {
 
 		initialize();
+		mainFrame.setVisible(true);
 	}
 
 	private void initialize() {
@@ -202,7 +205,9 @@ public class StudentCenter implements ActionListener {
 		mainFrame.add(currentCoursePanel);
 		currentCoursePanel.setVisible(false);
 
-		// add the schedule of this student
+		// add the course of this student
+		
+		
 
 	}
 
@@ -288,7 +293,7 @@ public class StudentCenter implements ActionListener {
 		selectCourseLabel.setForeground(new Color(54, 73, 88));
 		selectCourseLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		futureCoursePanel.add(selectCourseLabel, BorderLayout.CENTER);
-		
+
 		selectedCourseListPanel = new JPanel();
 		selectedCourseListPanel.setLayout(new BoxLayout(selectedCourseListPanel, BoxLayout.X_AXIS));
 		selectedCourseListPanel.setBounds(0, 0, WIDTH, HEIGHT);
@@ -327,6 +332,79 @@ public class StudentCenter implements ActionListener {
 		schedulePanel.setVisible(false);
 
 	}
+	
+	// method that searches a material that contains the text entered on the search field
+	private void search() {
+		
+//		// makes sure that there are text on the text field to search
+//		if (searchBar.getText().length() > 0) {
+//
+//			// temporary array to store the filtered materials
+//			ArrayList<Materials> searchedMaterialContainer = new ArrayList<Materials>();
+//
+//			// remove all the buttons from the material list panel and clear materialButtonContainer
+//			for (JButton materialButton : materialButtonContainer) {
+//
+//				materialListPanel.remove(materialButton);
+//
+//			}
+//
+//			materialButtonContainer.clear();
+//
+//			// search through the storage to see if any materials contains the text on the search field
+//			for (Materials material : materialStorage) {
+//
+//				if (material.getName().toLowerCase().contains(searchBar.getText().toLowerCase())) {
+//
+//					searchedMaterialContainer.add(material);
+//
+//				}
+//
+//			}
+//			
+//			// update the material container to the filtered one
+//			materialContainer = searchedMaterialContainer;
+//			
+//			// add the filters buttons back to the material panel
+//			for(Materials material: materialContainer) {
+//				
+//				addMaterialToScrollPanel(material);
+//				
+//			}
+//			
+//			// update the screen to display changes
+//			materialList.revalidate();
+//			materialList.repaint();
+//
+//		} else {
+//
+//			// remove all the current materials in the material panel
+//			for (JButton materialButton : materialButtonContainer) {
+//
+//				materialListPanel.remove(materialButton);
+//
+//			}
+//			
+//			materialButtonContainer.clear();
+//			
+//			// if the user clears the search, then display all the materials
+//			materialContainer = materialStorage;
+//			
+//			// add the filters buttons back to the material panel
+//			for(Materials material: materialContainer) {
+//				
+//				addMaterialToScrollPanel(material);
+//				
+//			}
+//			
+//			// update the screen to display changes
+//			materialList.revalidate();
+//			materialList.repaint();
+//
+//		}
+
+	}
+	
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == logout) {
@@ -363,6 +441,8 @@ public class StudentCenter implements ActionListener {
 			mainPanel.setVisible(true);
 			schedulePanel.setVisible(false);
 
+		} else if (e.getSource() == search) {
+			search();
 		}
 
 	}
