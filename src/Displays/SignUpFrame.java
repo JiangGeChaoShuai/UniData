@@ -48,7 +48,7 @@ public class SignUpFrame implements ActionListener {
 
 	private static JTextField emailEntry = new JTextField("enter email");
 
-	private static JButton goBack = new JButton("Return");
+	private static JButton goBack = new JButton(new ImageIcon(new ImageIcon("images/back.png").getImage().getScaledInstance(100, 50, 0)));
 
 	public SignUpFrame() {
 
@@ -68,7 +68,7 @@ public class SignUpFrame implements ActionListener {
 		topPanel.setMaximumSize(new Dimension(LoginFrame.width, 100));
 		topPanel.setPreferredSize(new Dimension(LoginFrame.width, 100));
 
-		goBack.setBounds(25, 25, 200, 50);
+		goBack.setBounds(LoginFrame.width-200, 25, 100, 50);
 		goBack.addActionListener(this);
 		goBack.setFont(new Font("Aileron", Font.PLAIN, 30));
 		goBack.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -101,13 +101,14 @@ public class SignUpFrame implements ActionListener {
 		signUpPanel.setLayout(new BoxLayout(signUpPanel, BoxLayout.Y_AXIS));
 		signUpPanel.setBorder(BorderFactory.createEmptyBorder(50, 50, 50, 50));
 
+		String[] typeOfAccount = {"Student", "Teacher"};
+		
 		type.setMinimumSize(new Dimension(300, 30));
 		type.setMaximumSize(new Dimension(300, 30));
 		type.setPreferredSize(new Dimension(300, 30));
 		type.setFont(font2);
 		type.setAlignmentX(Component.CENTER_ALIGNMENT);
-		type.addItem("Teacher");
-		type.addItem("Student");
+		type.setModel(new DefaultComboBoxModel(typeOfAccount));
 
 		JLabel username = new JLabel("username");
 		username.setFont(font);
@@ -235,13 +236,14 @@ public class SignUpFrame implements ActionListener {
 		major.setForeground(new Color(59, 96, 100));
 		major.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+		String[] majorTypes = {"Mathematics", "Computer Science"};
+		
 		majorEntry.setMinimumSize(new Dimension(300, 30));
 		majorEntry.setMaximumSize(new Dimension(300, 30));
 		majorEntry.setPreferredSize(new Dimension(300, 30));
 		majorEntry.setFont(font2);
 		majorEntry.setAlignmentX(Component.CENTER_ALIGNMENT);
-		majorEntry.addItem("Computer Science");
-		majorEntry.addItem("Mathematics");
+		majorEntry.setModel(new DefaultComboBoxModel(majorTypes));
 
 		createAccounts.setMinimumSize(new Dimension(300, 50));
 		createAccounts.setMaximumSize(new Dimension(300, 50));
@@ -299,10 +301,11 @@ public class SignUpFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getSource() == goBack) {
-			mainPanel.removeAll();
-			signUpPanel.removeAll();
+//			mainPanel.removeAll();
+//			signUpPanel.removeAll();
+			
+			LoginFrame.Frame.remove(mainPanel);
 			LoginFrame.setFrameVisible();
-
 		}
 		if (e.getSource() == createAccounts) {
 
@@ -324,6 +327,7 @@ public class SignUpFrame implements ActionListener {
 				usernameEntry.setText("enter username");
 				JOptionPane.showMessageDialog(signUpPanel, "username can not be empty!!!", "input error",
 						JOptionPane.WARNING_MESSAGE);
+				System.out.println("abc");
 				return;
 			}
 
@@ -331,6 +335,7 @@ public class SignUpFrame implements ActionListener {
 
 				JOptionPane.showMessageDialog(signUpPanel, "username can not be empty!!!", "input error",
 						JOptionPane.WARNING_MESSAGE);
+				System.out.println("abcd");
 				return;
 			}
 

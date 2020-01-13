@@ -1,4 +1,5 @@
 package Displays;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -19,13 +20,11 @@ import readFile.SaveFile;
 
 import Displays.StudentCenter;
 
-
 public class LoginFrame implements ActionListener {
-	
+
 	public final static int width = 1200;
 	public final static int height = 750;
 
-	
 	public static JFrame Frame = new JFrame();
 
 	private JButton login = new JButton("LOGIN");
@@ -37,13 +36,14 @@ public class LoginFrame implements ActionListener {
 	private ReadFile checkPassword = new ReadFile();
 
 	private static JPanel inputPanel = new JPanel();
-	
+
+	private static SignUpFrame signUp = new SignUpFrame();
+
 	@SuppressWarnings("rawtypes")
 	private JComboBox TeacherOrStudents = new JComboBox();
 
 	public static void main(String[] args) {
-		
-		
+
 		new LoginFrame();
 
 	}
@@ -64,31 +64,29 @@ public class LoginFrame implements ActionListener {
 
 	private void createLayout() {
 
-		
-		Color TextColor = new Color(54,73,88);
+		Color TextColor = new Color(54, 73, 88);
 		Font font = new Font("Aileron", Font.PLAIN, 30);
-		
+
 		Frame.setLayout(null);
 
-		inputPanel.setBounds(0,0,width, height);
+		inputPanel.setBounds(0, 0, width, height);
 		inputPanel.setLayout(null);
 		inputPanel.setBackground(new Color(201, 228, 202));
-		
+
 		Frame.add(inputPanel);
-		
+
 		JLabel title = new JLabel("LOG IN", SwingConstants.CENTER);
 		title.setBounds(Frame.getWidth() / 2 - 150, 50, 300, 50);
 		title.setVisible(true);
 		title.setForeground(TextColor);
 		title.setFont(font);
-		
+
 		inputPanel.add(title);
 
 		TeacherOrStudents.setBounds(Frame.getWidth() / 2 - 150, 125, 300, 35);
 		TeacherOrStudents.setFont(font);
 		TeacherOrStudents.addItem("Teacher");
 		TeacherOrStudents.addItem("Student");
-		
 
 		inputPanel.add(TeacherOrStudents);
 
@@ -98,7 +96,7 @@ public class LoginFrame implements ActionListener {
 		username.setFont(font);
 
 		username.setForeground(TextColor);
-		
+
 		inputPanel.add(username);
 
 		usernameEntry.setBounds(Frame.getWidth() / 2 - 150, 250, 300, 50);
@@ -119,7 +117,7 @@ public class LoginFrame implements ActionListener {
 		login.setBounds(Frame.getWidth() / 2 - 150, 475, 300, 50);
 		login.setVisible(true);
 		login.addActionListener(this);
-		login.setForeground(new Color(255,255,255));
+		login.setForeground(new Color(255, 255, 255));
 		login.setBackground(TextColor);
 		login.setFont(font);
 		inputPanel.add(login);
@@ -128,7 +126,7 @@ public class LoginFrame implements ActionListener {
 		signup.setVisible(true);
 		signup.addActionListener(this);
 		signup.setBackground(TextColor);
-		signup.setForeground(new Color(255,255,255));
+		signup.setForeground(new Color(255, 255, 255));
 		signup.setFont(font);
 		inputPanel.add(signup);
 
@@ -142,16 +140,12 @@ public class LoginFrame implements ActionListener {
 		}
 		if (e.getSource() == signup) {
 
-			//inputPanel.setVisible(false);
-//			SignUpFrame signUp = new SignUpFrame();
-//			signUp.getPanel().setVisible(true);
+//			inputPanel.setVisible(false);
+
+			signUp.getPanel().setVisible(true);
 			Frame.setLayout(new BorderLayout());
-//			Frame.getContentPane().add(signUp.getPanel());
-			
-			
-			ClassroomPanel panel = new ClassroomPanel();
-			Frame.add(panel.returnJPanel());
-			
+			Frame.getContentPane().add(signUp.getPanel());
+
 			inputPanel.setVisible(false);
 		}
 	}
@@ -161,15 +155,14 @@ public class LoginFrame implements ActionListener {
 		String x = (String) TeacherOrStudents.getSelectedItem();
 		if (x.equals("Student")) {
 			String temp = String.valueOf(passwordEntry.getPassword());
-			
+
 			System.out.println(usernameEntry.getText());
 			System.out.println(temp);
-			
+
 			if (checkPassword.checkStudentPasswords(usernameEntry.getText(), temp)) {
 				System.out.println("asd");
 				new StudentCenter();
 
-				
 				System.out.println("asd");
 				return;
 			}
@@ -179,10 +172,10 @@ public class LoginFrame implements ActionListener {
 		if (x.equals("Teacher")) {
 
 			String temp = String.valueOf(passwordEntry.getPassword());
-			
+
 			System.out.println(usernameEntry.getText());
 			System.out.println(temp);
-			
+
 			if (checkPassword.checkTeacherPasswords(usernameEntry.getText(), temp)) {
 				System.out.println("asd");
 				new TeacherCenter();
@@ -195,12 +188,10 @@ public class LoginFrame implements ActionListener {
 	}
 
 	public static void setFrameVisible() {
-		
+
+		// Frame.setLayout(null);
 		inputPanel.setVisible(true);
-		Frame.remove(SignUpFrame.getPanel());
-		
-		
-		
+
 	}
 
 }
