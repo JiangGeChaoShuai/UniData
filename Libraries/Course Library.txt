@@ -9,4 +9,5 @@ Student 00000006 27
 StudentName Ranik Illeperuma
 Student 00000007 89
 StudentName Nirushi Lee
-Teacher 1000
+Teacher 10004
+TeacherName Lawrence Zhang

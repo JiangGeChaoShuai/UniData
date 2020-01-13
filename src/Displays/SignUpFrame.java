@@ -443,13 +443,10 @@ public class SignUpFrame implements ActionListener {
 			
 			String name = firstName.getText().replaceAll(" ", "") + " " + lastName.getText().replaceAll(" ", "");
 			String birthday = birthYearEntry.getSelectedItem() + "/" + birthMonthEntry.getSelectedItem() + "/" + birthdayEntry.getSelectedItem();
-			String enrollDate = currentdate.getYear() + "/" + currentdate.getMonth();
+			String enrollDate = currentdate.getYear() + "/" + String.format("%02d", currentdate.getMonthValue());
 			ReadFile.studentAccounts.add(new StudentInformation(usernameEntry.getText(),
 					String.valueOf(passwordEntry.getPassword()), name,birthday,emailEntry.getText(), enrollDate, String.valueOf(majorEntry.getSelectedItem())));
-		
 		}
-		
-		
 		
 		
 		else if (x.equals("Teacher")) {
