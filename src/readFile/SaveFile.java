@@ -126,15 +126,15 @@ public class SaveFile {
 				writer.write(lineToWrite);
 				writer.newLine();
 
-				lineToWrite = "ClassName " + ReadFile.currentClass.get(i).getClassName();
+				lineToWrite = "ClassName " + ReadFile.courseLibrary.get(i).getClassName();
 				writer.write(lineToWrite);
 				writer.newLine();
 
-				lineToWrite = "ClassCode " + ReadFile.currentClass.get(i).getClassCode();
+				lineToWrite = "ClassCode " + ReadFile.courseLibrary.get(i).getClassCode();
 				writer.write(lineToWrite);
 				writer.newLine();
 
-				lineToWrite = "Teacher " + ReadFile.currentClass.get(i).getTeacher().getUsername();
+				lineToWrite = "Teacher " + ReadFile.courseLibrary.get(i).getTeacher().getUsername();
 				writer.write(lineToWrite);
 				writer.newLine();
 
@@ -142,10 +142,10 @@ public class SaveFile {
 				writer.write(lineToWrite);
 				writer.newLine();
 
-				for (int x = 0; x < ReadFile.currentClass.get(i).getTimes().size(); x++) {
-					String date = ReadFile.currentClass.get(i).getTimes().get(x).getDate();
-					int beginTime = ReadFile.currentClass.get(i).getTimes().get(x).getBeginTime();
-					int endTime = ReadFile.currentClass.get(i).getTimes().get(x).getEndTime();
+				for (int x = 0; x < ReadFile.courseLibrary.get(i).getTimes().size(); x++) {
+					String date = ReadFile.courseLibrary.get(i).getTimes().get(x).getDate();
+					int beginTime = ReadFile.courseLibrary.get(i).getTimes().get(x).getBeginTime();
+					int endTime = ReadFile.courseLibrary.get(i).getTimes().get(x).getEndTime();
 
 					lineToWrite = "time " + date + " " + beginTime + " " + endTime;
 					writer.write(lineToWrite);
@@ -153,8 +153,8 @@ public class SaveFile {
 
 				}
 
-				for (int x = 0; x < ReadFile.currentClass.get(i).getStudentInCourse().size(); x++) {
-					String username = ReadFile.currentClass.get(i).getStudentInCourse().get(x).getUsername();
+				for (int x = 0; x < ReadFile.courseLibrary.get(i).getStudentInCourse().size(); x++) {
+					String username = ReadFile.courseLibrary.get(i).getStudentInCourse().get(x).getUsername();
 
 					lineToWrite = "time " + username;
 					writer.write(lineToWrite);
