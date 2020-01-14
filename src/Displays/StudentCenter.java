@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 
 public class StudentCenter implements ActionListener {
@@ -21,10 +22,13 @@ public class StudentCenter implements ActionListener {
 			courseListPanel, selectedCourseListPanel;
 	private JLabel titleLabel, subTitle, photo, nameLabel, birth, studentNum, timeEnroll, email, major, scheduleImage,
 			searchLabel, selectCourseLabel, courseName, courseMark;
-	private JButton logout, currentCourse, creditInfo, selectCourse, schedule, back1, back2, back3, back4, search,
+	private JButton logout, currentCourse, creditInfo, selectCourse, back1, back2, back3, back4, search,
 			addCourse, cancel;
 	private JTextField searchBar;
+	private JTable schedule;
 	private JScrollPane courseList, selectedCourse;
+	
+	private DefaultTableModel model = null;
 
 	private int WIDTH = 1200;
 	private int HEIGHT = 750;
@@ -86,30 +90,30 @@ public class StudentCenter implements ActionListener {
 		currentCourse = new JButton(
 				new ImageIcon(new ImageIcon("images/currentCourse.png").getImage().getScaledInstance(180, 180, 0)));
 		currentCourse.setBackground(new Color(85, 130, 139));
-		currentCourse.setBounds(100, 180, 200, 200);
+		currentCourse.setBounds(100, 220, 200, 200);
 		currentCourse.addActionListener(this);
 		mainPanel.add(currentCourse);
 
 		creditInfo = new JButton(
 				new ImageIcon(new ImageIcon("images/credit.png").getImage().getScaledInstance(180, 180, 0)));
 		creditInfo.setBackground(new Color(85, 130, 139));
-		creditInfo.setBounds(350, 180, 200, 200);
+		creditInfo.setBounds(350, 220, 200, 200);
 		creditInfo.addActionListener(this);
 		mainPanel.add(creditInfo);
 
 		selectCourse = new JButton(
 				new ImageIcon(new ImageIcon("images/futureCourse.png").getImage().getScaledInstance(180, 180, 0)));
 		selectCourse.setBackground(new Color(85, 130, 139));
-		selectCourse.setBounds(600, 180, 200, 200);
+		selectCourse.setBounds(600, 220, 200, 200);
 		selectCourse.addActionListener(this);
 		mainPanel.add(selectCourse);
 
-		schedule = new JButton(
-				new ImageIcon(new ImageIcon("images/schedule.png").getImage().getScaledInstance(180, 80, 0)));
-		schedule.setBackground(new Color(85, 130, 139));
-		schedule.setBounds(100, 430, 200, 100);
-		schedule.addActionListener(this);
-		mainPanel.add(schedule);
+//		schedule = new JButton(
+//				new ImageIcon(new ImageIcon("images/schedule.png").getImage().getScaledInstance(180, 80, 0)));
+//		schedule.setBackground(new Color(85, 130, 139));
+//		schedule.setBounds(100, 430, 200, 100);
+//		schedule.addActionListener(this);
+//		mainPanel.add(schedule);
 
 		// set text
 		mainFrame.add(mainPanel);
@@ -206,9 +210,16 @@ public class StudentCenter implements ActionListener {
 		currentCoursePanel.setVisible(false);
 
 		// add the course of this student
+		schedule = new JTable(null);
 		
+	      String[][] datas = {};
+	      String[] titles = {"Time", "Monday", "Tuseday","Wednesday", "Thursday","Friday"};
+	      model = new DefaultTableModel(datas, titles);
+	      schedule = new JTable(model);
+	      schedule.setBounds(50,50,500,300);
+	      schedule.setVisible(true);
+	      currentCoursePanel.add(new JScrollPane(schedule));
 		
-
 	}
 
 	private void addCreditInfoJComponents() {
@@ -234,7 +245,7 @@ public class StudentCenter implements ActionListener {
 		mainFrame.add(creditPanel);
 		creditPanel.setVisible(false);
 	}
-
+		
 	private void addFutureCourseJComponents() {
 		// TODO Auto-generated method stub
 		futureCoursePanel = new JPanel();

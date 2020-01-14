@@ -84,30 +84,30 @@ public class TeacherCenter extends JFrame implements ActionListener {
 		currentCourse = new JButton(
 				new ImageIcon(new ImageIcon("images/currentCourse2.png").getImage().getScaledInstance(180, 180, 0)));
 		currentCourse.setBackground(new Color(59, 96, 100));
-		currentCourse.setBounds(100, 180, 200, 200);
+		currentCourse.setBounds(100, 220, 200, 200);
 		currentCourse.addActionListener(this);
 		mainPanel.add(currentCourse);
 
 		classroom = new JButton(
 				new ImageIcon(new ImageIcon("images/classroom.png").getImage().getScaledInstance(180, 180, 0)));
 		classroom.setBackground(new Color(59, 96, 100));
-		classroom.setBounds(350, 180, 200, 200);
+		classroom.setBounds(350, 220, 200, 200);
 		classroom.addActionListener(this);
 		mainPanel.add(classroom);
 
 		selectCourse = new JButton(
 				new ImageIcon(new ImageIcon("images/futureCourse2.png").getImage().getScaledInstance(180, 180, 0)));
 		selectCourse.setBackground(new Color(59, 96, 100));
-		selectCourse.setBounds(600, 180, 200, 200);
+		selectCourse.setBounds(600, 220, 200, 200);
 		selectCourse.addActionListener(this);
 		mainPanel.add(selectCourse);
 
-		schedule = new JButton(
-				new ImageIcon(new ImageIcon("images/schedule2.png").getImage().getScaledInstance(180, 80, 0)));
-		schedule.setBackground(new Color(59, 96, 100));
-		schedule.setBounds(100, 430, 200, 100);
-		schedule.addActionListener(this);
-		mainPanel.add(schedule);
+//		schedule = new JButton(
+//				new ImageIcon(new ImageIcon("images/schedule2.png").getImage().getScaledInstance(180, 80, 0)));
+//		schedule.setBackground(new Color(59, 96, 100));
+//		schedule.setBounds(100, 430, 200, 100);
+//		schedule.addActionListener(this);
+//		mainPanel.add(schedule);
 
 		// set text
 		mainFrame.add(mainPanel);

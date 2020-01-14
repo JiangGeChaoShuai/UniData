@@ -22,21 +22,23 @@ import Displays.StudentCenter;
 
 public class LoginFrame implements ActionListener {
 
-	private final int width = 1200;
-	private final int height = 750;
-
-	public JFrame Frame = new JFrame("Log in page");
 	public JPanel Panel = new JPanel();
+	public final static int width = 1200;
+	public final static int height = 750;
 
-	private JButton login = new JButton("login");
-	private JButton signup = new JButton("sign up");
+	public static JFrame Frame = new JFrame("Log in page");
+
+	private JButton login = new JButton("LOGIN");
+	private JButton signup = new JButton("SIGN UP");
 
 	private JTextField usernameEntry = new JTextField();
 	private JPasswordField passwordEntry = new JPasswordField();
 
 	private ReadFile checkPassword = new ReadFile();
 
-	private JPanel inputPanel = new JPanel();
+	private static JPanel inputPanel = new JPanel();
+
+	private static SignUpFrame signUp = new SignUpFrame();
 
 	@SuppressWarnings("rawtypes")
 	private JComboBox TeacherOrStudents = new JComboBox();
@@ -46,6 +48,7 @@ public class LoginFrame implements ActionListener {
 		LoginFrame window = new LoginFrame();
 
 		window.Frame.setVisible(true);
+		new LoginFrame();
 
 	}
 
@@ -53,6 +56,7 @@ public class LoginFrame implements ActionListener {
 		checkPassword.loadInformation();
 		initialize();
 		Frame.setVisible(true);
+		Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	private void initialize() {
@@ -75,7 +79,7 @@ public class LoginFrame implements ActionListener {
 
 		Frame.add(inputPanel);
 
-		JLabel title = new JLabel("Login Frame", SwingConstants.CENTER);
+		JLabel title = new JLabel("LOG IN", SwingConstants.CENTER);
 		title.setBounds(Frame.getWidth() / 2 - 150, 50, 300, 50);
 		title.setVisible(true);
 		title.setForeground(TextColor);
@@ -83,14 +87,15 @@ public class LoginFrame implements ActionListener {
 
 		inputPanel.add(title);
 
-		TeacherOrStudents.setBounds(Frame.getWidth() / 2 - 150, 100, 300, 25);
+		TeacherOrStudents.setBounds(Frame.getWidth() / 2 - 150, 125, 300, 35);
+		TeacherOrStudents.setFont(font);
 		TeacherOrStudents.addItem("Teacher");
 		TeacherOrStudents.addItem("Student");
 
 		inputPanel.add(TeacherOrStudents);
 
 		JLabel username = new JLabel("username", SwingConstants.CENTER);
-		username.setBounds(Frame.getWidth() / 2 - 150, 175, 300, 50);
+		username.setBounds(Frame.getWidth() / 2 - 150, 200, 300, 50);
 		username.setVisible(true);
 		username.setFont(font);
 
@@ -98,7 +103,7 @@ public class LoginFrame implements ActionListener {
 
 		inputPanel.add(username);
 
-		usernameEntry.setBounds(Frame.getWidth() / 2 - 150, 225, 300, 50);
+		usernameEntry.setBounds(Frame.getWidth() / 2 - 150, 250, 300, 50);
 		usernameEntry.setVisible(true);
 		inputPanel.add(usernameEntry);
 
@@ -144,9 +149,12 @@ public class LoginFrame implements ActionListener {
 
 			// inputPanel.setVisible(false);
 			SignUpFrame signUp = new SignUpFrame();
+//			inputPanel.setVisible(false);
+
 			signUp.getPanel().setVisible(true);
 			Frame.setLayout(new BorderLayout());
 			Frame.getContentPane().add(signUp.getPanel(), BorderLayout.CENTER);
+			Frame.getContentPane().add(signUp.getPanel());
 
 			inputPanel.setVisible(false);
 		}
@@ -186,6 +194,13 @@ public class LoginFrame implements ActionListener {
 			}
 			System.out.println("invalid username or password");
 		}
+
+	}
+
+	public static void setFrameVisible() {
+
+		// Frame.setLayout(null);
+		inputPanel.setVisible(true);
 
 	}
 
