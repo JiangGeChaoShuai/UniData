@@ -14,7 +14,6 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
-import readFile.CourseInformation;
 import readFile.ReadFile;
 
 public class StudentCenter implements ActionListener {
@@ -33,9 +32,9 @@ public class StudentCenter implements ActionListener {
 
 	private DefaultTableModel model = null;
 
-	public static ArrayList<CourseInformation> courseLibrary; // course cart
-	private ArrayList<CourseInformation> courseStorage; // container for all existing courses
-	private ArrayList<CourseInformation> courseContainer; // container for all filtered courses
+	public static ArrayList<ReadFile> courseLibrary; // course cart
+	private ArrayList<ReadFile> courseStorage; // container for all existing courses
+	private ArrayList<ReadFile> courseContainer; // container for all filtered courses
 	private ArrayList<JButton> courseButtonContainer;
 	private ArrayList<JButton> courseButtonCart;
 
@@ -362,7 +361,7 @@ public class StudentCenter implements ActionListener {
 		if (searchBar.getText().length() > 0) {
 
 			// temporary array to store the filtered courses
-			ArrayList<CourseInformation> searchedCourseContainer = new ArrayList<CourseInformation>();
+			ArrayList<ReadFile> searchedCourseContainer = new ArrayList<ReadFile>();
 
 			// remove all the buttons from the course list panel and clear
 			// courseButtonContainer
@@ -376,7 +375,7 @@ public class StudentCenter implements ActionListener {
 
 			// search through the storage to see if any courses contains the text on the
 			// search field
-			for (CourseInformation course : courseStorage) {
+			for (ReadFile course : courseStorage) {
 
 				if (courseList.getName().toLowerCase().contains(searchBar.getText().toLowerCase())) {
 
@@ -390,7 +389,7 @@ public class StudentCenter implements ActionListener {
 			courseContainer = searchedCourseContainer;
 
 			// add the filters buttons back to the course panel
-			for (CourseInformation course : courseContainer) {
+			for (ReadFile course : courseContainer) {
 
 				addCourseToScrollPanel(course);
 
@@ -415,7 +414,7 @@ public class StudentCenter implements ActionListener {
 			courseContainer = courseStorage;
 			
 			// add the filters buttons back to the course panel
-			for(CourseInformation course: courseContainer) {
+			for(ReadFile course: courseContainer) {
 				
 				addCourseToScrollPanel(course);
 				
@@ -429,7 +428,7 @@ public class StudentCenter implements ActionListener {
 
 	}
 
-	private void addCourseToScrollPanel(CourseInformation course) {
+	private void addCourseToScrollPanel(ReadFile course) {
 		// TODO Auto-generated method stub
 
 	}
