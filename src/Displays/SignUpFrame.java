@@ -322,7 +322,7 @@ public class SignUpFrame implements ActionListener {
 
 		if (x.equals("Student")) {
 
-			if (usernameEntry.getText().equals(null)) {
+			if (usernameEntry.getText().equals("")) {
 
 				usernameEntry.setText("enter username");
 				JOptionPane.showMessageDialog(signUpPanel, "username can not be empty!!!", "input error",
@@ -349,14 +349,14 @@ public class SignUpFrame implements ActionListener {
 				}
 			}
 
-			if (String.valueOf(passwordEntry.getPassword()).equals(null)) {
+			if (String.valueOf(passwordEntry.getPassword()).equals("")) {
 
 				JOptionPane.showMessageDialog(signUpPanel, "password can not be empty!!!", "input error",
 						JOptionPane.WARNING_MESSAGE);
 				return;
 			}
 
-			if (String.valueOf(confirmPasswordEntry.getPassword()).equals(null)) {
+			if (String.valueOf(confirmPasswordEntry.getPassword()).equals("")) {
 
 				JOptionPane.showMessageDialog(signUpPanel, "confirm password can not be empty!!!", "input error",
 						JOptionPane.WARNING_MESSAGE);
@@ -372,7 +372,7 @@ public class SignUpFrame implements ActionListener {
 				return;
 			}
 
-			if (firstName.getText().equals(null)) {
+			if (firstName.getText().equals("")) {
 
 				firstName.setText("first name");
 				JOptionPane.showMessageDialog(signUpPanel, "first name entry can not be empty!!!", "input error",
@@ -386,7 +386,7 @@ public class SignUpFrame implements ActionListener {
 				return;
 			}
 
-			if (lastName.getText().equals(null)) {
+			if (lastName.getText().equals("")) {
 
 				lastName.setText("last name");
 				JOptionPane.showMessageDialog(signUpPanel, "last name can not be empty!!!", "input error",
@@ -426,7 +426,7 @@ public class SignUpFrame implements ActionListener {
 			}
 
 
-			if (emailEntry.getText().equals(null)) {
+			if (emailEntry.getText().equals("")) {
 
 				emailEntry.setText("enter Email");
 				JOptionPane.showMessageDialog(signUpPanel, "email entry can not be empty!!!", "input error",
@@ -446,12 +446,14 @@ public class SignUpFrame implements ActionListener {
 			String enrollDate = currentdate.getYear() + "/" + String.format("%02d", currentdate.getMonthValue());
 			ReadFile.studentAccounts.add(new StudentInformation(usernameEntry.getText(),
 					String.valueOf(passwordEntry.getPassword()), name,birthday,emailEntry.getText(), enrollDate, String.valueOf(majorEntry.getSelectedItem())));
+			
+			SaveFile.SaveStudentInformation();
 		}
 		
 		
 		else if (x.equals("Teacher")) {
 
-			if (usernameEntry.getText().equals(null)) {
+			if (usernameEntry.getText().equals("")) {
 
 				usernameEntry.setText("enter username");
 				JOptionPane.showMessageDialog(signUpPanel, "username can not be empty!!!", "input error",
@@ -476,14 +478,14 @@ public class SignUpFrame implements ActionListener {
 				}
 			}
 
-			if (String.valueOf(passwordEntry.getPassword()).equals(null)) {
+			if (String.valueOf(passwordEntry.getPassword()).equals("")) {
 
 				JOptionPane.showMessageDialog(signUpPanel, "password can not be empty!!!", "input error",
 						JOptionPane.WARNING_MESSAGE);
 				return;
 			}
 
-			if (String.valueOf(confirmPasswordEntry.getPassword()).equals(null)) {
+			if (String.valueOf(confirmPasswordEntry.getPassword()).equals("")) {
 
 				JOptionPane.showMessageDialog(signUpPanel, "confirm password can not be empty!!!", "input error",
 						JOptionPane.WARNING_MESSAGE);
@@ -499,7 +501,7 @@ public class SignUpFrame implements ActionListener {
 				return;
 			}
 
-			if (firstName.getText().equals(null)) {
+			if (firstName.getText().equals("")) {
 
 				firstName.setText("first name");
 				JOptionPane.showMessageDialog(signUpPanel, "first name entry can not be empty!!!", "input error",
@@ -513,7 +515,7 @@ public class SignUpFrame implements ActionListener {
 				return;
 			}
 
-			if (lastName.getText().equals(null)) {
+			if (lastName.getText().equals("")) {
 
 				lastName.setText("last name");
 				JOptionPane.showMessageDialog(signUpPanel, "last name can not be empty!!!", "input error",
@@ -553,7 +555,7 @@ public class SignUpFrame implements ActionListener {
 			}
 
 
-			if (emailEntry.getText().equals(null)) {
+			if (emailEntry.getText().equals("")) {
 
 				emailEntry.setText("enter Email");
 				JOptionPane.showMessageDialog(signUpPanel, "email entry can not be empty!!!", "input error",
@@ -574,10 +576,9 @@ public class SignUpFrame implements ActionListener {
 			ReadFile.teacherAccounts.add(new TeacherInformation(usernameEntry.getText(),
 					String.valueOf(passwordEntry.getPassword()), name, birthday, emailEntry.getText(),  String.valueOf(majorEntry.getSelectedItem())));
 		
+			SaveFile.SaveTeacherInformation();
 		}
-		SaveFile.SaveInformation();
+		
 		JOptionPane.showMessageDialog(signUpPanel, "account created!!!");
 	}
-
-	
 }

@@ -1,13 +1,12 @@
 C
 className designing functional Programs
 classCode CS-135
+Teacher 10004
+E
 time Monday 1600 1900
 time Friday 1400 1700
-Student 00000002 71
-StudentName Ben BadKaran
-Student 00000006 27
-StudentName Ranik Illeperuma
-Student 00000007 89
-StudentName Nirushi Lee
-Teacher 10004
-TeacherName Lawrence Zhang
+Student 00000002
+Student 00000006
+Student 00000007
+
+
