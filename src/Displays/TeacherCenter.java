@@ -10,7 +10,7 @@ public class TeacherCenter extends JFrame implements ActionListener {
 
 	// JCompnent
 	private JFrame mainFrame = new JFrame("Teacher Center");
-	private JPanel mainPanel, infoPanel, currentCoursePanel, classroomPanel, futureCoursePanel, schedulePanel,
+	private JPanel mainPanel, infoPanel, currentCoursePanel, classroomPanel, addCoursePanel, schedulePanel,
 			courseListPanel, selectedCoursePanel;
 	private JLabel titleLabel, subTitle, photo, nameLabel, birth, teacherNum, email, major, scheduleImage, searchLabel,
 			selectCourseLabel;
@@ -44,7 +44,7 @@ public class TeacherCenter extends JFrame implements ActionListener {
 		addInfoJCompents();
 		addCurrentCourseJComponents();
 		addClassroomJComponents();
-		addFutureCourseJComponents();
+		addaddCourseJComponents();
 		addScheduleJComponents();
 
 	}
@@ -96,7 +96,7 @@ public class TeacherCenter extends JFrame implements ActionListener {
 		mainPanel.add(classroom);
 
 		selectCourse = new JButton(
-				new ImageIcon(new ImageIcon("images/futureCourse2.png").getImage().getScaledInstance(180, 180, 0)));
+				new ImageIcon(new ImageIcon("images/addCourse2.png").getImage().getScaledInstance(180, 180, 0)));
 		selectCourse.setBackground(new Color(59, 96, 100));
 		selectCourse.setBounds(600, 220, 200, 200);
 		selectCourse.addActionListener(this);
@@ -218,25 +218,25 @@ public class TeacherCenter extends JFrame implements ActionListener {
 		classroomPanel.setVisible(false);
 	}
 
-	private void addFutureCourseJComponents() {
+	private void addaddCourseJComponents() {
 		// TODO Auto-generated method stub
-		futureCoursePanel = new JPanel();
-		futureCoursePanel.setLayout(null);
-		futureCoursePanel.setBackground(new Color(169, 188, 208));
-		futureCoursePanel.setBounds(300, 0, WIDTH - 300, HEIGHT);
+		addCoursePanel = new JPanel();
+		addCoursePanel.setLayout(null);
+		addCoursePanel.setBackground(new Color(169, 188, 208));
+		addCoursePanel.setBounds(300, 0, WIDTH - 300, HEIGHT);
 
-		titleLabel = new JLabel("Future Course Selection:");
+		titleLabel = new JLabel("Add Courses:");
 		titleLabel.setBounds(10, 20, 900, 60);
 		titleLabel.setFont(new Font("Aileron", Font.PLAIN, 50));
 		titleLabel.setForeground(new Color(54, 73, 88));
 		titleLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		futureCoursePanel.add(titleLabel, BorderLayout.CENTER);
+		addCoursePanel.add(titleLabel, BorderLayout.CENTER);
 
 		back3 = new JButton(new ImageIcon(new ImageIcon("images/back2.png").getImage().getScaledInstance(100, 50, 0)));
 		back3.setBackground(new Color(85, 130, 139));
 		back3.setBounds(750, 30, 100, 50);
 		back3.addActionListener(this);
-		futureCoursePanel.add(back3);
+		addCoursePanel.add(back3);
 
 		// add the course search JComponents
 		searchLabel = new JLabel("Search Course:");
@@ -244,19 +244,19 @@ public class TeacherCenter extends JFrame implements ActionListener {
 		searchLabel.setFont(new Font("Aileron", Font.PLAIN, 30));
 		searchLabel.setForeground(new Color(54, 73, 88));
 		searchLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		futureCoursePanel.add(searchLabel, BorderLayout.CENTER);
+		addCoursePanel.add(searchLabel, BorderLayout.CENTER);
 
 		searchBar = new JTextField();
 		searchBar.setBounds(50, 180, 350, 40);
 		searchBar.setFont(new Font("Aileron", Font.PLAIN, 30));
-		futureCoursePanel.add(searchBar);
+		addCoursePanel.add(searchBar);
 
 		search = new JButton(
 				new ImageIcon(new ImageIcon("images/search2.png").getImage().getScaledInstance(35, 35, 0)));
 		search.setBounds(410, 180, 40, 40);
 		search.setBackground(new Color(85, 130, 139));
 		search.addActionListener(this);
-		futureCoursePanel.add(search);
+		addCoursePanel.add(search);
 
 		// set the list of courses that the student can select
 		courseListPanel = new JPanel();
@@ -266,7 +266,7 @@ public class TeacherCenter extends JFrame implements ActionListener {
 		courseList = new JScrollPane(courseListPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
 				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		courseList.setBounds(50, 240, 400, 400);
-		futureCoursePanel.add(courseList);
+		addCoursePanel.add(courseList);
 
 		// set the list of courses that student already selected
 		selectCourseLabel = new JLabel("Selected Course");
@@ -274,7 +274,7 @@ public class TeacherCenter extends JFrame implements ActionListener {
 		selectCourseLabel.setFont(new Font("Aileron", Font.PLAIN, 30));
 		selectCourseLabel.setForeground(new Color(54, 73, 88));
 		selectCourseLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		futureCoursePanel.add(selectCourseLabel, BorderLayout.CENTER);
+		addCoursePanel.add(selectCourseLabel, BorderLayout.CENTER);
 
 		selectedCoursePanel = new JPanel();
 		selectedCoursePanel.setLayout(new BoxLayout(selectedCoursePanel, BoxLayout.X_AXIS));
@@ -283,10 +283,10 @@ public class TeacherCenter extends JFrame implements ActionListener {
 		selectedCourse = new JScrollPane(selectedCoursePanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
 				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		selectedCourse.setBounds(480, 300, 380, 300);
-		futureCoursePanel.add(selectedCourse);
+		addCoursePanel.add(selectedCourse);
 
-		mainFrame.add(futureCoursePanel);
-		futureCoursePanel.setVisible(false);
+		mainFrame.add(addCoursePanel);
+		addCoursePanel.setVisible(false);
 	}
 
 	private void addScheduleJComponents() {
@@ -335,11 +335,11 @@ public class TeacherCenter extends JFrame implements ActionListener {
 
 		} else if (e.getSource() == selectCourse) {
 			mainPanel.setVisible(false);
-			futureCoursePanel.setVisible(true);
+			addCoursePanel.setVisible(true);
 
 		} else if (e.getSource() == back3) {
 			mainPanel.setVisible(true);
-			futureCoursePanel.setVisible(false);
+			addCoursePanel.setVisible(false);
 
 		} else if (e.getSource() == schedule) {
 			mainPanel.setVisible(false);

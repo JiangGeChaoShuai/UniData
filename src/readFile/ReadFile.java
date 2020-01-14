@@ -12,6 +12,7 @@ public class ReadFile {
 
 	public static ArrayList<TeacherInformation> teacherAccounts = new ArrayList<TeacherInformation>();
 	public static ArrayList<StudentInformation> studentAccounts = new ArrayList<StudentInformation>();
+	public static ArrayList<CourseInformation> courseLibrary = new ArrayList<CourseInformation>();
 
 	public void loadInformation() {// method to scan file
 
@@ -32,23 +33,24 @@ public class ReadFile {
 				do {
 					valueType = input.next();
 					if (valueType.equals("username")) {
-						username = input.nextLine().replaceFirst(" ", "");;
+						username = input.nextLine().replaceFirst(" ", "");
 					} else if (valueType.equals("password")) {
-						password = input.nextLine().replaceFirst(" ", "");;
+						password = input.nextLine().replaceFirst(" ", "");
 					} else if (valueType.equals("name")) {
-						name = input.nextLine().replaceFirst(" ", "");;
+						name = input.nextLine().replaceFirst(" ", "");
 					} else if (valueType.equals("birthday")) {
-						birthday = input.nextLine().replaceFirst(" ", "");;
+						birthday = input.nextLine().replaceFirst(" ", "");
 					} else if (valueType.equals("dateEnrolled")) {
-						dateEnrolled = input.nextLine().replaceFirst(" ", "");;
+						dateEnrolled = input.nextLine().replaceFirst(" ", "");
 					} else if (valueType.equals("email")) {
-						Email = input.nextLine().replaceFirst(" ", "");;
+						Email = input.nextLine().replaceFirst(" ", "");
 					} else if (valueType.equals("major")) {
-						major = input.nextLine().replaceFirst(" ", "");;
+						major = input.nextLine().replaceFirst(" ", "");
 					}
-				} while (!valueType.equals("S")&& input.hasNext());
+				} while (!valueType.equals("S") && input.hasNext());
 
-				studentAccounts.add(new StudentInformation(username, password, name, birthday, Email, dateEnrolled, major));
+				studentAccounts
+						.add(new StudentInformation(username, password, name, birthday, Email, dateEnrolled, major));
 
 				System.out.println("Student");
 				System.out.println(username);
@@ -59,7 +61,7 @@ public class ReadFile {
 				System.out.println(dateEnrolled);
 				System.out.println(major);
 				System.out.println();
-				
+
 			} while (input.hasNext());// check if the file has ended
 
 			input.close();// close the scanner
@@ -69,7 +71,6 @@ public class ReadFile {
 			System.out.println("file not found");
 		}
 
-		
 		// read file for teacher
 		try {
 			Scanner input = new Scanner(new FileReader("Libraries/Teacher Library.txt"));// try to create a scanner
@@ -83,21 +84,21 @@ public class ReadFile {
 
 			String valueType;
 			do {// continue scanning while there is a next line
-				input.nextLine();
+				
 				do {
 					valueType = input.next();
 					if (valueType.equals("username")) {
 						username = input.nextLine().replaceFirst(" ", "");
 					} else if (valueType.equals("password")) {
-						password = input.nextLine().replaceFirst(" ", "");;
+						password = input.nextLine().replaceFirst(" ", "");
 					} else if (valueType.equals("name")) {
-						name = input.nextLine().replaceFirst(" ", "");;
+						name = input.nextLine().replaceFirst(" ", "");
 					} else if (valueType.equals("birthday")) {
-						birthday = input.nextLine().replaceFirst(" ", "");;
+						birthday = input.nextLine().replaceFirst(" ", "");
 					} else if (valueType.equals("email")) {
-						Email = input.nextLine().replaceFirst(" ", "");;
+						Email = input.nextLine().replaceFirst(" ", "");
 					} else if (valueType.equals("major")) {
-						major = input.nextLine().replaceFirst(" ", "");;
+						major = input.nextLine().replaceFirst(" ", "");
 					}
 				} while (!valueType.equals("T") && input.hasNext());
 
@@ -111,12 +112,85 @@ public class ReadFile {
 				System.out.println(Email);
 				System.out.println(major);
 				System.out.println();
+
+			} while (input.hasNext());// check if the file has ended
+
+			input.close();// close the scanner
+
+		} catch (FileNotFoundException e) {// end of try statement
+			// TODO Auto-generated catch block
+			System.out.println("file not found");
+		}
+
+		try {
+			Scanner input = new Scanner(new FileReader("Libraries/Course Library.txt"));// try to create a scanner
+
+			String courseCode = "";
+			String courseName = "";
+			String dayOfWeek = "";
+			int beginTime = 0;
+			int endTime = 0;
+			String studentUsername = "";
+			String teacherUsername = "";
+
+			String valueType;
+			do {// continue scanning while there is a next line
+				input.nextLine();
+				do {
+					valueType = input.next();
+					if (valueType.equals("classCode")) {
+						courseCode = input.nextLine().replaceFirst(" ", "");
+
+					} else if (valueType.equals("className")) {
+						courseName = input.nextLine().replaceFirst(" ", "");
+
+					} else if (valueType.equals("Teacher")) {
+
+						teacherUsername = input.nextLine().replace(" ", "");
+
+						for (int i = 0; i < teacherAccounts.size(); i++) {
+							if (teacherUsername.equals(teacherAccounts.get(i).getUsername())) {
+								courseLibrary.add(new CourseInformation(courseCode, courseName, teacherAccounts.get(i)));
+								break;
+							}
+						}
+
+					}
+
+				} while (!valueType.equals("E") && input.hasNext());
+				
+				do {
+					valueType = input.next();
+
+					if (valueType.equals("time")) {
+						dayOfWeek = input.next();
+						beginTime = input.nextInt();
+						endTime = input.nextInt();
+						input.nextLine();
+
+						courseLibrary.get(courseLibrary.size() - 1).addTime(new TimeOfWeek(dayOfWeek, beginTime, endTime));
+						
+					} else if (valueType.equals("Student")) {
+
+						studentUsername = input.nextLine().replaceFirst(" ", "");
+
+						for (int i = 0; i < studentAccounts.size(); i++) {
+
+							if (studentUsername.equals(studentAccounts.get(i).getUsername())) {
+
+								courseLibrary.get(courseLibrary.size() - 1).addStudent(studentAccounts.get(i));
+							}
+						}
+
+					}
+
+				} while (input.hasNext() && !valueType.equals("C"));
+				
+
+				
 				
 				
 			} while (input.hasNext());// check if the file has ended
-			
-			
-			
 
 			input.close();// close the scanner
 

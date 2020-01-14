@@ -12,23 +12,32 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
+import readFile.CourseInformation;
+import readFile.ReadFile;
 
 public class StudentCenter implements ActionListener {
 
 	// JCompnent
 	private JFrame mainFrame = new JFrame("Student Center");
-	private JPanel mainPanel, infoPanel, currentCoursePanel, creditPanel, futureCoursePanel, schedulePanel,
+	private JPanel mainPanel, infoPanel, currentCoursePanel, creditPanel, addCoursePanel, schedulePanel,
 			courseListPanel, selectedCourseListPanel;
 	private JLabel titleLabel, subTitle, photo, nameLabel, birth, studentNum, timeEnroll, email, major, scheduleImage,
 			searchLabel, selectCourseLabel, courseName, courseMark;
-	private JButton logout, currentCourse, creditInfo, selectCourse, back1, back2, back3, back4, search,
-			addCourse, cancel;
+	private JButton logout, currentCourse, creditInfo, selectCourse, back1, back2, back3, back4, search, addCourse,
+			cancel;
 	private JTextField searchBar;
 	private JTable schedule;
 	private JScrollPane courseList, selectedCourse;
-	
+
 	private DefaultTableModel model = null;
+
+	public static ArrayList<CourseInformation> courseLibrary; // course cart
+	private ArrayList<CourseInformation> courseStorage; // container for all existing courses
+	private ArrayList<CourseInformation> courseContainer; // container for all filtered courses
+	private ArrayList<JButton> courseButtonContainer;
+	private ArrayList<JButton> courseButtonCart;
 
 	private int WIDTH = 1200;
 	private int HEIGHT = 750;
@@ -56,8 +65,7 @@ public class StudentCenter implements ActionListener {
 		addInfoJCompents();
 		addCurrentCourseJComponents();
 		addCreditInfoJComponents();
-		addFutureCourseJComponents();
-		addScheduleJComponents();
+		addaddCourseJComponents();
 
 	}
 
@@ -102,7 +110,7 @@ public class StudentCenter implements ActionListener {
 		mainPanel.add(creditInfo);
 
 		selectCourse = new JButton(
-				new ImageIcon(new ImageIcon("images/futureCourse.png").getImage().getScaledInstance(180, 180, 0)));
+				new ImageIcon(new ImageIcon("images/addCourse.png").getImage().getScaledInstance(180, 180, 0)));
 		selectCourse.setBackground(new Color(85, 130, 139));
 		selectCourse.setBounds(600, 220, 200, 200);
 		selectCourse.addActionListener(this);
@@ -210,16 +218,42 @@ public class StudentCenter implements ActionListener {
 		currentCoursePanel.setVisible(false);
 
 		// add the course of this student
-		schedule = new JTable(null);
-		
-	      String[][] datas = {};
-	      String[] titles = {"Time", "Monday", "Tuseday","Wednesday", "Thursday","Friday"};
-	      model = new DefaultTableModel(datas, titles);
-	      schedule = new JTable(model);
-	      schedule.setBounds(50,50,500,300);
-	      schedule.setVisible(true);
-	      currentCoursePanel.add(new JScrollPane(schedule));
-		
+		JPanel tablePanel = new JPanel();
+		tablePanel.setBounds(100, 150, 650, 350);
+		tablePanel.setBackground(new Color(201, 228, 202));
+		currentCoursePanel.add(tablePanel);
+
+//		schedule = new JTable(null);
+//		String[][] datas ={ 
+//				{"Time", "Monday", "Tuseday", "Wednesday", "Thursday", "Friday" } ,
+//				{"4","5","6"}
+//		};
+//		String[] titles = { "Time", "Monday", "Tuseday", "Wednesday", "Thursday", "Friday" };
+//		model = new DefaultTableModel(datas, titles);
+//		schedule = new JTable(model);
+//		schedule.setBounds(100, 150, 600, 300);
+//		schedule.setVisible(true);
+//		tablePanel.add(schedule);
+
+		String[] columnNames = { "Time", "Monday", "Tuseday", "Wednesday", "Thursday", "Friday" };
+		Object[][] data = { { "8:40 - 11:40:", "Kathy", "Smith", "Snowboarding" },
+				{ "13:00 - 16:00", "John", "Doe", "Rowing" }, { "14:00 - 17:00", "Sue", "Black", "Knitting" },
+				{ "16:00 - 19:00", "Jane", "White", "Speed reading" }, };
+
+		schedule = new JTable(data, columnNames);
+		JScrollPane scrollPane = new JScrollPane(schedule);
+		schedule.setFillsViewportHeight(true);
+
+		TableColumn column = null;
+		for (int i = 0; i < 5; i++) {
+			column = schedule.getColumnModel().getColumn(i);
+			if (i == 2) {
+				column.setPreferredWidth(100); // third column is bigger
+			} else {
+				column.setPreferredWidth(50);
+			}
+		}
+
 	}
 
 	private void addCreditInfoJComponents() {
@@ -245,28 +279,28 @@ public class StudentCenter implements ActionListener {
 		mainFrame.add(creditPanel);
 		creditPanel.setVisible(false);
 	}
-		
-	private void addFutureCourseJComponents() {
+
+	private void addaddCourseJComponents() {
 		// TODO Auto-generated method stub
-		futureCoursePanel = new JPanel();
-		futureCoursePanel.setLayout(null);
-		futureCoursePanel.setBackground(new Color(135, 187, 162));
-		futureCoursePanel.setBounds(300, 0, WIDTH - 300, HEIGHT);
+		addCoursePanel = new JPanel();
+		addCoursePanel.setLayout(null);
+		addCoursePanel.setBackground(new Color(135, 187, 162));
+		addCoursePanel.setBounds(300, 0, WIDTH - 300, HEIGHT);
 
 		// set the title of future course selection panel
-		titleLabel = new JLabel("Future Course Selection:");
+		titleLabel = new JLabel("Add Courses :");
 		titleLabel.setBounds(10, 20, 900, 60);
 		titleLabel.setFont(new Font("Aileron", Font.PLAIN, 50));
 		titleLabel.setForeground(new Color(54, 73, 88));
 		titleLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		futureCoursePanel.add(titleLabel, BorderLayout.CENTER);
+		addCoursePanel.add(titleLabel, BorderLayout.CENTER);
 
 		// set the back button on this panel
 		back3 = new JButton(new ImageIcon(new ImageIcon("images/back.png").getImage().getScaledInstance(100, 50, 0)));
 		back3.setBackground(new Color(85, 130, 139));
 		back3.setBounds(750, 30, 100, 50);
 		back3.addActionListener(this);
-		futureCoursePanel.add(back3);
+		addCoursePanel.add(back3);
 
 		// add the course search JComponents
 		searchLabel = new JLabel("Search Course:");
@@ -274,18 +308,18 @@ public class StudentCenter implements ActionListener {
 		searchLabel.setFont(new Font("Aileron", Font.PLAIN, 30));
 		searchLabel.setForeground(new Color(54, 73, 88));
 		searchLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		futureCoursePanel.add(searchLabel, BorderLayout.CENTER);
+		addCoursePanel.add(searchLabel, BorderLayout.CENTER);
 
 		searchBar = new JTextField();
 		searchBar.setBounds(50, 180, 350, 40);
 		searchBar.setFont(new Font("Aileron", Font.PLAIN, 30));
-		futureCoursePanel.add(searchBar);
+		addCoursePanel.add(searchBar);
 
 		search = new JButton(new ImageIcon(new ImageIcon("images/search.png").getImage().getScaledInstance(35, 35, 0)));
 		search.setBounds(410, 180, 40, 40);
 		search.setBackground(new Color(85, 130, 139));
 		search.addActionListener(this);
-		futureCoursePanel.add(search);
+		addCoursePanel.add(search);
 
 		// set the list of courses that the student can select
 		courseListPanel = new JPanel();
@@ -295,7 +329,7 @@ public class StudentCenter implements ActionListener {
 		courseList = new JScrollPane(courseListPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
 				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		courseList.setBounds(50, 240, 400, 400);
-		futureCoursePanel.add(courseList);
+		addCoursePanel.add(courseList);
 
 		// set the list of courses that student already selected
 		selectCourseLabel = new JLabel("Selected Course");
@@ -303,7 +337,7 @@ public class StudentCenter implements ActionListener {
 		selectCourseLabel.setFont(new Font("Aileron", Font.PLAIN, 30));
 		selectCourseLabel.setForeground(new Color(54, 73, 88));
 		selectCourseLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		futureCoursePanel.add(selectCourseLabel, BorderLayout.CENTER);
+		addCoursePanel.add(selectCourseLabel, BorderLayout.CENTER);
 
 		selectedCourseListPanel = new JPanel();
 		selectedCourseListPanel.setLayout(new BoxLayout(selectedCourseListPanel, BoxLayout.X_AXIS));
@@ -312,110 +346,93 @@ public class StudentCenter implements ActionListener {
 		selectedCourse = new JScrollPane(selectedCourseListPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
 				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		selectedCourse.setBounds(480, 300, 380, 300);
-		futureCoursePanel.add(selectedCourse);
+		addCoursePanel.add(selectedCourse);
 
 		// add this panel to the main frame
-		mainFrame.add(futureCoursePanel);
-		futureCoursePanel.setVisible(false);
+		mainFrame.add(addCoursePanel);
+		addCoursePanel.setVisible(false);
 
 	}
 
-	private void addScheduleJComponents() {
-
-		schedulePanel = new JPanel();
-		schedulePanel.setLayout(null);
-		schedulePanel.setBackground(new Color(135, 187, 162));
-		schedulePanel.setBounds(300, 0, WIDTH - 300, HEIGHT);
-
-		scheduleImage = new JLabel(
-				new ImageIcon(new ImageIcon("images/scheduleImage.png").getImage().getScaledInstance(100, 100, 0)));
-		scheduleImage.setBackground(new Color(85, 130, 139));
-		scheduleImage.setBounds(10, 10, 100, 100);
-		schedulePanel.add(scheduleImage);
-
-		back4 = new JButton(new ImageIcon(new ImageIcon("images/back.png").getImage().getScaledInstance(100, 50, 0)));
-		back4.setBackground(new Color(85, 130, 139));
-		back4.setBounds(750, 30, 100, 50);
-		back4.addActionListener(this);
-		schedulePanel.add(back4);
-
-		mainFrame.add(schedulePanel);
-		schedulePanel.setVisible(false);
-
-	}
-	
-	// method that searches a material that contains the text entered on the search field
+	// method that searches a course that contains the text entered on the search
+	// field
 	private void search() {
-		
-//		// makes sure that there are text on the text field to search
-//		if (searchBar.getText().length() > 0) {
-//
-//			// temporary array to store the filtered materials
-//			ArrayList<Materials> searchedMaterialContainer = new ArrayList<Materials>();
-//
-//			// remove all the buttons from the material list panel and clear materialButtonContainer
-//			for (JButton materialButton : materialButtonContainer) {
-//
-//				materialListPanel.remove(materialButton);
-//
-//			}
-//
-//			materialButtonContainer.clear();
-//
-//			// search through the storage to see if any materials contains the text on the search field
-//			for (Materials material : materialStorage) {
-//
-//				if (material.getName().toLowerCase().contains(searchBar.getText().toLowerCase())) {
-//
-//					searchedMaterialContainer.add(material);
-//
-//				}
-//
-//			}
-//			
-//			// update the material container to the filtered one
-//			materialContainer = searchedMaterialContainer;
-//			
-//			// add the filters buttons back to the material panel
-//			for(Materials material: materialContainer) {
-//				
-//				addMaterialToScrollPanel(material);
-//				
-//			}
-//			
-//			// update the screen to display changes
-//			materialList.revalidate();
-//			materialList.repaint();
-//
-//		} else {
-//
-//			// remove all the current materials in the material panel
-//			for (JButton materialButton : materialButtonContainer) {
-//
-//				materialListPanel.remove(materialButton);
-//
-//			}
-//			
-//			materialButtonContainer.clear();
-//			
-//			// if the user clears the search, then display all the materials
-//			materialContainer = materialStorage;
-//			
-//			// add the filters buttons back to the material panel
-//			for(Materials material: materialContainer) {
-//				
-//				addMaterialToScrollPanel(material);
-//				
-//			}
-//			
-//			// update the screen to display changes
-//			materialList.revalidate();
-//			materialList.repaint();
-//
-//		}
+
+		// makes sure that there are text on the text field to search
+		if (searchBar.getText().length() > 0) {
+
+			// temporary array to store the filtered courses
+			ArrayList<CourseInformation> searchedCourseContainer = new ArrayList<CourseInformation>();
+
+			// remove all the buttons from the course list panel and clear
+			// courseButtonContainer
+			for (JButton courseButton : courseButtonContainer) {
+
+				courseListPanel.remove(courseButton);
+
+			}
+
+			courseButtonContainer.clear();
+
+			// search through the storage to see if any courses contains the text on the
+			// search field
+			for (CourseInformation course : courseStorage) {
+
+				if (courseList.getName().toLowerCase().contains(searchBar.getText().toLowerCase())) {
+
+					searchedCourseContainer.add(course);
+
+				}
+
+			}
+
+			// update the course container to the filtered one
+			courseContainer = searchedCourseContainer;
+
+			// add the filters buttons back to the course panel
+			for (CourseInformation course : courseContainer) {
+
+				addCourseToScrollPanel(course);
+
+			}
+			
+			// update the screen to display changes
+			courseList.revalidate();
+			courseList.repaint();
+
+		} else {
+
+			// remove all the current courses in the course panel
+			for (JButton courseButton : courseButtonContainer) {
+
+				courseListPanel.remove(courseButton);
+
+			}
+			
+			courseButtonContainer.clear();
+			
+			// if the user clears the search, then display all the courses
+			courseContainer = courseStorage;
+			
+			// add the filters buttons back to the course panel
+			for(CourseInformation course: courseContainer) {
+				
+				addCourseToScrollPanel(course);
+				
+			}
+
+			// update the screen to display changes
+			courseList.revalidate();
+			courseList.repaint();
+
+		}
 
 	}
-	
+
+	private void addCourseToScrollPanel(CourseInformation course) {
+		// TODO Auto-generated method stub
+
+	}
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == logout) {
@@ -438,11 +455,11 @@ public class StudentCenter implements ActionListener {
 
 		} else if (e.getSource() == selectCourse) {
 			mainPanel.setVisible(false);
-			futureCoursePanel.setVisible(true);
+			addCoursePanel.setVisible(true);
 
 		} else if (e.getSource() == back3) {
 			mainPanel.setVisible(true);
-			futureCoursePanel.setVisible(false);
+			addCoursePanel.setVisible(false);
 
 		} else if (e.getSource() == schedule) {
 			mainPanel.setVisible(false);

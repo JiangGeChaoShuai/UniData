@@ -93,11 +93,12 @@ username 00000011
 password 0504
 name Lawrence Zhang
 birthday 1974/05/04
-dateEnrolled 2020/JANUARY
+dateEnrolled 2020/01
 email Lawrence.Zhang@ICS4U1.com
 major Computer Science
 
 S
+<<<<<<< HEAD
 username 00000001
 password 0805
 name Anni Zhou
@@ -195,4 +196,13 @@ birthday 1974/05/04
 dateEnrolled 2020/JANUARY
 email Lawrence.Zhang@ICS4U1.com
 major Computer Science
+
+S
+username 00000012
+password 0716
+name John Li
+birthday 2002/07/16
+dateEnrolled 2020/01
+email 00000012@ICS4U1.com
+major Mathematics
 
