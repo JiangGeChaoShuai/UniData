@@ -193,8 +193,6 @@ public class ReadFile {
 						endTime = input.nextInt();
 						input.nextLine();
 
-
-
 						courseLibrary.get(courseLibrary.size() - 1).addTime(new TimeOfWeek(dayOfWeek, beginTime, endTime));
 						
 
