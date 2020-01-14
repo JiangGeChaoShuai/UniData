@@ -22,10 +22,11 @@ import Displays.StudentCenter;
 
 public class LoginFrame implements ActionListener {
 
+	public JPanel Panel = new JPanel();
 	public final static int width = 1200;
 	public final static int height = 750;
 
-	public static JFrame Frame = new JFrame();
+	public static JFrame Frame = new JFrame("Log in page");
 
 	private JButton login = new JButton("LOGIN");
 	private JButton signup = new JButton("SIGN UP");
@@ -44,6 +45,9 @@ public class LoginFrame implements ActionListener {
 
 	public static void main(String[] args) {
 
+		LoginFrame window = new LoginFrame();
+
+		window.Frame.setVisible(true);
 		new LoginFrame();
 
 	}
@@ -143,10 +147,16 @@ public class LoginFrame implements ActionListener {
 		}
 		if (e.getSource() == signup) {
 
+			// inputPanel.setVisible(false);
+			SaveFile.SaveInformation();
+
+			// inputPanel.setVisible(false);
+			SignUpFrame signUp = new SignUpFrame();
 //			inputPanel.setVisible(false);
 
 			signUp.getPanel().setVisible(true);
 			Frame.setLayout(new BorderLayout());
+			Frame.getContentPane().add(signUp.getPanel(), BorderLayout.CENTER);
 			Frame.getContentPane().add(signUp.getPanel());
 
 			inputPanel.setVisible(false);

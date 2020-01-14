@@ -17,7 +17,7 @@ public class ReadFile {
 
 	public static ArrayList<TeacherInformation> teacherAccounts = new ArrayList<TeacherInformation>();
 	public static ArrayList<StudentInformation> studentAccounts = new ArrayList<StudentInformation>();
-	public static ArrayList<CourseInformation> currentClass = new ArrayList<CourseInformation>();
+	public static ArrayList<CourseInformation> courseLibrary = new ArrayList<CourseInformation>();
 
 	public void loadInformation() {// method to scan file
 
@@ -175,7 +175,7 @@ public class ReadFile {
 
 						for (int i = 0; i < teacherAccounts.size(); i++) {
 							if (teacherUsername.equals(teacherAccounts.get(i).getUsername())) {
-								currentClass.add(new CourseInformation(courseCode, courseName, teacherAccounts.get(i)));
+								courseLibrary.add(new CourseInformation(courseCode, courseName, teacherAccounts.get(i)));
 								break;
 							}
 						}
@@ -193,8 +193,13 @@ public class ReadFile {
 						endTime = input.nextInt();
 						input.nextLine();
 
+
 						currentClass.get(currentClass.size() - 1)
 								.addTime(new TimeOfWeek(dayOfWeek, beginTime, endTime));
+
+
+						courseLibrary.get(courseLibrary.size() - 1).addTime(new TimeOfWeek(dayOfWeek, beginTime, endTime));
+						
 
 					} else if (valueType.equals("Student")) {
 
@@ -204,7 +209,7 @@ public class ReadFile {
 
 							if (studentUsername.equals(studentAccounts.get(i).getUsername())) {
 
-								currentClass.get(currentClass.size() - 1).addStudent(studentAccounts.get(i));
+								courseLibrary.get(courseLibrary.size() - 1).addStudent(studentAccounts.get(i));
 							}
 						}
 
