@@ -11,10 +11,10 @@ import java.time.LocalDate;
 
 import javax.swing.*;
 
+import information.StudentInformation;
+import information.TeacherInformation;
 import readFile.ReadFile;
 import readFile.SaveFile;
-import readFile.StudentInformation;
-import readFile.TeacherInformation;
 
 public class SignUpFrame implements ActionListener {
 

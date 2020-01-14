@@ -8,6 +8,11 @@ import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import information.CourseInformation;
+import information.StudentInformation;
+import information.TeacherInformation;
+import information.TimeOfWeek;
+
 public class ReadFile {
 
 	public static ArrayList<TeacherInformation> teacherAccounts = new ArrayList<TeacherInformation>();
@@ -27,6 +32,9 @@ public class ReadFile {
 			String Email = "";
 			String major = "";
 
+			String courseCode = "";
+			String courseName = "";
+			int mark = 0;
 			String valueType;
 			do {// continue scanning while there is a next line
 				input.nextLine();
@@ -47,10 +55,27 @@ public class ReadFile {
 					} else if (valueType.equals("major")) {
 						major = input.nextLine().replaceFirst(" ", "");
 					}
-				} while (!valueType.equals("S") && input.hasNext());
+				} while (!valueType.equals("E") && input.hasNext());
 
 				studentAccounts
 						.add(new StudentInformation(username, password, name, birthday, Email, dateEnrolled, major));
+				
+				if(!input.hasNext()) {
+					break;
+				}
+				
+				do {
+					valueType = input.next();
+					if (valueType.equals("course")){
+						
+						courseCode = input.next();
+						mark = input.nextInt();
+						courseName = input.nextLine().replaceFirst(" ", "");
+						
+						studentAccounts.get(studentAccounts.size()-1).setCourse(courseCode, courseName, mark);
+						
+					}
+				} while (!valueType.equals("S") && input.hasNext());
 
 				System.out.println("Student");
 				System.out.println(username);
@@ -84,7 +109,7 @@ public class ReadFile {
 
 			String valueType;
 			do {// continue scanning while there is a next line
-				
+
 				do {
 					valueType = input.next();
 					if (valueType.equals("username")) {
@@ -158,7 +183,7 @@ public class ReadFile {
 					}
 
 				} while (!valueType.equals("E") && input.hasNext());
-				
+
 				do {
 					valueType = input.next();
 
@@ -168,8 +193,9 @@ public class ReadFile {
 						endTime = input.nextInt();
 						input.nextLine();
 
-						currentClass.get(currentClass.size() - 1).addTime(new TimeOfWeek(dayOfWeek, beginTime, endTime));
-						
+						currentClass.get(currentClass.size() - 1)
+								.addTime(new TimeOfWeek(dayOfWeek, beginTime, endTime));
+
 					} else if (valueType.equals("Student")) {
 
 						studentUsername = input.nextLine().replaceFirst(" ", "");
@@ -185,11 +211,7 @@ public class ReadFile {
 					}
 
 				} while (input.hasNext() && !valueType.equals("C"));
-				
 
-				
-				
-				
 			} while (input.hasNext());// check if the file has ended
 
 			input.close();// close the scanner

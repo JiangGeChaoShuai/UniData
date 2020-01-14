@@ -1,8 +1,11 @@
-package readFile;
+package information;
+
+import java.util.ArrayList;
 
 public class StudentInformation extends AccountInformation {
 
 	private String dateEnrolled;
+	private ArrayList<StudentCourseInfo> course = new ArrayList <StudentCourseInfo>();
 
 	public StudentInformation(String username, String passwords, String name, String Birthday, String Email,
 			String dateEnrolled, String department) {
@@ -20,4 +23,16 @@ public class StudentInformation extends AccountInformation {
 		this.dateEnrolled = dateEnrolled;
 	}
 
+	public void setCourse(String courseCode, String courseName, int courseMark) {
+		
+		course.add(new StudentCourseInfo(courseCode, courseName, courseMark));
+		
+	}
+	
+	public ArrayList<StudentCourseInfo> getCourse(){
+		
+		
+		return course;
+	}
+	
 }

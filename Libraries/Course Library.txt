@@ -1,6 +1,6 @@
 C
 className designing functional Programs
-classCode CS-135
+classCode CS-135_1
 Teacher 10004
 E
 time Monday 1600 1900

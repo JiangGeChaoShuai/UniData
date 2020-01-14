@@ -136,7 +136,10 @@ public class LoginFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getSource() == login) {
-			checkPassword();
+
+			SaveFile.SaveStudentInformation();
+			
+			//checkPassword();
 		}
 		if (e.getSource() == signup) {
 

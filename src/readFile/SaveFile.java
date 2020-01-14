@@ -44,6 +44,20 @@ public class SaveFile {
 				writer.write(lineToWrite);
 				writer.newLine();
 
+				lineToWrite = "E";
+				writer.write(lineToWrite);
+				writer.newLine();
+
+				for (int x = 0; x < ReadFile.studentAccounts.get(i).getCourse().size(); x++) {
+
+					String courseCode = ReadFile.studentAccounts.get(i).getCourse().get(x).getCourseCode();
+					String courseName = ReadFile.studentAccounts.get(i).getCourse().get(x).getCourseName();
+					int mark = ReadFile.studentAccounts.get(i).getCourse().get(x).getCourseMark();
+					lineToWrite = "course " + courseCode + " " + mark + " " + courseName;
+					writer.write(lineToWrite);
+					writer.newLine();
+				}
+
 				writer.newLine();
 
 			}
@@ -51,12 +65,13 @@ public class SaveFile {
 		} catch (Exception e) {// end of try statement
 			e.printStackTrace();
 		}
-		
+
 	}
+
 	public static void SaveTeacherInformation() {
 
 		String lineToWrite = "";
-		
+
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter("Libraries/Teacher Library.txt"))) {
 
 			for (int i = 0; i < ReadFile.teacherAccounts.size(); i++) {
@@ -98,10 +113,11 @@ public class SaveFile {
 		}
 
 	}
+
 	public static void saveCourseInformation() {
 
 		String lineToWrite = "";
-		
+
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter("Libraries/Course Library.txt"))) {
 
 			for (int i = 0; i < ReadFile.teacherAccounts.size(); i++) {
@@ -125,27 +141,27 @@ public class SaveFile {
 				lineToWrite = "E";
 				writer.write(lineToWrite);
 				writer.newLine();
-				
-				for(int x = 0; x<ReadFile.currentClass.get(i).getTimes().size(); x++) {
-					String date =  ReadFile.currentClass.get(i).getTimes().get(x).getDate();
-					int beginTime =  ReadFile.currentClass.get(i).getTimes().get(x).getBeginTime();
-					int endTime =  ReadFile.currentClass.get(i).getTimes().get(x).getEndTime();
-					
-					lineToWrite ="time " + date + " " + beginTime + " " + endTime;
-					writer.write(lineToWrite);
-					writer.newLine();
-					
-				}
-				
-				for(int x = 0; x<ReadFile.currentClass.get(i).getStudentInCourse().size(); x++) {
-					String username =  ReadFile.currentClass.get(i).getStudentInCourse().get(x).getUsername();
 
-					lineToWrite ="time " + username;
+				for (int x = 0; x < ReadFile.currentClass.get(i).getTimes().size(); x++) {
+					String date = ReadFile.currentClass.get(i).getTimes().get(x).getDate();
+					int beginTime = ReadFile.currentClass.get(i).getTimes().get(x).getBeginTime();
+					int endTime = ReadFile.currentClass.get(i).getTimes().get(x).getEndTime();
+
+					lineToWrite = "time " + date + " " + beginTime + " " + endTime;
 					writer.write(lineToWrite);
 					writer.newLine();
-					
+
 				}
-				
+
+				for (int x = 0; x < ReadFile.currentClass.get(i).getStudentInCourse().size(); x++) {
+					String username = ReadFile.currentClass.get(i).getStudentInCourse().get(x).getUsername();
+
+					lineToWrite = "time " + username;
+					writer.write(lineToWrite);
+					writer.newLine();
+
+				}
+
 				writer.newLine();
 
 			}

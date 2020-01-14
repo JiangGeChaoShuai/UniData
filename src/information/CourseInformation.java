@@ -1,4 +1,4 @@
-package readFile;
+package information;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package readFile;
+package information;
 
 public class TeacherInformation extends AccountInformation{
 

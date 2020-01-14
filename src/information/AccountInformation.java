@@ -1,4 +1,4 @@
-package readFile;
+package information;
 
 public abstract class AccountInformation {
 

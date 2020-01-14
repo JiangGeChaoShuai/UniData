@@ -6,6 +6,7 @@ birthday 2000/03/25
 dateEnrolled 2018/09
 email 00000001@ICS4U.com
 major Mathematics
+E
 
 S
 username 00000002
@@ -15,6 +16,8 @@ birthday 1999/4/16
 dateEnrolled 2017/09
 email 00000002@ICS4U.com
 major Computer Science
+E
+course CS-135_1 72 designing functional Programs
 
 S
 username 00000003
@@ -24,15 +27,7 @@ birthday 2000/06/19
 dateEnrolled 2018/09
 email 00000003@ICS4U.com
 major Mathematics
-
-S
-username 00000004
-password 0328
-name Heba Huynh
-birthday 1999/03/28
-dateEnrolled 2017/09
-email 00000004@ICS4U.com
-major Mathematics
+E
 
 S
 username 00000005
@@ -42,6 +37,7 @@ birthday 2000/12/17
 dateEnrolled 2018/09
 email 00000005@ICS4U.com
 major Mathematics
+E
 
 S
 username 00000006
@@ -51,6 +47,8 @@ birthday 1999/07/15
 dateEnrolled 2017/09
 email 00000006@ICS4U.com
 major Computer Science
+E
+course CS-135_1 97 designing functional Programs
 
 S
 username 00000007
@@ -60,6 +58,8 @@ birthday 2000/08/05
 dateEnrolled 2018/09
 email 00000007@ICS4U.com
 major Computer Science
+E
+course CS-135_1 23 designing functional Programs
 
 S
 username 00000008
@@ -69,15 +69,7 @@ birthday 1999/02/18
 dateEnrolled 2017/09
 email 00000008@ICS4U.com
 major Mathematics
-
-S
-username 00000009
-password 0930
-name Sidra Fong
-birthday 1999/09/30
-dateEnrolled 2017/09
-email 00000009@ICS4U.com
-major Computer Science
+E
 
 S
 username 00000010
@@ -87,6 +79,7 @@ birthday 2000/5/20
 dateEnrolled 2018/09
 email 00000010@ICS4U.com
 major Mathematics
+E
 
 S
 username 00000011
@@ -96,6 +89,7 @@ birthday 1974/05/04
 dateEnrolled 2020/01
 email Lawrence.Zhang@ICS4U1.com
 major Computer Science
+E
 
 S
 username 00000012
@@ -105,4 +99,5 @@ birthday 2002/07/16
 dateEnrolled 2020/01
 email 00000012@ICS4U1.com
 major Mathematics
+E
 
