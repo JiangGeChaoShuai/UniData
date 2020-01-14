@@ -147,12 +147,7 @@ public class LoginFrame implements ActionListener {
 		}
 		if (e.getSource() == signup) {
 
-			// inputPanel.setVisible(false);
-			SaveFile.SaveInformation();
 
-			// inputPanel.setVisible(false);
-			SignUpFrame signUp = new SignUpFrame();
-//			inputPanel.setVisible(false);
 
 			signUp.getPanel().setVisible(true);
 			Frame.setLayout(new BorderLayout());
