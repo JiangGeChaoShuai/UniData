@@ -23,14 +23,14 @@ public class StudentCenter implements ActionListener {
 	// JCompnent
 	static JFrame mainFrame = new JFrame("Student Center");
 	private JPanel mainPanel, infoPanel, currentCoursePanel, creditPanel, addCoursePanel, schedulePanel,
-			courseListPanel;
+			courseListPanel,addedCoursePanel;
 	private JLabel titleLabel, subTitle, photo, nameLabel, birth, studentNum, timeEnroll, email, major, scheduleImage,
-			searchLabel, selectCourseLabel, courseName, courseMark;
-	private JButton logout, currentCourse, creditInfo, selectCourse, back1, back2, back3, back4, search, addCourse,
+			searchLabel, selectCourseLabel,addedCourseLabel, courseName, courseMark;
+	private JButton logout, currentCourse, creditInfo, selectCourse, back1, back2, back3, back4, search, addToCourse,
 			cancel;
 	private JTextField searchBar;
 	private JTable schedule;
-	private JScrollPane courseList, selectedCourse;
+	private JScrollPane courseList, selectedCourse,addedCourse;
 
 	private DefaultTableModel model = null;
 
@@ -347,7 +347,7 @@ public class StudentCenter implements ActionListener {
 		// set the list of courses that the student can select
 		courseListPanel = new JPanel();
 		courseListPanel.setLayout(new BoxLayout(courseListPanel, BoxLayout.Y_AXIS));
-		courseListPanel.setBounds(0, 0, WIDTH, HEIGHT);
+		courseListPanel.setBackground(new Color(201, 228, 202));
 
 		courseList = new JScrollPane(courseListPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
 				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -355,21 +355,39 @@ public class StudentCenter implements ActionListener {
 		addCoursePanel.add(courseList);
 
 		// set the list of courses that student already selected
-		selectCourseLabel = new JLabel("Selected Course");
-		selectCourseLabel.setBounds(480, 250, 380, 40);
+		selectCourseLabel = new JLabel("Course Details");
+		selectCourseLabel.setBounds(480, 190, 350, 40);
 		selectCourseLabel.setFont(new Font("Aileron", Font.PLAIN, 30));
 		selectCourseLabel.setForeground(new Color(54, 73, 88));
 		selectCourseLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		addCoursePanel.add(selectCourseLabel, BorderLayout.CENTER);
 
 		selectedCourseListPanel = new JPanel();
-		selectedCourseListPanel.setLayout(new BoxLayout(selectedCourseListPanel, BoxLayout.Y_AXIS));
-		// selectedCourseListPanel.setBounds(0, 0, WIDTH, HEIGHT);
+		selectedCourseListPanel.setBounds(480, 240, 350, 200);
+		selectedCourseListPanel.setBackground(new Color(201, 228, 202));
+		addCoursePanel.add(selectedCourseListPanel);
+		
+		
+//		//add selected course to the "my course list"
+//		addToCourse = new JButton("Add");
+//		addToCourse =
+		
+		//set the course list that the students are already selected
+		addedCourseLabel = new JLabel("Course you added:");
+		addedCourseLabel.setBounds(480, 450, 360, 40);
+		addedCourseLabel.setFont(new Font("Aileron", Font.PLAIN, 30));
+		addedCourseLabel.setForeground(new Color(54, 73, 88));
+		addedCourseLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		addCoursePanel.add(addedCourseLabel, BorderLayout.CENTER);
 
-		selectedCourse = new JScrollPane(selectedCourseListPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+		addedCoursePanel = new JPanel();
+		addedCoursePanel.setLayout(new BoxLayout(addedCoursePanel, BoxLayout.Y_AXIS));
+		addedCoursePanel.setBackground(new Color(201, 228, 202));
+
+		addedCourse = new JScrollPane(addedCoursePanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
 				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		selectedCourse.setBounds(480, 300, 380, 300);
-		addCoursePanel.add(selectedCourse);
+		addedCourse.setBounds(480, 490, 350, 150);
+		addCoursePanel.add(addedCourse);
 
 		// add this panel to the main frame
 		mainFrame.add(addCoursePanel);
