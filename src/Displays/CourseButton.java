@@ -73,7 +73,23 @@ public class CourseButton implements ActionListener {
 			StudentCenter.selectedCourseListPanel.add(Box.createRigidArea(spacing));
 
 		}
+	
+		
+		
+		addCourse = new JButton("add Course");
+		addCourse.setPreferredSize(new Dimension(380,50));
+		addCourse.setMaximumSize(new Dimension(380,50));
+		addCourse.setMinimumSize(new Dimension(380,50));
+		addCourse.addActionListener(this);
+		addCourse.setForeground(new Color(255, 255, 255));
+		addCourse.setBackground(new Color(54, 73, 88));
+		addCourse.setFont(font);
+		
+		StudentCenter.selectedCourseListPanel.add(Box.createVerticalGlue());
+		StudentCenter.selectedCourseListPanel.add(addCourse);
+		
 
+		
 		StudentCenter.mainFrame.revalidate();
 		StudentCenter.mainFrame.repaint();
 
