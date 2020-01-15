@@ -14,6 +14,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
+import information.CourseInformation;
 import readFile.ReadFile;
 
 public class StudentCenter implements ActionListener {
@@ -32,9 +33,9 @@ public class StudentCenter implements ActionListener {
 
 	private DefaultTableModel model = null;
 
-	public static ArrayList<ReadFile> courseLibrary; // course cart
-	private ArrayList<ReadFile> courseStorage; // container for all existing courses
-	private ArrayList<ReadFile> courseContainer; // container for all filtered courses
+	public static ArrayList<CourseInformation> courseLibrary; // course cart
+	private ArrayList<CourseInformation> courseStorage; // container for all existing courses
+	private ArrayList<CourseInformation> courseContainer; // container for all filtered courses
 	private ArrayList<JButton> courseButtonContainer;
 	private ArrayList<JButton> courseButtonCart;
 
@@ -43,8 +44,12 @@ public class StudentCenter implements ActionListener {
 
 	public static void main(String[] args) {
 
+
 		StudentCenter window = new StudentCenter();
 
+		
+		ReadFile read = new ReadFile();
+		read.loadInformation();
 		window.mainFrame.setVisible(true);
 
 	}
@@ -350,6 +355,11 @@ public class StudentCenter implements ActionListener {
 		// add this panel to the main frame
 		mainFrame.add(addCoursePanel);
 		addCoursePanel.setVisible(false);
+		
+		for(int i = 0; i<ReadFile.courseLibrary.size(); i++) {
+			addCourseToScrollPanel(ReadFile.courseLibrary.get(i));
+		}
+		
 
 	}
 
@@ -361,7 +371,7 @@ public class StudentCenter implements ActionListener {
 		if (searchBar.getText().length() > 0) {
 
 			// temporary array to store the filtered courses
-			ArrayList<ReadFile> searchedCourseContainer = new ArrayList<ReadFile>();
+			ArrayList<CourseInformation> searchedCourseContainer = new ArrayList<CourseInformation>();
 
 			// remove all the buttons from the course list panel and clear
 			// courseButtonContainer
@@ -375,7 +385,7 @@ public class StudentCenter implements ActionListener {
 
 			// search through the storage to see if any courses contains the text on the
 			// search field
-			for (ReadFile course : courseStorage) {
+			for (CourseInformation course : courseStorage) {
 
 				if (courseList.getName().toLowerCase().contains(searchBar.getText().toLowerCase())) {
 
@@ -389,7 +399,7 @@ public class StudentCenter implements ActionListener {
 			courseContainer = searchedCourseContainer;
 
 			// add the filters buttons back to the course panel
-			for (ReadFile course : courseContainer) {
+			for (CourseInformation course : courseContainer) {
 
 				addCourseToScrollPanel(course);
 
@@ -414,7 +424,7 @@ public class StudentCenter implements ActionListener {
 			courseContainer = courseStorage;
 			
 			// add the filters buttons back to the course panel
-			for(ReadFile course: courseContainer) {
+			for(CourseInformation course: courseContainer) {
 				
 				addCourseToScrollPanel(course);
 				
@@ -428,12 +438,34 @@ public class StudentCenter implements ActionListener {
 
 	}
 
-	private void addCourseToScrollPanel(ReadFile course) {
+	private void addCourseToScrollPanel(CourseInformation course) {
 		// TODO Auto-generated method stub
+		
+		
+		JButton courseButton = new JButton(course.getClassName());
+		courseButton.setBounds(0, 0, 380, 100);
+		// set max, min and preferred size is required when adding to a scroll pane to preserve layout
+		courseButton.setMaximumSize(courseButton.getSize());
+		courseButton.setMinimumSize(courseButton.getSize());
+		courseButton.setPreferredSize(courseButton.getSize());
+		courseButton.setHorizontalTextPosition(SwingConstants.CENTER);
+		courseButton.setForeground(Color.white);
+		courseButton.setBackground(new Color(54, 73, 88));
+		courseButton.setFont(new Font("Gill Sans MT Condensed", Font.PLAIN, 28));
+		courseButton.setOpaque(true);
+		courseButton.setBorderPainted(false);
+		courseButton.addActionListener(this);
+		// add the button to the button list and the panel
+		courseButtonContainer.add(courseButton);
+		courseListPanel.add(courseButton);
 
 	}
+	
+
 
 	public void actionPerformed(ActionEvent e) {
+		
+		
 		if (e.getSource() == logout) {
 			new LoginFrame();
 		} else if (e.getSource() == currentCourse) {
