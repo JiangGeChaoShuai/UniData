@@ -20,9 +20,9 @@ import readFile.ReadFile;
 public class StudentCenter implements ActionListener {
 
 	// JCompnent
-	private JFrame mainFrame = new JFrame("Student Center");
+	static JFrame mainFrame = new JFrame("Student Center");
 	private JPanel mainPanel, infoPanel, currentCoursePanel, creditPanel, addCoursePanel, schedulePanel,
-			courseListPanel, selectedCourseListPanel;
+			courseListPanel;
 	private JLabel titleLabel, subTitle, photo, nameLabel, birth, studentNum, timeEnroll, email, major, scheduleImage,
 			searchLabel, selectCourseLabel, courseName, courseMark;
 	private JButton logout, currentCourse, creditInfo, selectCourse, back1, back2, back3, back4, search, addCourse,
@@ -34,11 +34,9 @@ public class StudentCenter implements ActionListener {
 	private DefaultTableModel model = null;
 
 	// public static ArrayList<ReadFile> courseLibrary; // course cart
-	private ArrayList<CourseInformation> courseStorage; // container for all existing courses
 	private ArrayList<CourseInformation> courseContainer = new ArrayList<CourseInformation>(); // container for all
 																								// filtered courses
 	private ArrayList<JButton> courseButtonContainer = new ArrayList<JButton>();
-	private ArrayList<JButton> courseButtonCart;
 
 	private ArrayList<CourseButton> allCourses = new ArrayList<CourseButton>();
 
@@ -46,6 +44,8 @@ public class StudentCenter implements ActionListener {
 	private int HEIGHT = 750;
 	
 	private ReadFile read = new ReadFile();
+	
+	static JPanel selectedCourseListPanel = new JPanel();
 
 	public static void main(String[] args) {
 
@@ -355,7 +355,7 @@ public class StudentCenter implements ActionListener {
 		addCoursePanel.add(selectCourseLabel, BorderLayout.CENTER);
 
 		selectedCourseListPanel = new JPanel();
-		selectedCourseListPanel.setLayout(new BoxLayout(selectedCourseListPanel, BoxLayout.X_AXIS));
+		selectedCourseListPanel.setLayout(new BoxLayout(selectedCourseListPanel, BoxLayout.Y_AXIS));
 		// selectedCourseListPanel.setBounds(0, 0, WIDTH, HEIGHT);
 
 		selectedCourse = new JScrollPane(selectedCourseListPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,

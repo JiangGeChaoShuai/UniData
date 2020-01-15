@@ -260,7 +260,7 @@ public class TeacherCenter extends JFrame implements ActionListener {
 
 		// set the list of courses that the student can select
 		courseListPanel = new JPanel();
-		courseListPanel.setLayout(new BoxLayout(courseListPanel, BoxLayout.X_AXIS));
+		courseListPanel.setLayout(new BoxLayout(courseListPanel, BoxLayout.Y_AXIS));
 		courseListPanel.setBounds(0, 0, WIDTH, HEIGHT);
 
 		courseList = new JScrollPane(courseListPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
@@ -277,7 +277,7 @@ public class TeacherCenter extends JFrame implements ActionListener {
 		addCoursePanel.add(selectCourseLabel, BorderLayout.CENTER);
 
 		selectedCoursePanel = new JPanel();
-		selectedCoursePanel.setLayout(new BoxLayout(selectedCoursePanel, BoxLayout.X_AXIS));
+		selectedCoursePanel.setLayout(new BoxLayout(selectedCoursePanel, BoxLayout.Y_AXIS));
 		selectedCoursePanel.setBounds(0, 0, WIDTH, HEIGHT);
 
 		selectedCourse = new JScrollPane(selectedCoursePanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,

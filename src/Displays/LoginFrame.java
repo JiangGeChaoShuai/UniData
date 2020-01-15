@@ -171,12 +171,13 @@ public class LoginFrame implements ActionListener {
 
 					if (ReadFile.studentAccounts.get(i).getPasswords().equals(temp)) {
 						new StudentCenter();
+						return;
 					}
 
 				}
-
+				
 			}
-			System.out.println("invalid username or password");
+			
 		}
 		if (x.equals("Teacher")) {
 
@@ -191,11 +192,12 @@ public class LoginFrame implements ActionListener {
 
 					if (ReadFile.teacherAccounts.get(i).getPasswords().equals(temp)) {
 						new TeacherCenter();
+						return;
 					}
 				}
 
 			}
-			System.out.println("invalid username or password");
+
 		}
 
 	}
