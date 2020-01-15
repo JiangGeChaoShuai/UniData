@@ -15,24 +15,23 @@ public class TeacherCenter extends JFrame implements ActionListener {
 	private JFrame mainFrame = new JFrame("Teacher Center");
 	private JPanel mainPanel, infoPanel, currentCoursePanel, classroomPanel, addCoursePanel, schedulePanel,
 			courseListPanel, selectedCoursePanel;
-	private JLabel titleLabel, subTitle, photo, nameLabel, birth, teacherNum, email, major, scheduleImage, searchLabel,
-			selectCourseLabel;
+	private JLabel titleLabel, subTitle, photo, nameLabel, birth, teacherNum, email, emailLabel, major, scheduleImage,
+			searchLabel, selectCourseLabel;
 	private JTextField searchBar;
 	private JScrollPane courseList, selectedCourse;
 	private JButton logout, currentCourse, classroom, selectCourse, schedule, back1, back2, back3, back4, search;
 
 	private int WIDTH = 1200;
 	private int HEIGHT = 750;
-	
+
 	private static ReadFile read = new ReadFile();
 
 	private TeacherInformation thisTeacher;
-	
+
 	public static void main(String[] args) {
 
 		read.loadInformation();
-		
-		
+
 		TeacherCenter window = new TeacherCenter(ReadFile.teacherAccounts.get(1));
 
 		window.mainFrame.setVisible(true);
@@ -41,9 +40,8 @@ public class TeacherCenter extends JFrame implements ActionListener {
 
 	public TeacherCenter(TeacherInformation teacherInformation) {
 
-		
 		thisTeacher = teacherInformation;
-		
+
 		initialize();
 
 		mainFrame.setVisible(true);
@@ -115,13 +113,6 @@ public class TeacherCenter extends JFrame implements ActionListener {
 		selectCourse.addActionListener(this);
 		mainPanel.add(selectCourse);
 
-//		schedule = new JButton(
-//				new ImageIcon(new ImageIcon("images/schedule2.png").getImage().getScaledInstance(180, 80, 0)));
-//		schedule.setBackground(new Color(59, 96, 100));
-//		schedule.setBounds(100, 430, 200, 100);
-//		schedule.addActionListener(this);
-//		mainPanel.add(schedule);
-
 		// set text
 		mainFrame.add(mainPanel);
 
@@ -149,31 +140,37 @@ public class TeacherCenter extends JFrame implements ActionListener {
 		photo.setBounds(75, 65, 150, 150);
 		infoPanel.add(photo);
 
-		nameLabel = new JLabel("Name:");
+		nameLabel = new JLabel("Name:" + thisTeacher.getName());
 		nameLabel.setBounds(10, 230, 300, 40);
 		nameLabel.setFont(new Font("Aileron", Font.PLAIN, 25));
 		nameLabel.setForeground(new Color(85, 130, 139));
 		infoPanel.add(nameLabel);
 
-		birth = new JLabel("Birthday:");
-		birth.setBounds(10, 290, 300, 40);
+		birth = new JLabel("Birthday:" + thisTeacher.getBirthday());
+		birth.setBounds(10, 280, 300, 40);
 		birth.setFont(new Font("Aileron", Font.PLAIN, 25));
 		birth.setForeground(new Color(85, 130, 139));
 		infoPanel.add(birth);
 
 		email = new JLabel("Email:");
-		email.setBounds(10, 340, 300, 40);
+		email.setBounds(10, 330, 300, 40);
 		email.setFont(new Font("Aileron", Font.PLAIN, 25));
 		email.setForeground(new Color(85, 130, 139));
 		infoPanel.add(email);
 
-		major = new JLabel("Major:");
-		major.setBounds(10, 400, 300, 40);
+		emailLabel = new JLabel(thisTeacher.getEmail());
+		emailLabel.setBounds(10, 380, 300, 40);
+		emailLabel.setFont(new Font("Aileron", Font.PLAIN, 25));
+		emailLabel.setForeground(new Color(85, 130, 139));
+		infoPanel.add(emailLabel);
+
+		major = new JLabel("Major:" + thisTeacher.getDepartment());
+		major.setBounds(10, 420, 300, 40);
 		major.setFont(new Font("Aileron", Font.PLAIN, 25));
 		major.setForeground(new Color(85, 130, 139));
 		infoPanel.add(major);
 
-		teacherNum = new JLabel("Teacher #:");
+		teacherNum = new JLabel("Teacher #:   " + thisTeacher.getUsername());
 		teacherNum.setBounds(10, 650, 300, 40);
 		teacherNum.setFont(new Font("Aileron", Font.PLAIN, 25));
 		teacherNum.setForeground(new Color(85, 130, 139));
