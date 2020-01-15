@@ -101,3 +101,312 @@ email 00000012@ICS4U1.com
 major Mathematics
 E
 
+S
+username 00000001
+password 0805
+name Anni Zhou
+birthday 2000/03/25
+dateEnrolled 2018/09
+email 00000001@ICS4U.com
+major Mathematics
+E
+
+S
+username 00000002
+password 0416
+name Ben Badkaran
+birthday 1999/4/16
+dateEnrolled 2017/09
+email 00000002@ICS4U.com
+major Computer Science
+E
+course CS-135_1 72 designing functional Programs
+
+S
+username 00000003
+password 0619
+name Colvin Sivakaran
+birthday 2000/06/19
+dateEnrolled 2018/09
+email 00000003@ICS4U.com
+major Mathematics
+E
+
+S
+username 00000005
+password 1217
+name Tegwen Cham
+birthday 2000/12/17
+dateEnrolled 2018/09
+email 00000005@ICS4U.com
+major Mathematics
+E
+
+S
+username 00000006
+password 0715
+name Ranik Illeperuma
+birthday 1999/07/15
+dateEnrolled 2017/09
+email 00000006@ICS4U.com
+major Computer Science
+E
+course CS-135_1 97 designing functional Programs
+
+S
+username 00000007
+password 0805
+name Nirushi Lee
+birthday 2000/08/05
+dateEnrolled 2018/09
+email 00000007@ICS4U.com
+major Computer Science
+E
+course CS-135_1 23 designing functional Programs
+
+S
+username 00000008
+password 0218
+name Hamza Punni
+birthday 1999/02/18
+dateEnrolled 2017/09
+email 00000008@ICS4U.com
+major Mathematics
+E
+
+S
+username 00000010
+password 0520
+name Vehara Rupasinghe
+birthday 2000/5/20
+dateEnrolled 2018/09
+email 00000010@ICS4U.com
+major Mathematics
+E
+
+S
+username 00000011
+password 0504
+name Lawrence Zhang
+birthday 1974/05/04
+dateEnrolled 2020/01
+email Lawrence.Zhang@ICS4U1.com
+major Computer Science
+E
+
+S
+username 00000012
+password 0716
+name John Li
+birthday 2002/07/16
+dateEnrolled 2020/01
+email 00000012@ICS4U1.com
+major Mathematics
+E
+
+S
+username 00000001
+password 0805
+name Anni Zhou
+birthday 2000/03/25
+dateEnrolled 2018/09
+email 00000001@ICS4U.com
+major Mathematics
+E
+
+S
+username 00000002
+password 0416
+name Ben Badkaran
+birthday 1999/4/16
+dateEnrolled 2017/09
+email 00000002@ICS4U.com
+major Computer Science
+E
+course CS-135_1 72 designing functional Programs
+
+S
+username 00000003
+password 0619
+name Colvin Sivakaran
+birthday 2000/06/19
+dateEnrolled 2018/09
+email 00000003@ICS4U.com
+major Mathematics
+E
+
+S
+username 00000005
+password 1217
+name Tegwen Cham
+birthday 2000/12/17
+dateEnrolled 2018/09
+email 00000005@ICS4U.com
+major Mathematics
+E
+
+S
+username 00000006
+password 0715
+name Ranik Illeperuma
+birthday 1999/07/15
+dateEnrolled 2017/09
+email 00000006@ICS4U.com
+major Computer Science
+E
+course CS-135_1 97 designing functional Programs
+
+S
+username 00000007
+password 0805
+name Nirushi Lee
+birthday 2000/08/05
+dateEnrolled 2018/09
+email 00000007@ICS4U.com
+major Computer Science
+E
+course CS-135_1 23 designing functional Programs
+
+S
+username 00000008
+password 0218
+name Hamza Punni
+birthday 1999/02/18
+dateEnrolled 2017/09
+email 00000008@ICS4U.com
+major Mathematics
+E
+
+S
+username 00000010
+password 0520
+name Vehara Rupasinghe
+birthday 2000/5/20
+dateEnrolled 2018/09
+email 00000010@ICS4U.com
+major Mathematics
+E
+
+S
+username 00000011
+password 0504
+name Lawrence Zhang
+birthday 1974/05/04
+dateEnrolled 2020/01
+email Lawrence.Zhang@ICS4U1.com
+major Computer Science
+E
+
+S
+username 00000012
+password 0716
+name John Li
+birthday 2002/07/16
+dateEnrolled 2020/01
+email 00000012@ICS4U1.com
+major Mathematics
+E
+
+S
+username 00000001
+password 0805
+name Anni Zhou
+birthday 2000/03/25
+dateEnrolled 2018/09
+email 00000001@ICS4U.com
+major Mathematics
+E
+
+S
+username 00000002
+password 0416
+name Ben Badkaran
+birthday 1999/4/16
+dateEnrolled 2017/09
+email 00000002@ICS4U.com
+major Computer Science
+E
+course CS-135_1 72 designing functional Programs
+
+S
+username 00000003
+password 0619
+name Colvin Sivakaran
+birthday 2000/06/19
+dateEnrolled 2018/09
+email 00000003@ICS4U.com
+major Mathematics
+E
+
+S
+username 00000005
+password 1217
+name Tegwen Cham
+birthday 2000/12/17
+dateEnrolled 2018/09
+email 00000005@ICS4U.com
+major Mathematics
+E
+
+S
+username 00000006
+password 0715
+name Ranik Illeperuma
+birthday 1999/07/15
+dateEnrolled 2017/09
+email 00000006@ICS4U.com
+major Computer Science
+E
+course CS-135_1 97 designing functional Programs
+
+S
+username 00000007
+password 0805
+name Nirushi Lee
+birthday 2000/08/05
+dateEnrolled 2018/09
+email 00000007@ICS4U.com
+major Computer Science
+E
+course CS-135_1 23 designing functional Programs
+
+S
+username 00000008
+password 0218
+name Hamza Punni
+birthday 1999/02/18
+dateEnrolled 2017/09
+email 00000008@ICS4U.com
+major Mathematics
+E
+
+S
+username 00000010
+password 0520
+name Vehara Rupasinghe
+birthday 2000/5/20
+dateEnrolled 2018/09
+email 00000010@ICS4U.com
+major Mathematics
+E
+
+S
+username 00000011
+password 0504
+name Lawrence Zhang
+birthday 1974/05/04
+dateEnrolled 2020/01
+email Lawrence.Zhang@ICS4U1.com
+major Computer Science
+E
+
+S
+username 00000012
+password 0716
+name John Li
+birthday 2002/07/16
+dateEnrolled 2020/01
+email 00000012@ICS4U1.com
+major Mathematics
+E
+

@@ -21,6 +21,11 @@ public class ReadFile {
 
 	public void loadInformation() {// method to scan file
 
+		teacherAccounts.clear();
+		studentAccounts.clear();
+		courseLibrary.clear();
+		
+		
 		try {
 			Scanner input = new Scanner(new FileReader("Libraries/Student Library.txt"));// try to create a scanner
 
@@ -223,22 +228,7 @@ public class ReadFile {
 
 	}
 
-	public boolean checkTeacherPasswords(String username, String passwords) {
 
-		for (int i = 0; i < teacherAccounts.size(); i++) {
-
-			if (teacherAccounts.get(i).getUsername().equals(username)) {
-
-				if (teacherAccounts.get(i).getPasswords().equals(passwords)) {
-					return true;
-				}
-				return false;
-			}
-
-		}
-		return false;
-
-	}
 
 	public boolean checkStudentPasswords(String username, String passwords) {
 

@@ -141,13 +141,11 @@ public class LoginFrame implements ActionListener {
 
 		if (e.getSource() == login) {
 
-			SaveFile.SaveStudentInformation();
-			
-			//checkPassword();
+			// SaveFile.SaveStudentInformation();
+
+			checkPassword();
 		}
 		if (e.getSource() == signup) {
-
-
 
 			signUp.getPanel().setVisible(true);
 			Frame.setLayout(new BorderLayout());
@@ -167,15 +165,18 @@ public class LoginFrame implements ActionListener {
 			System.out.println(usernameEntry.getText());
 			System.out.println(temp);
 
-			if (checkPassword.checkStudentPasswords(usernameEntry.getText(), temp)) {
-				System.out.println("asd");
-				new StudentCenter();
+			for (int i = 0; i < ReadFile.studentAccounts.size(); i++) {
 
-				System.out.println("asd");
-				return;
+				if (ReadFile.studentAccounts.get(i).getUsername().equals(usernameEntry.getText())) {
+
+					if (ReadFile.studentAccounts.get(i).getPasswords().equals(temp)) {
+						new StudentCenter();
+					}
+
+				}
+
 			}
 			System.out.println("invalid username or password");
-
 		}
 		if (x.equals("Teacher")) {
 
@@ -184,11 +185,15 @@ public class LoginFrame implements ActionListener {
 			System.out.println(usernameEntry.getText());
 			System.out.println(temp);
 
-			if (checkPassword.checkTeacherPasswords(usernameEntry.getText(), temp)) {
-				System.out.println("asd");
-				new TeacherCenter();
-				System.out.println("asd");
-				return;
+			for (int i = 0; i < ReadFile.teacherAccounts.size(); i++) {
+
+				if (ReadFile.teacherAccounts.get(i).getUsername().equals(usernameEntry.getText())) {
+
+					if (ReadFile.teacherAccounts.get(i).getPasswords().equals(temp)) {
+						new TeacherCenter();
+					}
+				}
+
 			}
 			System.out.println("invalid username or password");
 		}
