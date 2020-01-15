@@ -6,6 +6,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import information.TeacherInformation;
+import readFile.ReadFile;
+
 public class TeacherCenter extends JFrame implements ActionListener {
 
 	// JCompnent
@@ -20,17 +23,27 @@ public class TeacherCenter extends JFrame implements ActionListener {
 
 	private int WIDTH = 1200;
 	private int HEIGHT = 750;
+	
+	private static ReadFile read = new ReadFile();
 
+	private TeacherInformation thisTeacher;
+	
 	public static void main(String[] args) {
 
-		TeacherCenter window = new TeacherCenter();
+		read.loadInformation();
+		
+		
+		TeacherCenter window = new TeacherCenter(ReadFile.teacherAccounts.get(1));
 
 		window.mainFrame.setVisible(true);
 
 	}
 
-	public TeacherCenter() {
+	public TeacherCenter(TeacherInformation teacherInformation) {
 
+		
+		thisTeacher = teacherInformation;
+		
 		initialize();
 
 		mainFrame.setVisible(true);

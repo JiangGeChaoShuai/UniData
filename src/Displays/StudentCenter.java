@@ -15,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 import information.CourseInformation;
+import information.StudentInformation;
 import readFile.ReadFile;
 
 public class StudentCenter implements ActionListener {
@@ -43,27 +44,30 @@ public class StudentCenter implements ActionListener {
 	private int WIDTH = 1200;
 	private int HEIGHT = 750;
 	
-	private ReadFile read = new ReadFile();
+	private	StudentInformation thisStudent;
+	
+	private static ReadFile read = new ReadFile();
 	
 	static JPanel selectedCourseListPanel = new JPanel();
 
 	public static void main(String[] args) {
 
 
-		StudentCenter window = new StudentCenter();
+		read.loadInformation();
+		
+		StudentCenter window = new StudentCenter(ReadFile.studentAccounts.get(1));
 
 		
-		ReadFile read = new ReadFile();
-		read.loadInformation();
+		
 		window.mainFrame.setVisible(true);
 
 	}
 
-	public StudentCenter() {
+	public StudentCenter(StudentInformation studentInformation) {
 
 		// temporary for testing
-		
-		read.loadInformation();
+	
+		thisStudent = studentInformation;
 
 		initialize();
 		mainFrame.setVisible(true);
