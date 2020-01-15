@@ -24,7 +24,7 @@ public class StudentCenter implements ActionListener {
 	static JFrame mainFrame = new JFrame("Student Center");
 	private JPanel mainPanel, infoPanel, currentCoursePanel, creditPanel, addCoursePanel, schedulePanel,
 			courseListPanel,addedCoursePanel;
-	private JLabel titleLabel, subTitle, photo, nameLabel, birth, studentNum, timeEnroll, email, major, scheduleImage,
+	private JLabel titleLabel, subTitle, photo, nameLabel, birth, studentNum, timeEnroll, email,emailLabel, major, scheduleImage,
 			searchLabel, selectCourseLabel,addedCourseLabel, courseName, courseMark;
 	private JButton logout, currentCourse, creditInfo, selectCourse, back1, back2, back3, back4, search, addToCourse,
 			cancel;
@@ -57,7 +57,6 @@ public class StudentCenter implements ActionListener {
 		
 		StudentCenter window = new StudentCenter(ReadFile.studentAccounts.get(1));
 
-		
 		
 		window.mainFrame.setVisible(true);
 
@@ -174,37 +173,43 @@ public class StudentCenter implements ActionListener {
 		photo.setBounds(75, 65, 150, 150);
 		infoPanel.add(photo);
 
-		nameLabel = new JLabel("Name:");
+		nameLabel = new JLabel("Name:"+ thisStudent.getName());
 		nameLabel.setBounds(10, 230, 300, 40);
 		nameLabel.setFont(new Font("Aileron", Font.PLAIN, 25));
 		nameLabel.setForeground(new Color(85, 130, 139));
 		infoPanel.add(nameLabel);
 
-		birth = new JLabel("Birthday:");
-		birth.setBounds(10, 290, 300, 40);
+		birth = new JLabel("Birthday:"+ thisStudent.getBirthday());
+		birth.setBounds(10, 280, 300, 40);
 		birth.setFont(new Font("Aileron", Font.PLAIN, 25));
 		birth.setForeground(new Color(85, 130, 139));
 		infoPanel.add(birth);
 
-		timeEnroll = new JLabel("Time Enrolled:");
-		timeEnroll.setBounds(10, 340, 300, 40);
+		timeEnroll = new JLabel("Time Enrolled:"+thisStudent.getDateEnrolled());
+		timeEnroll.setBounds(10, 330, 300, 40);
 		timeEnroll.setFont(new Font("Aileron", Font.PLAIN, 25));
 		timeEnroll.setForeground(new Color(85, 130, 139));
 		infoPanel.add(timeEnroll);
 
 		email = new JLabel("Email:");
-		email.setBounds(10, 400, 300, 40);
+		email.setBounds(10, 380, 300, 40);
 		email.setFont(new Font("Aileron", Font.PLAIN, 25));
 		email.setForeground(new Color(85, 130, 139));
 		infoPanel.add(email);
+		
+		emailLabel = new JLabel(thisStudent.getEmail());
+		emailLabel.setBounds(10, 420, 300, 40);
+		emailLabel.setFont(new Font("Aileron", Font.PLAIN, 25));
+		emailLabel.setForeground(new Color(85, 130, 139));
+		infoPanel.add(emailLabel);
 
-		major = new JLabel("Major:");
-		major.setBounds(10, 460, 300, 40);
+		major = new JLabel("Major:"+thisStudent.getDepartment());
+		major.setBounds(10, 470, 300, 40);
 		major.setFont(new Font("Aileron", Font.PLAIN, 25));
 		major.setForeground(new Color(85, 130, 139));
 		infoPanel.add(major);
 
-		studentNum = new JLabel("Student #:");
+		studentNum = new JLabel("Student #:   "+thisStudent.getUsername());
 		studentNum.setBounds(10, 650, 300, 40);
 		studentNum.setFont(new Font("Aileron", Font.PLAIN, 25));
 		studentNum.setForeground(new Color(85, 130, 139));
@@ -366,11 +371,6 @@ public class StudentCenter implements ActionListener {
 		selectedCourseListPanel.setBounds(480, 240, 350, 200);
 		selectedCourseListPanel.setBackground(new Color(201, 228, 202));
 		addCoursePanel.add(selectedCourseListPanel);
-		
-		
-//		//add selected course to the "my course list"
-//		addToCourse = new JButton("Add");
-//		addToCourse =
 		
 		//set the course list that the students are already selected
 		addedCourseLabel = new JLabel("Course you added:");
