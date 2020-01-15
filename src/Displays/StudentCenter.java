@@ -49,8 +49,12 @@ public class StudentCenter implements ActionListener {
 
 	public static void main(String[] args) {
 
+
 		StudentCenter window = new StudentCenter();
 
+		
+		ReadFile read = new ReadFile();
+		read.loadInformation();
 		window.mainFrame.setVisible(true);
 
 	}
@@ -366,6 +370,11 @@ public class StudentCenter implements ActionListener {
 		// add this panel to the main frame
 		mainFrame.add(addCoursePanel);
 		addCoursePanel.setVisible(false);
+		
+		for(int i = 0; i<ReadFile.courseLibrary.size(); i++) {
+			addCourseToScrollPanel(ReadFile.courseLibrary.get(i));
+		}
+		
 
 	}
 
@@ -394,7 +403,6 @@ public class StudentCenter implements ActionListener {
 			// search through the storage to see if any courses contains the text on the
 			// search field
 			for (CourseInformation course : ReadFile.courseLibrary) {
-
 				if (course.getClassName().toLowerCase().contains(searchBar.getText().toLowerCase())) {
 
 					searchedCourseContainer.add(course);
@@ -465,8 +473,12 @@ public class StudentCenter implements ActionListener {
 		}
 
 	}
+	
+
 
 	public void actionPerformed(ActionEvent e) {
+		
+		
 		if (e.getSource() == logout) {
 			new LoginFrame();
 		} else if (e.getSource() == currentCourse) {
