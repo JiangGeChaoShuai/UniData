@@ -157,6 +157,7 @@ public class LoginFrame implements ActionListener {
 	}
 
 	private void checkPassword() {
+		
 		System.out.println("as");
 		String x = (String) TeacherOrStudents.getSelectedItem();
 		if (x.equals("Student")) {
@@ -173,11 +174,9 @@ public class LoginFrame implements ActionListener {
 						new StudentCenter(ReadFile.studentAccounts.get(i));
 						return;
 					}
-
 				}
 				
 			}
-			
 		}
 		if (x.equals("Teacher")) {
 

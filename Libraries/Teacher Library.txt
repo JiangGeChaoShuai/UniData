@@ -31,34 +31,18 @@ email Lawrence.Zhang@ICS4U1.com
 major Computer Science
 
 T
-username 10001
-password 0228
-name David Neals
-birthday 1972/02/28
-email david.neals@ICS4U1.com
-major Mathmatic
+username 10005
+password 0608
+name Eva Chen
+birthday 2002/06/08
+email Eva.Chen@ICS4U1.com
+major Mathematics
 
 T
-username 10002
-password 0107
-name Chris Wang
-birthday 1969/01/07
-email chris.wang@ICS4U1.com
-major Computer Science
-
-T
-username 10003
-password 0522
-name Ruby Vasanthan
-birthday 1965/05/22
-email ruby.vasanthan@ICS4U1.com
-major Mathmatic
-
-T
-username 10004
-password 0504
-name Lawrence Zhang
-birthday 1974/05/04
-email Lawrence.Zhang@ICS4U1.com
+username 10006
+password 0716
+name John Li
+birthday 1994/07/16
+email John.Li@ICS.com
 major Computer Science
 
