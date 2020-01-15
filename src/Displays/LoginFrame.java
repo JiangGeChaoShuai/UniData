@@ -170,7 +170,7 @@ public class LoginFrame implements ActionListener {
 				if (ReadFile.studentAccounts.get(i).getUsername().equals(usernameEntry.getText())) {
 
 					if (ReadFile.studentAccounts.get(i).getPasswords().equals(temp)) {
-						new StudentCenter();
+						new StudentCenter(ReadFile.studentAccounts.get(i));
 						return;
 					}
 
@@ -191,7 +191,7 @@ public class LoginFrame implements ActionListener {
 				if (ReadFile.teacherAccounts.get(i).getUsername().equals(usernameEntry.getText())) {
 
 					if (ReadFile.teacherAccounts.get(i).getPasswords().equals(temp)) {
-						new TeacherCenter();
+						new TeacherCenter(ReadFile.teacherAccounts.get(i));
 						return;
 					}
 				}
