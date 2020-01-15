@@ -14,6 +14,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
+import information.CourseInformation;
 import readFile.ReadFile;
 
 public class StudentCenter implements ActionListener {
@@ -32,14 +33,19 @@ public class StudentCenter implements ActionListener {
 
 	private DefaultTableModel model = null;
 
-	public static ArrayList<ReadFile> courseLibrary; // course cart
-	private ArrayList<ReadFile> courseStorage; // container for all existing courses
-	private ArrayList<ReadFile> courseContainer; // container for all filtered courses
-	private ArrayList<JButton> courseButtonContainer;
+	// public static ArrayList<ReadFile> courseLibrary; // course cart
+	private ArrayList<CourseInformation> courseStorage; // container for all existing courses
+	private ArrayList<CourseInformation> courseContainer = new ArrayList<CourseInformation>(); // container for all
+																								// filtered courses
+	private ArrayList<JButton> courseButtonContainer = new ArrayList<JButton>();
 	private ArrayList<JButton> courseButtonCart;
+
+	private ArrayList<CourseButton> allCourses = new ArrayList<CourseButton>();
 
 	private int WIDTH = 1200;
 	private int HEIGHT = 750;
+	
+	private ReadFile read = new ReadFile();
 
 	public static void main(String[] args) {
 
@@ -51,8 +57,13 @@ public class StudentCenter implements ActionListener {
 
 	public StudentCenter() {
 
+		// temporary for testing
+		
+		read.loadInformation();
+
 		initialize();
 		mainFrame.setVisible(true);
+
 	}
 
 	private void initialize() {
@@ -65,6 +76,11 @@ public class StudentCenter implements ActionListener {
 		addCurrentCourseJComponents();
 		addCreditInfoJComponents();
 		addaddCourseJComponents();
+
+		for (CourseInformation course : ReadFile.courseLibrary) {
+
+			allCourses.add(new CourseButton(course));
+		}
 
 	}
 
@@ -322,7 +338,7 @@ public class StudentCenter implements ActionListener {
 
 		// set the list of courses that the student can select
 		courseListPanel = new JPanel();
-		courseListPanel.setLayout(new BoxLayout(courseListPanel, BoxLayout.X_AXIS));
+		courseListPanel.setLayout(new BoxLayout(courseListPanel, BoxLayout.Y_AXIS));
 		courseListPanel.setBounds(0, 0, WIDTH, HEIGHT);
 
 		courseList = new JScrollPane(courseListPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
@@ -340,7 +356,7 @@ public class StudentCenter implements ActionListener {
 
 		selectedCourseListPanel = new JPanel();
 		selectedCourseListPanel.setLayout(new BoxLayout(selectedCourseListPanel, BoxLayout.X_AXIS));
-		selectedCourseListPanel.setBounds(0, 0, WIDTH, HEIGHT);
+		// selectedCourseListPanel.setBounds(0, 0, WIDTH, HEIGHT);
 
 		selectedCourse = new JScrollPane(selectedCourseListPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
 				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -357,11 +373,13 @@ public class StudentCenter implements ActionListener {
 	// field
 	private void search() {
 
+		System.out.println("abc");
+
 		// makes sure that there are text on the text field to search
 		if (searchBar.getText().length() > 0) {
 
 			// temporary array to store the filtered courses
-			ArrayList<ReadFile> searchedCourseContainer = new ArrayList<ReadFile>();
+			ArrayList<CourseInformation> searchedCourseContainer = new ArrayList<CourseInformation>();
 
 			// remove all the buttons from the course list panel and clear
 			// courseButtonContainer
@@ -375,9 +393,9 @@ public class StudentCenter implements ActionListener {
 
 			// search through the storage to see if any courses contains the text on the
 			// search field
-			for (ReadFile course : courseStorage) {
+			for (CourseInformation course : ReadFile.courseLibrary) {
 
-				if (courseList.getName().toLowerCase().contains(searchBar.getText().toLowerCase())) {
+				if (course.getClassName().toLowerCase().contains(searchBar.getText().toLowerCase())) {
 
 					searchedCourseContainer.add(course);
 
@@ -389,12 +407,12 @@ public class StudentCenter implements ActionListener {
 			courseContainer = searchedCourseContainer;
 
 			// add the filters buttons back to the course panel
-			for (ReadFile course : courseContainer) {
+			for (CourseInformation course : courseContainer) {
 
 				addCourseToScrollPanel(course);
 
 			}
-			
+
 			// update the screen to display changes
 			courseList.revalidate();
 			courseList.repaint();
@@ -407,20 +425,26 @@ public class StudentCenter implements ActionListener {
 				courseListPanel.remove(courseButton);
 
 			}
-			
+
 			courseButtonContainer.clear();
-			
+
 			// if the user clears the search, then display all the courses
-			courseContainer = courseStorage;
+
+
+			for(CourseInformation course : ReadFile.courseLibrary ) {
+				courseContainer.add(new CourseInformation(course));
+			}
 			
+
 			// add the filters buttons back to the course panel
-			for(ReadFile course: courseContainer) {
-				
+			for (CourseInformation course : courseContainer) {
+
 				addCourseToScrollPanel(course);
-				
+
 			}
 
 			// update the screen to display changes
+			courseContainer.clear();
 			courseList.revalidate();
 			courseList.repaint();
 
@@ -428,8 +452,17 @@ public class StudentCenter implements ActionListener {
 
 	}
 
-	private void addCourseToScrollPanel(ReadFile course) {
-		// TODO Auto-generated method stub
+	private void addCourseToScrollPanel(CourseInformation course) {
+
+		System.out.println(ReadFile.courseLibrary.size());
+		for (CourseButton courseButton : allCourses) {
+
+			if (courseButton.getCourse().getClassCode().equals(course.getClassCode())) {
+				courseButtonContainer.add(courseButton.addCourseButton());
+				courseListPanel.add(courseButton.addCourseButton());
+			}
+
+		}
 
 	}
 
@@ -469,6 +502,8 @@ public class StudentCenter implements ActionListener {
 			schedulePanel.setVisible(false);
 
 		} else if (e.getSource() == search) {
+			System.out.println("search");
+			courseListPanel.removeAll();
 			search();
 		}
 
