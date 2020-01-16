@@ -24,6 +24,9 @@ public class SchedulePanel {
 
 	public SchedulePanel(StudentInformation student) {
 
+		panel.setBounds(100, 150, 650, 450);
+		panel.setBackground(new Color(201, 228, 202));
+		
 		color[0] = new Color(128, 128, 0);
 		color[1] = new Color(0, 255, 0);
 		color[2] = new Color(0, 128, 0);
@@ -70,14 +73,8 @@ public class SchedulePanel {
 
 		panel.add(createLabel("Friday"), gbc);
 
-		gbc.fill = GridBagConstraints.HORIZONTAL;
-		gbc.gridx = 3;
-		gbc.gridy = 3;
 
-		panel.add(createLabel("hi"), gbc);
 
-		panel.setBounds(100, 150, 650, 450);
-		panel.setBackground(new Color(201, 228, 202));
 
 		for (int i = 0; i < 14; i++) {
 
@@ -85,9 +82,12 @@ public class SchedulePanel {
 			gbc.gridx = 0;
 			gbc.gridy = i + 1;
 			
+			
+			
 
 			panel.add(createLabel((i + 8) + ":00"), gbc);
 
+			
 		}
 
 		for (int i = 0; i < student.getCourse().size(); i++) {
@@ -145,6 +145,15 @@ public class SchedulePanel {
 		}
 
 	}
+	
+	private JLabel emptyBorder() {
+		
+		JLabel label = new JLabel("", SwingConstants.CENTER);
+		
+		
+		label.setBorder(new LineBorder(Color.BLACK, 1));
+		return label;
+	}
 
 	private JLabel createLabel(String name) {
 
@@ -154,6 +163,8 @@ public class SchedulePanel {
 		label.setFont(new Font("Aileron", Font.PLAIN, 24));
 		label.setOpaque(true);
 
+		label.setBorder(new LineBorder(Color.BLACK, 1));
+		
 		return label;
 	}
 
@@ -165,6 +176,7 @@ public class SchedulePanel {
 		label.setFont(new Font("Aileron", Font.PLAIN, 18));
 		label.setOpaque(true);
 
+		label.setBorder(new LineBorder(Color.BLACK,1));
 		return label;
 	}
 

@@ -1,17 +1,22 @@
 package information;
 
-public class StudentCourseInfo {
+public class CourseInfo {
 
 	private String courseCode;
 	private String courseName;
 	private int courseMark;
 	
-	public StudentCourseInfo(String courseCode, String courseName, int courseMark) {
+	public CourseInfo(String courseCode, String courseName, int courseMark) {
 		
 		this.courseCode = courseCode;
 		this.courseName = courseName;
 		this.courseMark = courseMark;
 		
+	}
+	
+	public CourseInfo(String courseCode, String courseName) {
+		this.courseCode = courseCode;
+		this.courseName = courseName;
 	}
 
 	public int getCourseMark() {

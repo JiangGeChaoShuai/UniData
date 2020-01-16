@@ -292,7 +292,7 @@ public class SignUpFrame implements ActionListener {
 		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 	}
 
-	public static JPanel getPanel() {
+	public JPanel getPanel() {
 
 		return mainPanel;
 	}

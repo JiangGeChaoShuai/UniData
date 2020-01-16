@@ -11,8 +11,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+import information.CourseInfo;
 import information.CourseInformation;
-import information.StudentCourseInfo;
 import information.TimeOfWeek;
 import readFile.ReadFile;
 import readFile.SaveFile;
@@ -80,7 +80,7 @@ public class CourseButton implements ActionListener {
 	
 		boolean hasCourse = false;
 		
-		for (StudentCourseInfo courses: StudentCenter.thisStudent.getCourse()) {
+		for (CourseInfo courses: StudentCenter.thisStudent.getCourse()) {
 			
 			if(courses.getCourseCode().equals(course.getClassCode())) {
 
@@ -123,8 +123,10 @@ public class CourseButton implements ActionListener {
 			StudentCenter.selectedCourseListPanel.add(Box.createVerticalGlue());
 			StudentCenter.selectedCourseListPanel.add(alreadyHaveCourse);
 		}
-		StudentCenter.mainFrame.revalidate();
-		StudentCenter.mainFrame.repaint();
+		
+		StudentCenter.selectedCourseListPanel.revalidate();
+		StudentCenter.selectedCourseListPanel.repaint();
+
 
 	}
 

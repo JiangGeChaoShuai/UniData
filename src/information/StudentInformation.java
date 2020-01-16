@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class StudentInformation extends AccountInformation {
 
 	private String dateEnrolled;
-	private ArrayList<StudentCourseInfo> course = new ArrayList <StudentCourseInfo>();
+	private ArrayList<CourseInfo> course = new ArrayList <CourseInfo>();
 
 	public StudentInformation(String username, String passwords, String name, String Birthday, String Email,
 			String dateEnrolled, String department) {
@@ -25,11 +25,11 @@ public class StudentInformation extends AccountInformation {
 
 	public void setCourse(String courseCode, String courseName, int courseMark) {
 		
-		course.add(new StudentCourseInfo(courseCode, courseName, courseMark));
+		course.add(new CourseInfo(courseCode, courseName, courseMark));
 		
 	}
 	
-	public ArrayList<StudentCourseInfo> getCourse(){
+	public ArrayList<CourseInfo> getCourse(){
 		
 		
 		return course;

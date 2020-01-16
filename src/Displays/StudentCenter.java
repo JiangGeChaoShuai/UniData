@@ -21,7 +21,7 @@ import readFile.ReadFile;
 public class StudentCenter implements ActionListener {
 
 	// JCompnent
-	static JFrame mainFrame = new JFrame("Student Center");
+	private JFrame mainFrame = new JFrame("Student Center");
 	private JPanel mainPanel, infoPanel, currentCoursePanel, creditPanel, addCoursePanel, schedulePanel,
 			courseListPanel, addedCoursePanel;
 	private JLabel titleLabel, subTitle, photo, nameLabel, birth, studentNum, timeEnroll, email, emailLabel, major,
@@ -249,21 +249,8 @@ public class StudentCenter implements ActionListener {
 		tablePanel.setBackground(new Color(201, 228, 202));
 		//currentCoursePanel.add(tablePanel);
 
-//		schedule = new JTable(null);
-//		String[][] datas ={ 
-//				{"Time", "Monday", "Tuseday", "Wednesday", "Thursday", "Friday" } ,
-//				{"4","5","6"}
-//		};
-//		String[] titles = { "Time", "Monday", "Tuseday", "Wednesday", "Thursday", "Friday" };
-//		model = new DefaultTableModel(datas, titles);
-//		schedule = new JTable(model);
-//		schedule.setBounds(100, 150, 600, 300);
-//		schedule.setVisible(true);
-//		tablePanel.add(schedule);
 		
-		SchedulePanel schedules = new SchedulePanel(thisStudent);
-		
-		currentCoursePanel.add(schedules.getPanel());
+
 
 		String[] columnNames = { "Time", "Monday", "Tuseday", "Wednesday", "Thursday", "Friday" };
 		Object[][] data = { { "8:40 - 11:40:", "Kathy", "Smith", "Snowboarding" },
@@ -492,6 +479,8 @@ public class StudentCenter implements ActionListener {
 				courseListPanel.add(courseButton.addCourseButton());
 			}
 
+			
+			
 		}
 
 	}
@@ -500,7 +489,12 @@ public class StudentCenter implements ActionListener {
 
 		if (e.getSource() == logout) {
 			new LoginFrame();
+			mainFrame.dispose();
+			
 		} else if (e.getSource() == currentCourse) {
+			
+			SchedulePanel schedules = new SchedulePanel(thisStudent);
+			currentCoursePanel.add(schedules.getPanel());
 			mainPanel.setVisible(false);
 			currentCoursePanel.setVisible(true);
 
@@ -517,10 +511,14 @@ public class StudentCenter implements ActionListener {
 			creditPanel.setVisible(false);
 
 		} else if (e.getSource() == selectCourse) {
+			search();
 			mainPanel.setVisible(false);
 			addCoursePanel.setVisible(true);
 
 		} else if (e.getSource() == back3) {
+			StudentCenter.selectedCourseListPanel.removeAll();
+			StudentCenter.selectedCourseListPanel.revalidate();
+			StudentCenter.selectedCourseListPanel.repaint();
 			mainPanel.setVisible(true);
 			addCoursePanel.setVisible(false);
 

@@ -112,6 +112,11 @@ public class ReadFile {
 			String Email = "";
 			String major = "";
 
+			
+			String courseCode = "";
+			String courseName = "";
+
+			
 			String valueType;
 			do {// continue scanning while there is a next line
 
@@ -130,10 +135,28 @@ public class ReadFile {
 					} else if (valueType.equals("major")) {
 						major = input.nextLine().replaceFirst(" ", "");
 					}
-				} while (!valueType.equals("T") && input.hasNext());
+				} while (!valueType.equals("E") && input.hasNext());
 
 				teacherAccounts.add(new TeacherInformation(username, password, name, birthday, Email, major));
 
+				
+				if(!input.hasNext()) {
+					break;
+				}
+				
+				do {
+					valueType = input.next();
+					if (valueType.equals("course")){
+						
+						courseCode = input.next();
+
+						courseName = input.nextLine().replaceFirst(" ", "");
+						
+						teacherAccounts.get(teacherAccounts.size()-1).setCourse(courseCode, courseName);
+						
+					}
+				} while (!valueType.equals("T") && input.hasNext());
+				
 				System.out.println("teacher");
 				System.out.println(username);
 				System.out.println(password);

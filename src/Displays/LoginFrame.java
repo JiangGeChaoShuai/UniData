@@ -172,8 +172,8 @@ public class LoginFrame implements ActionListener {
 
 					if (ReadFile.studentAccounts.get(i).getPasswords().equals(temp)) {
 						new StudentCenter(ReadFile.studentAccounts.get(i));
-						usernameEntry.removeAll();
-						passwordEntry.removeAll();
+						usernameEntry.setText("");
+						passwordEntry.setText("");
 						Frame.setVisible(false);
 						return;
 					}
@@ -195,8 +195,8 @@ public class LoginFrame implements ActionListener {
 					if (ReadFile.teacherAccounts.get(i).getPasswords().equals(temp)) {
 						new TeacherCenter(ReadFile.teacherAccounts.get(i));
 
-						usernameEntry.removeAll();
-						passwordEntry.removeAll();
+						usernameEntry.setText("");
+						passwordEntry.setText("");
 						Frame.setVisible(false);
 						return;
 					}

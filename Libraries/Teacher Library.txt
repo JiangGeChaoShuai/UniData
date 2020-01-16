@@ -5,6 +5,7 @@ name David Neals
 birthday 1972/02/28
 email david.neals@ICS
 major Mathmatic
+E
 
 T
 username 10002
@@ -13,6 +14,7 @@ name Chris Wang
 birthday 1969/01/07
 email chris.wang@ICS
 major Computer Science
+E
 
 T
 username 10003
@@ -21,6 +23,7 @@ name Ruby Vasanthan
 birthday 1965/05/22
 email ruby.vasanthan@ICS
 major Mathmatic
+E
 
 T
 username 10004
@@ -29,7 +32,7 @@ name Lawrence Zhang
 birthday 1974/05/04
 email Lawrence.Zhang@ICS
 major Computer Science
-
+E
 
 T
 username 10005
@@ -38,6 +41,7 @@ name Eva Chen
 birthday 2002/06/08
 email Eva.Chen@ICS4U1.com
 major Mathematics
+E
 
 T
 username 10006
@@ -46,5 +50,5 @@ name John Li
 birthday 1994/07/16
 email John.Li@ICS.com
 major Computer Science
-
+E
 
