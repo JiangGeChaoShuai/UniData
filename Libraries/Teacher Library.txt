@@ -15,6 +15,7 @@ birthday 1969/01/07
 email chris.wang@ICS
 major Computer Science
 E
+course CS-135-1 designing functional Programs
 
 T
 username 10003

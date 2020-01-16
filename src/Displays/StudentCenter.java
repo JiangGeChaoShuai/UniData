@@ -16,12 +16,13 @@ import javax.swing.table.TableColumn;
 
 import information.CourseInformation;
 import information.StudentInformation;
+import interfaces.PanelComponenets;
 import readFile.ReadFile;
 
-public class StudentCenter implements ActionListener {
+public class StudentCenter implements ActionListener, PanelComponenets {
 
 	// JCompnent
-	private JFrame mainFrame = new JFrame("Student Center");
+	JFrame mainFrame = new JFrame("Student Center");
 	private JPanel mainPanel, infoPanel, currentCoursePanel, creditPanel, addCoursePanel, schedulePanel,
 			courseListPanel, addedCoursePanel;
 	private JLabel titleLabel, subTitle, photo, nameLabel, birth, studentNum, timeEnroll, email, emailLabel, major,
@@ -84,7 +85,7 @@ public class StudentCenter implements ActionListener {
 
 		for (CourseInformation course : ReadFile.courseLibrary) {
 
-			allCourses.add(new CourseButton(course));
+			allCourses.add(new CourseButton(course, selectedCourseListPanel));
 		}
 
 	}
@@ -249,28 +250,6 @@ public class StudentCenter implements ActionListener {
 		tablePanel.setBackground(new Color(201, 228, 202));
 		//currentCoursePanel.add(tablePanel);
 
-		
-
-
-		String[] columnNames = { "Time", "Monday", "Tuseday", "Wednesday", "Thursday", "Friday" };
-		Object[][] data = { { "8:40 - 11:40:", "Kathy", "Smith", "Snowboarding" },
-				{ "13:00 - 16:00", "John", "Doe", "Rowing" }, { "14:00 - 17:00", "Sue", "Black", "Knitting" },
-				{ "16:00 - 19:00", "Jane", "White", "Speed reading" }, };
-
-		schedule = new JTable(data, columnNames);
-		JScrollPane scrollPane = new JScrollPane(schedule);
-		schedule.setFillsViewportHeight(true);
-
-		TableColumn column = null;
-		for (int i = 0; i < 5; i++) {
-			column = schedule.getColumnModel().getColumn(i);
-			if (i == 2) {
-				column.setPreferredWidth(100); // third column is bigger
-			} else {
-				column.setPreferredWidth(50);
-			}
-		}
-
 	}
 
 	private void addCreditInfoJComponents() {
@@ -391,7 +370,7 @@ public class StudentCenter implements ActionListener {
 
 	// method that searches a course that contains the text entered on the search
 	// field
-	private void search() {
+	public void search() {
 
 		System.out.println("abc");
 
@@ -469,7 +448,7 @@ public class StudentCenter implements ActionListener {
 
 	}
 
-	private void addCourseToScrollPanel(CourseInformation course) {
+	public void addCourseToScrollPanel(CourseInformation course) {
 
 		System.out.println(ReadFile.courseLibrary.size());
 		for (CourseButton courseButton : allCourses) {

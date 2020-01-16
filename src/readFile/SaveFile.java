@@ -104,8 +104,21 @@ public class SaveFile {
 				writer.write(lineToWrite);
 				writer.newLine();
 
+				lineToWrite = "E";
+				writer.write(lineToWrite);
 				writer.newLine();
 
+				
+				for (int x = 0; x < ReadFile.teacherAccounts.get(i).getCourse().size(); x++) {
+
+					String courseCode = ReadFile.teacherAccounts.get(i).getCourse().get(x).getCourseCode();
+					String courseName = ReadFile.teacherAccounts.get(i).getCourse().get(x).getCourseName();
+
+					lineToWrite = "course " + courseCode + " " + courseName;
+					writer.write(lineToWrite);
+					writer.newLine();
+				}		
+				writer.newLine();
 			}
 
 		} catch (Exception e) {// end of try statement
