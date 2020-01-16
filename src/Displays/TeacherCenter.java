@@ -14,25 +14,24 @@ public class TeacherCenter extends JFrame implements ActionListener {
 	// JCompnent
 	private JFrame mainFrame = new JFrame("Teacher Center");
 	private JPanel mainPanel, infoPanel, currentCoursePanel, classroomPanel, addCoursePanel, schedulePanel,
-			courseListPanel, selectedCoursePanel;
-	private JLabel titleLabel, subTitle, photo, nameLabel, birth, teacherNum, email, major, scheduleImage, searchLabel,
-			selectCourseLabel;
+			courseListPanel, selectedCoursePanel,addedCoursePanel;
+	private JLabel titleLabel, subTitle, photo, nameLabel, birth, teacherNum, email, emailLabel, major, scheduleImage,
+			searchLabel, selectCourseLabel,addedCourseLabel;
 	private JTextField searchBar;
-	private JScrollPane courseList, selectedCourse;
+	private JScrollPane courseList, addedCourse;
 	private JButton logout, currentCourse, classroom, selectCourse, schedule, back1, back2, back3, back4, search;
 
 	private int WIDTH = 1200;
 	private int HEIGHT = 750;
-	
+
 	private static ReadFile read = new ReadFile();
 
 	private TeacherInformation thisTeacher;
-	
+
 	public static void main(String[] args) {
 
 		read.loadInformation();
-		
-		
+
 		TeacherCenter window = new TeacherCenter(ReadFile.teacherAccounts.get(1));
 
 		window.mainFrame.setVisible(true);
@@ -41,9 +40,8 @@ public class TeacherCenter extends JFrame implements ActionListener {
 
 	public TeacherCenter(TeacherInformation teacherInformation) {
 
-		
 		thisTeacher = teacherInformation;
-		
+
 		initialize();
 
 		mainFrame.setVisible(true);
@@ -58,7 +56,6 @@ public class TeacherCenter extends JFrame implements ActionListener {
 		addCurrentCourseJComponents();
 		addClassroomJComponents();
 		addaddCourseJComponents();
-		addScheduleJComponents();
 
 	}
 
@@ -115,13 +112,6 @@ public class TeacherCenter extends JFrame implements ActionListener {
 		selectCourse.addActionListener(this);
 		mainPanel.add(selectCourse);
 
-//		schedule = new JButton(
-//				new ImageIcon(new ImageIcon("images/schedule2.png").getImage().getScaledInstance(180, 80, 0)));
-//		schedule.setBackground(new Color(59, 96, 100));
-//		schedule.setBounds(100, 430, 200, 100);
-//		schedule.addActionListener(this);
-//		mainPanel.add(schedule);
-
 		// set text
 		mainFrame.add(mainPanel);
 
@@ -149,31 +139,37 @@ public class TeacherCenter extends JFrame implements ActionListener {
 		photo.setBounds(75, 65, 150, 150);
 		infoPanel.add(photo);
 
-		nameLabel = new JLabel("Name:");
+		nameLabel = new JLabel("Name:" + thisTeacher.getName());
 		nameLabel.setBounds(10, 230, 300, 40);
 		nameLabel.setFont(new Font("Aileron", Font.PLAIN, 25));
 		nameLabel.setForeground(new Color(85, 130, 139));
 		infoPanel.add(nameLabel);
 
-		birth = new JLabel("Birthday:");
-		birth.setBounds(10, 290, 300, 40);
+		birth = new JLabel("Birthday:" + thisTeacher.getBirthday());
+		birth.setBounds(10, 280, 300, 40);
 		birth.setFont(new Font("Aileron", Font.PLAIN, 25));
 		birth.setForeground(new Color(85, 130, 139));
 		infoPanel.add(birth);
 
 		email = new JLabel("Email:");
-		email.setBounds(10, 340, 300, 40);
+		email.setBounds(10, 330, 300, 40);
 		email.setFont(new Font("Aileron", Font.PLAIN, 25));
 		email.setForeground(new Color(85, 130, 139));
 		infoPanel.add(email);
 
-		major = new JLabel("Major:");
-		major.setBounds(10, 400, 300, 40);
+		emailLabel = new JLabel(thisTeacher.getEmail());
+		emailLabel.setBounds(10, 380, 300, 40);
+		emailLabel.setFont(new Font("Aileron", Font.PLAIN, 25));
+		emailLabel.setForeground(new Color(85, 130, 139));
+		infoPanel.add(emailLabel);
+
+		major = new JLabel("Major:" + thisTeacher.getDepartment());
+		major.setBounds(10, 420, 300, 40);
 		major.setFont(new Font("Aileron", Font.PLAIN, 25));
 		major.setForeground(new Color(85, 130, 139));
 		infoPanel.add(major);
 
-		teacherNum = new JLabel("Teacher #:");
+		teacherNum = new JLabel("Teacher #:   " + thisTeacher.getUsername());
 		teacherNum.setBounds(10, 650, 300, 40);
 		teacherNum.setFont(new Font("Aileron", Font.PLAIN, 25));
 		teacherNum.setForeground(new Color(85, 130, 139));
@@ -282,47 +278,34 @@ public class TeacherCenter extends JFrame implements ActionListener {
 		addCoursePanel.add(courseList);
 
 		// set the list of courses that student already selected
-		selectCourseLabel = new JLabel("Selected Course");
-		selectCourseLabel.setBounds(480, 250, 380, 40);
+		selectCourseLabel = new JLabel("Course Details");
+		selectCourseLabel.setBounds(480, 190, 350, 40);
 		selectCourseLabel.setFont(new Font("Aileron", Font.PLAIN, 30));
 		selectCourseLabel.setForeground(new Color(54, 73, 88));
 		selectCourseLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		addCoursePanel.add(selectCourseLabel, BorderLayout.CENTER);
 
 		selectedCoursePanel = new JPanel();
-		selectedCoursePanel.setLayout(new BoxLayout(selectedCoursePanel, BoxLayout.Y_AXIS));
-		selectedCoursePanel.setBounds(0, 0, WIDTH, HEIGHT);
+		selectedCoursePanel.setBounds(480, 240, 350, 200);
+		selectedCoursePanel.setBackground(new Color(201, 228, 202));
+		addCoursePanel.add(selectedCoursePanel);
 
-		selectedCourse = new JScrollPane(selectedCoursePanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+		// set the course list that the students are already selected
+		addedCourseLabel = new JLabel("Course you added:");
+		addedCourseLabel.setBounds(480, 450, 360, 40);
+		addedCourseLabel.setFont(new Font("Aileron", Font.PLAIN, 30));
+		addedCourseLabel.setForeground(new Color(54, 73, 88));
+		addedCourseLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		addCoursePanel.add(addedCourseLabel, BorderLayout.CENTER);
+
+		addedCoursePanel = new JPanel();
+		addedCoursePanel.setLayout(new BoxLayout(addedCoursePanel, BoxLayout.Y_AXIS));
+		addedCoursePanel.setBackground(new Color(201, 228, 202));
+
+		addedCourse = new JScrollPane(addedCoursePanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
 				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		selectedCourse.setBounds(480, 300, 380, 300);
-		addCoursePanel.add(selectedCourse);
-
-		mainFrame.add(addCoursePanel);
-		addCoursePanel.setVisible(false);
-	}
-
-	private void addScheduleJComponents() {
-
-		schedulePanel = new JPanel();
-		schedulePanel.setLayout(null);
-		schedulePanel.setBackground(new Color(169, 188, 208));
-		schedulePanel.setBounds(300, 0, WIDTH - 300, HEIGHT);
-
-		scheduleImage = new JLabel(
-				new ImageIcon(new ImageIcon("images/scheduleImage.png").getImage().getScaledInstance(100, 100, 0)));
-		scheduleImage.setBackground(new Color(85, 130, 139));
-		scheduleImage.setBounds(10, 10, 100, 100);
-		schedulePanel.add(scheduleImage);
-
-		back4 = new JButton(new ImageIcon(new ImageIcon("images/back2.png").getImage().getScaledInstance(100, 50, 0)));
-		back4.setBackground(new Color(85, 130, 139));
-		back4.setBounds(750, 30, 100, 50);
-		back4.addActionListener(this);
-		schedulePanel.add(back4);
-
-		mainFrame.add(schedulePanel);
-		schedulePanel.setVisible(false);
+		addedCourse.setBounds(480, 490, 350, 150);
+		addCoursePanel.add(addedCourse);
 
 	}
 
