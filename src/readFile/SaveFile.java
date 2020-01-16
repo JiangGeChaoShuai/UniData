@@ -120,17 +120,17 @@ public class SaveFile {
 
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter("Libraries/Course Library.txt"))) {
 
-			for (int i = 0; i < ReadFile.teacherAccounts.size(); i++) {
+			for (int i = 0; i < ReadFile.courseLibrary.size(); i++) {
 
 				lineToWrite = "C";
 				writer.write(lineToWrite);
 				writer.newLine();
 
-				lineToWrite = "ClassName " + ReadFile.courseLibrary.get(i).getClassName();
+				lineToWrite = "className " + ReadFile.courseLibrary.get(i).getClassName();
 				writer.write(lineToWrite);
 				writer.newLine();
 
-				lineToWrite = "ClassCode " + ReadFile.courseLibrary.get(i).getClassCode();
+				lineToWrite = "classCode " + ReadFile.courseLibrary.get(i).getClassCode();
 				writer.write(lineToWrite);
 				writer.newLine();
 
@@ -156,7 +156,7 @@ public class SaveFile {
 				for (int x = 0; x < ReadFile.courseLibrary.get(i).getStudentInCourse().size(); x++) {
 					String username = ReadFile.courseLibrary.get(i).getStudentInCourse().get(x).getUsername();
 
-					lineToWrite = "time " + username;
+					lineToWrite = "Student " + username;
 					writer.write(lineToWrite);
 					writer.newLine();
 

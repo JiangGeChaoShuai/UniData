@@ -23,14 +23,14 @@ public class StudentCenter implements ActionListener {
 	// JCompnent
 	static JFrame mainFrame = new JFrame("Student Center");
 	private JPanel mainPanel, infoPanel, currentCoursePanel, creditPanel, addCoursePanel, schedulePanel,
-			courseListPanel,addedCoursePanel;
-	private JLabel titleLabel, subTitle, photo, nameLabel, birth, studentNum, timeEnroll, email,emailLabel, major, scheduleImage,
-			searchLabel, selectCourseLabel,addedCourseLabel, courseName, courseMark;
+			courseListPanel, addedCoursePanel;
+	private JLabel titleLabel, subTitle, photo, nameLabel, birth, studentNum, timeEnroll, email, emailLabel, major,
+			scheduleImage, searchLabel, selectCourseLabel, addedCourseLabel, courseName, courseMark;
 	private JButton logout, currentCourse, creditInfo, selectCourse, back1, back2, back3, back4, search, addToCourse,
 			cancel;
 	private JTextField searchBar;
 	private JTable schedule;
-	private JScrollPane courseList, selectedCourse,addedCourse;
+	private JScrollPane courseList, selectedCourse, addedCourse;
 
 	private DefaultTableModel model = null;
 
@@ -43,21 +43,19 @@ public class StudentCenter implements ActionListener {
 
 	private int WIDTH = 1200;
 	private int HEIGHT = 750;
-	
-	private	StudentInformation thisStudent;
-	
+
+	static StudentInformation thisStudent;
+
 	private static ReadFile read = new ReadFile();
-	
+
 	static JPanel selectedCourseListPanel = new JPanel();
 
 	public static void main(String[] args) {
 
-
 		read.loadInformation();
-		
+
 		StudentCenter window = new StudentCenter(ReadFile.studentAccounts.get(1));
 
-		
 		window.mainFrame.setVisible(true);
 
 	}
@@ -65,7 +63,7 @@ public class StudentCenter implements ActionListener {
 	public StudentCenter(StudentInformation studentInformation) {
 
 		// temporary for testing
-	
+
 		thisStudent = studentInformation;
 
 		initialize();
@@ -173,19 +171,19 @@ public class StudentCenter implements ActionListener {
 		photo.setBounds(75, 65, 150, 150);
 		infoPanel.add(photo);
 
-		nameLabel = new JLabel("Name:"+ thisStudent.getName());
+		nameLabel = new JLabel("Name:" + thisStudent.getName());
 		nameLabel.setBounds(10, 230, 300, 40);
 		nameLabel.setFont(new Font("Aileron", Font.PLAIN, 25));
 		nameLabel.setForeground(new Color(85, 130, 139));
 		infoPanel.add(nameLabel);
 
-		birth = new JLabel("Birthday:"+ thisStudent.getBirthday());
+		birth = new JLabel("Birthday:" + thisStudent.getBirthday());
 		birth.setBounds(10, 280, 300, 40);
 		birth.setFont(new Font("Aileron", Font.PLAIN, 25));
 		birth.setForeground(new Color(85, 130, 139));
 		infoPanel.add(birth);
 
-		timeEnroll = new JLabel("Time Enrolled:"+thisStudent.getDateEnrolled());
+		timeEnroll = new JLabel("Time Enrolled:" + thisStudent.getDateEnrolled());
 		timeEnroll.setBounds(10, 330, 300, 40);
 		timeEnroll.setFont(new Font("Aileron", Font.PLAIN, 25));
 		timeEnroll.setForeground(new Color(85, 130, 139));
@@ -196,20 +194,20 @@ public class StudentCenter implements ActionListener {
 		email.setFont(new Font("Aileron", Font.PLAIN, 25));
 		email.setForeground(new Color(85, 130, 139));
 		infoPanel.add(email);
-		
+
 		emailLabel = new JLabel(thisStudent.getEmail());
 		emailLabel.setBounds(10, 420, 300, 40);
 		emailLabel.setFont(new Font("Aileron", Font.PLAIN, 25));
 		emailLabel.setForeground(new Color(85, 130, 139));
 		infoPanel.add(emailLabel);
 
-		major = new JLabel("Major:"+thisStudent.getDepartment());
+		major = new JLabel("Major:" + thisStudent.getDepartment());
 		major.setBounds(10, 470, 300, 40);
 		major.setFont(new Font("Aileron", Font.PLAIN, 25));
 		major.setForeground(new Color(85, 130, 139));
 		infoPanel.add(major);
 
-		studentNum = new JLabel("Student #:   "+thisStudent.getUsername());
+		studentNum = new JLabel("Student #:   " + thisStudent.getUsername());
 		studentNum.setBounds(10, 650, 300, 40);
 		studentNum.setFont(new Font("Aileron", Font.PLAIN, 25));
 		studentNum.setForeground(new Color(85, 130, 139));
@@ -249,7 +247,7 @@ public class StudentCenter implements ActionListener {
 		JPanel tablePanel = new JPanel();
 		tablePanel.setBounds(100, 150, 650, 350);
 		tablePanel.setBackground(new Color(201, 228, 202));
-		currentCoursePanel.add(tablePanel);
+		//currentCoursePanel.add(tablePanel);
 
 //		schedule = new JTable(null);
 //		String[][] datas ={ 
@@ -262,6 +260,10 @@ public class StudentCenter implements ActionListener {
 //		schedule.setBounds(100, 150, 600, 300);
 //		schedule.setVisible(true);
 //		tablePanel.add(schedule);
+		
+		SchedulePanel schedules = new SchedulePanel(thisStudent);
+		
+		currentCoursePanel.add(schedules.getPanel());
 
 		String[] columnNames = { "Time", "Monday", "Tuseday", "Wednesday", "Thursday", "Friday" };
 		Object[][] data = { { "8:40 - 11:40:", "Kathy", "Smith", "Snowboarding" },
@@ -368,11 +370,12 @@ public class StudentCenter implements ActionListener {
 		addCoursePanel.add(selectCourseLabel, BorderLayout.CENTER);
 
 		selectedCourseListPanel = new JPanel();
+		selectedCourseListPanel.setLayout(new BoxLayout(selectedCourseListPanel, BoxLayout.Y_AXIS));
 		selectedCourseListPanel.setBounds(480, 240, 350, 200);
 		selectedCourseListPanel.setBackground(new Color(201, 228, 202));
 		addCoursePanel.add(selectedCourseListPanel);
-		
-		//set the course list that the students are already selected
+
+		// set the course list that the students are already selected
 		addedCourseLabel = new JLabel("Course you added:");
 		addedCourseLabel.setBounds(480, 450, 360, 40);
 		addedCourseLabel.setFont(new Font("Aileron", Font.PLAIN, 30));
@@ -392,11 +395,10 @@ public class StudentCenter implements ActionListener {
 		// add this panel to the main frame
 		mainFrame.add(addCoursePanel);
 		addCoursePanel.setVisible(false);
-		
-		for(int i = 0; i<ReadFile.courseLibrary.size(); i++) {
+
+		for (int i = 0; i < ReadFile.courseLibrary.size(); i++) {
 			addCourseToScrollPanel(ReadFile.courseLibrary.get(i));
 		}
-		
 
 	}
 
@@ -460,11 +462,9 @@ public class StudentCenter implements ActionListener {
 
 			// if the user clears the search, then display all the courses
 
-
-			for(CourseInformation course : ReadFile.courseLibrary ) {
+			for (CourseInformation course : ReadFile.courseLibrary) {
 				courseContainer.add(new CourseInformation(course));
 			}
-			
 
 			// add the filters buttons back to the course panel
 			for (CourseInformation course : courseContainer) {
@@ -495,12 +495,9 @@ public class StudentCenter implements ActionListener {
 		}
 
 	}
-	
-
 
 	public void actionPerformed(ActionEvent e) {
-		
-		
+
 		if (e.getSource() == logout) {
 			new LoginFrame();
 		} else if (e.getSource() == currentCourse) {

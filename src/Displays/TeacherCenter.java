@@ -307,6 +307,9 @@ public class TeacherCenter extends JFrame implements ActionListener {
 		addedCourse.setBounds(480, 490, 350, 150);
 		addCoursePanel.add(addedCourse);
 
+		mainFrame.add(addCoursePanel);
+		addCoursePanel.setVisible(false);
+		
 	}
 
 	public void actionPerformed(ActionEvent e) {

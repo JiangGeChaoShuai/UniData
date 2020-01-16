@@ -9,10 +9,13 @@ import java.awt.event.ActionListener;
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 import information.CourseInformation;
+import information.StudentCourseInfo;
 import information.TimeOfWeek;
 import readFile.ReadFile;
+import readFile.SaveFile;
 
 public class CourseButton implements ActionListener {
 
@@ -20,6 +23,7 @@ public class CourseButton implements ActionListener {
 	private JButton selectCourseButton;
 
 	private JButton addCourse;
+	private JLabel alreadyHaveCourse = new JLabel("Already Have Course", SwingConstants.CENTER);
 
 	public CourseButton(CourseInformation course) {
 
@@ -74,20 +78,51 @@ public class CourseButton implements ActionListener {
 
 		}
 	
+		boolean hasCourse = false;
+		
+		for (StudentCourseInfo courses: StudentCenter.thisStudent.getCourse()) {
+			
+			if(courses.getCourseCode().equals(course.getClassCode())) {
+
+				System.out.println("already have course");
+				
+
+				hasCourse = true;
+				break;
+			}
+			
+		}
 		
 		
-		addCourse = new JButton("add Course");
+		if (!hasCourse) {
+		addCourse = new JButton("Add Course");
 		addCourse.setPreferredSize(new Dimension(380,50));
 		addCourse.setMaximumSize(new Dimension(380,50));
 		addCourse.setMinimumSize(new Dimension(380,50));
+		addCourse.setFont(new Font("Aileron", Font.PLAIN, 30));
 		addCourse.addActionListener(this);
 		addCourse.setForeground(new Color(255, 255, 255));
 		addCourse.setBackground(new Color(54, 73, 88));
-		addCourse.setFont(font);
 		
 		StudentCenter.selectedCourseListPanel.add(Box.createVerticalGlue());
 		StudentCenter.selectedCourseListPanel.add(addCourse);
 		
+		}else {
+			
+			
+
+			alreadyHaveCourse.setPreferredSize(new Dimension(380,50));
+			alreadyHaveCourse.setMaximumSize(new Dimension(380,50));
+			alreadyHaveCourse.setMinimumSize(new Dimension(380,50));
+			alreadyHaveCourse.setFont(new Font("Aileron", Font.PLAIN, 30));
+			alreadyHaveCourse.setForeground(new Color(255, 255, 255));
+			alreadyHaveCourse.setBackground(new Color(54, 73, 88));
+			alreadyHaveCourse.setOpaque(true);
+
+			
+			StudentCenter.selectedCourseListPanel.add(Box.createVerticalGlue());
+			StudentCenter.selectedCourseListPanel.add(alreadyHaveCourse);
+		}
 		StudentCenter.mainFrame.revalidate();
 		StudentCenter.mainFrame.repaint();
 
@@ -102,6 +137,12 @@ public class CourseButton implements ActionListener {
 		}
 		if (e.getSource() == addCourse) {
 
+			StudentCenter.thisStudent.setCourse(course.getClassCode(), course.getClassName(), 0);
+			course.addStudent(StudentCenter.thisStudent);
+			
+			SaveFile.saveCourseInformation();
+			SaveFile.SaveStudentInformation();
+			
 		}
 	}
 
