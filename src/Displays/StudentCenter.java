@@ -244,15 +244,13 @@ public class StudentCenter implements ActionListener, PanelComponenets {
 		mainFrame.add(currentCoursePanel);
 		currentCoursePanel.setVisible(false);
 
-<<<<<<< HEAD
 		// add the course of this student
 		JPanel tablePanel = new JPanel();
 		tablePanel.setBounds(100, 150, 650, 350);
 		tablePanel.setBackground(new Color(201, 228, 202));
 		//currentCoursePanel.add(tablePanel);
 
-=======
->>>>>>> e54003232c81d7e6ba95dfccea17bf50c9e4cd8d
+
 	}
 
 	private void addCreditInfoJComponents() {

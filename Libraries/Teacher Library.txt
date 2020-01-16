@@ -16,11 +16,9 @@ birthday 1969/01/07
 email chris.wang@ICS
 major Computer Science
 E
-<<<<<<< HEAD
 course CS-135-1 designing functional Programs
-=======
-classCode MATH-137-1
->>>>>>> e54003232c81d7e6ba95dfccea17bf50c9e4cd8d
+course MATH-137-1 calculus
+
 
 T
 username 10003
