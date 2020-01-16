@@ -19,6 +19,8 @@ email 00000002@ICS
 major Computer Science
 E
 course CS-135-1 72 designing functional Programs
+course MATH-137-1 80 Calculus
+course MATH-135-1 83 Algebra
 
 S
 username 00000003
@@ -29,6 +31,7 @@ dateEnrolled 2018/09
 email 00000003@ICS
 major Mathematics
 E
+course MATH-137-1 90 Calculus
 
 S
 username 00000005
@@ -39,6 +42,7 @@ dateEnrolled 2018/09
 email 00000005@ICS
 major Mathematics
 E
+course MATH-137-1 85 Calculus
 
 S
 username 00000006
@@ -101,6 +105,7 @@ dateEnrolled 2020/01
 email 00000012@ICS4U1.com
 major Mathematics
 E
+
 
 S
 username 00000013

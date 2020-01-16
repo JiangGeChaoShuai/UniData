@@ -7,6 +7,7 @@ email david.neals@ICS
 major Mathmatic
 E
 
+
 T
 username 10002
 password 0107
@@ -15,7 +16,11 @@ birthday 1969/01/07
 email chris.wang@ICS
 major Computer Science
 E
+<<<<<<< HEAD
 course CS-135-1 designing functional Programs
+=======
+classCode MATH-137-1
+>>>>>>> e54003232c81d7e6ba95dfccea17bf50c9e4cd8d
 
 T
 username 10003
@@ -25,6 +30,7 @@ birthday 1965/05/22
 email ruby.vasanthan@ICS
 major Mathmatic
 E
+classCode MATH-135-1
 
 T
 username 10004
@@ -34,6 +40,7 @@ birthday 1974/05/04
 email Lawrence.Zhang@ICS
 major Computer Science
 E
+classCode CS-135-1
 
 T
 username 10005
