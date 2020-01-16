@@ -243,34 +243,6 @@ public class StudentCenter implements ActionListener {
 		mainFrame.add(currentCoursePanel);
 		currentCoursePanel.setVisible(false);
 
-		// add the course of this student
-		JPanel tablePanel = new JPanel();
-		tablePanel.setBounds(100, 150, 650, 350);
-		tablePanel.setBackground(new Color(201, 228, 202));
-		//currentCoursePanel.add(tablePanel);
-
-		
-
-
-		String[] columnNames = { "Time", "Monday", "Tuseday", "Wednesday", "Thursday", "Friday" };
-		Object[][] data = { { "8:40 - 11:40:", "Kathy", "Smith", "Snowboarding" },
-				{ "13:00 - 16:00", "John", "Doe", "Rowing" }, { "14:00 - 17:00", "Sue", "Black", "Knitting" },
-				{ "16:00 - 19:00", "Jane", "White", "Speed reading" }, };
-
-		schedule = new JTable(data, columnNames);
-		JScrollPane scrollPane = new JScrollPane(schedule);
-		schedule.setFillsViewportHeight(true);
-
-		TableColumn column = null;
-		for (int i = 0; i < 5; i++) {
-			column = schedule.getColumnModel().getColumn(i);
-			if (i == 2) {
-				column.setPreferredWidth(100); // third column is bigger
-			} else {
-				column.setPreferredWidth(50);
-			}
-		}
-
 	}
 
 	private void addCreditInfoJComponents() {

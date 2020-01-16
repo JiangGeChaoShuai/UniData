@@ -11,3 +11,24 @@ Student 00000007
 Student 00000001
 Student 00000013
 
+C
+className Calculus
+classCode MATH-137-1
+Teacher 10001
+E
+time Tuesday 900 1200
+time Thursday 900 1200
+Student 00000002
+Student 00000003
+Student 00000005
+
+C
+className Algebra
+classCode MATH-135-1
+Teacher 10003
+E
+time Tuesday 1400 1700
+time Friday 900 1200
+Student 00000002
+Student 00000003
+Student 00000005
