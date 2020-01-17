@@ -341,22 +341,6 @@ public class TeacherCenter implements ActionListener, PanelComponenets{
 		selectedCourseListPanel.setBackground(new Color(216, 219, 226));
 		addCoursePanel.add(selectedCourseListPanel);
 
-		// set the course list that the students are already selected
-		addedCourseLabel = new JLabel("Course you added:");
-		addedCourseLabel.setBounds(505, 450, 360, 40);
-		addedCourseLabel.setFont(new Font("Aileron", Font.PLAIN, 30));
-		addedCourseLabel.setForeground(new Color(85, 130, 139));
-		addedCourseLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		addCoursePanel.add(addedCourseLabel, BorderLayout.CENTER);
-
-		addedCoursePanel = new JPanel();
-		addedCoursePanel.setLayout(new BoxLayout(addedCoursePanel, BoxLayout.Y_AXIS));
-		addedCoursePanel.setBackground(new Color(216, 219, 226));
-
-		addedCourse = new JScrollPane(addedCoursePanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		addedCourse.setBounds(480, 490, 400, 150);
-		addCoursePanel.add(addedCourse);
 
 		// add this panel to the main frame
 		mainFrame.add(addCoursePanel);

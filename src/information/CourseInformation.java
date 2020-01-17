@@ -69,4 +69,43 @@ public class CourseInformation {
 		return times;
 	}
 
+	public boolean checkCourseTime(CourseInformation courseTimeChecker) {
+
+		for (TimeOfWeek time  : this.getTimes()) {
+
+			for (TimeOfWeek time2 : courseTimeChecker.getTimes()) {
+
+				System.out.println(this.getClassName());
+				System.out.println(time.getDate());
+				System.out.println(time.getBeginTime());
+				System.out.println(time.getEndTime());
+				
+				System.out.println();
+				System.out.println();
+				System.out.println(courseTimeChecker.getClassName());
+				System.out.println(time2.getDate());
+				System.out.println(time2.getBeginTime());
+				System.out.println(time2.getEndTime());
+				
+				
+				if (time.getDate().equals(time2.getDate())) {
+
+					
+					if (time.getBeginTime() >= time2.getBeginTime() && time.getBeginTime() <= time2.getEndTime()) {
+
+						return false;
+					}
+
+					if (time.getEndTime() >= time2.getBeginTime() && time.getEndTime() <= time2.getEndTime()) {
+
+						return false;
+					}
+
+				}
+			}
+
+		}
+		return true;
+	}
+
 }

@@ -137,12 +137,6 @@ public class StudentCenter implements ActionListener, PanelComponenets {
 		selectCourse.addActionListener(this);
 		mainPanel.add(selectCourse);
 
-//		schedule = new JButton(
-//				new ImageIcon(new ImageIcon("images/schedule.png").getImage().getScaledInstance(180, 80, 0)));
-//		schedule.setBackground(new Color(85, 130, 139));
-//		schedule.setBounds(100, 430, 200, 100);
-//		schedule.addActionListener(this);
-//		mainPanel.add(schedule);
 
 		// set text
 		mainFrame.add(mainPanel);
@@ -273,6 +267,8 @@ public class StudentCenter implements ActionListener, PanelComponenets {
 		back2.addActionListener(this);
 		creditPanel.add(back2);
 
+		new CreditPanel(thisStudent, creditPanel);
+		
 		mainFrame.add(creditPanel);
 		creditPanel.setVisible(false);
 	}
@@ -342,22 +338,7 @@ public class StudentCenter implements ActionListener, PanelComponenets {
 		selectedCourseListPanel.setBackground(new Color(201, 228, 202));
 		addCoursePanel.add(selectedCourseListPanel);
 
-		// set the course list that the students are already selected
-		addedCourseLabel = new JLabel("Course you added:");
-		addedCourseLabel.setBounds(480, 450, 360, 40);
-		addedCourseLabel.setFont(new Font("Aileron", Font.PLAIN, 30));
-		addedCourseLabel.setForeground(new Color(54, 73, 88));
-		addedCourseLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		addCoursePanel.add(addedCourseLabel, BorderLayout.CENTER);
 
-		addedCoursePanel = new JPanel();
-		addedCoursePanel.setLayout(new BoxLayout(addedCoursePanel, BoxLayout.Y_AXIS));
-		addedCoursePanel.setBackground(new Color(201, 228, 202));
-
-		addedCourse = new JScrollPane(addedCoursePanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		addedCourse.setBounds(480, 490, 350, 150);
-		addCoursePanel.add(addedCourse);
 
 		// add this panel to the main frame
 		mainFrame.add(addCoursePanel);

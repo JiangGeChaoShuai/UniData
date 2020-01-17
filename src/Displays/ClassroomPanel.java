@@ -75,7 +75,7 @@ public class ClassroomPanel implements ActionListener {
 
 		JScrollPane classList = new JScrollPane(classroomList, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
 				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		classList.setBounds(100, 150, 650, 450);
+		classList.setBounds(100, 100, 650, 450);
 		selectCoursePanel.add(classList);
 
 		selectCoursePanel.add(classList);
@@ -145,7 +145,7 @@ public class ClassroomPanel implements ActionListener {
 
 		JScrollPane studentList = new JScrollPane(listOfStudents, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
 				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		studentList.setBounds(100, 150, 650, 450);
+		studentList.setBounds(100, 100, 650, 450);
 
 		classPanel.add(studentList);
 

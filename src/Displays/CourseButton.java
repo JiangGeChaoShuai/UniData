@@ -92,11 +92,29 @@ public class CourseButton implements ActionListener {
 
 					System.out.println("already have course");
 
+					alreadyHaveCourse.setText("Already Have Course");
 					hasCourse = true;
 					break;
 				}
 
+				for (CourseInfo x : StudentCenter.thisStudent.getCourse()) {
+
+					for (CourseInformation courseTimeChecker : ReadFile.courseLibrary) {
+
+						if (!x.getCourseCode().equals(courseTimeChecker.getClassCode())) {
+							if (courseTimeChecker.getClassCode().equals(course.getClassCode())) {
+
+								if (!course.checkCourseTime(courseTimeChecker)) {
+									alreadyHaveCourse.setText(" Conflict with " + courseTimeChecker.getClassCode());
+									hasCourse = true;
+								}
+							}
+						}
+					}
+				}
+
 			}
+
 		} catch (NullPointerException e) {
 
 			for (CourseInfo courses : TeacherCenter.thisTeacher.getCourse()) {
@@ -110,6 +128,24 @@ public class CourseButton implements ActionListener {
 				}
 
 			}
+
+			for (CourseInfo x : TeacherCenter.thisTeacher.getCourse()) {
+
+				for (CourseInformation courseTimeChecker : ReadFile.courseLibrary) {
+
+					if (x.getCourseCode().equals(courseTimeChecker.getClassCode())) {
+						if (!courseTimeChecker.getClassCode().equals(course.getClassCode())) {
+
+							if (!course.checkCourseTime(courseTimeChecker)) {
+								alreadyHaveCourse.setText(" Conflict with " + courseTimeChecker.getClassCode());
+								hasCourse = true;
+							}
+						}
+					}
+				}
+
+			}
+
 		}
 
 		if (!hasCourse) {
