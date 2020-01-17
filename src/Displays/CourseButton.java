@@ -136,8 +136,8 @@ public class CourseButton implements ActionListener {
 
 					for (CourseInformation courseTimeChecker : ReadFile.courseLibrary) {
 
-						if (!x.getCourseCode().equals(courseTimeChecker.getClassCode())) {
-							if (courseTimeChecker.getClassCode().equals(course.getClassCode())) {
+						if (x.getCourseCode().equals(courseTimeChecker.getClassCode())) {
+							if (!courseTimeChecker.getClassCode().equals(course.getClassCode())) {
 
 								if (!course.checkCourseTime(courseTimeChecker)) {
 									alreadyHaveCourse.setText(" Conflict with " + courseTimeChecker.getClassCode());
@@ -192,7 +192,7 @@ public class CourseButton implements ActionListener {
 			addCourse.setPreferredSize(new Dimension(380, 50));
 			addCourse.setMaximumSize(new Dimension(380, 50));
 			addCourse.setMinimumSize(new Dimension(380, 50));
-			addCourse.setFont(new Font("Aileron", Font.PLAIN, 30));
+			addCourse.setFont(new Font("Aileron", Font.PLAIN, 25));
 			addCourse.addActionListener(this);
 			addCourse.setForeground(new Color(255, 255, 255));
 			addCourse.setBackground(new Color(54, 73, 88));
@@ -206,7 +206,7 @@ public class CourseButton implements ActionListener {
 			alreadyHaveCourse.setPreferredSize(new Dimension(380, 50));
 			alreadyHaveCourse.setMaximumSize(new Dimension(380, 50));
 			alreadyHaveCourse.setMinimumSize(new Dimension(380, 50));
-			alreadyHaveCourse.setFont(new Font("Aileron", Font.PLAIN, 30));
+			alreadyHaveCourse.setFont(new Font("Aileron", Font.PLAIN, 25));
 			alreadyHaveCourse.setForeground(new Color(255, 255, 255));
 			alreadyHaveCourse.setBackground(new Color(54, 73, 88));
 			alreadyHaveCourse.setOpaque(true);

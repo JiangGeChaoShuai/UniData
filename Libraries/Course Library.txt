@@ -12,6 +12,15 @@ Student 00000001
 Student 00000013
 
 C
+className designing functional Programs
+classCode CS-135-2
+Teacher 10005
+E
+time Tuesday 1600 1900
+time Wednesday 1400 1700
+Student 00000011
+
+C
 className Calculus
 classCode MATH-137-1
 Teacher 10001

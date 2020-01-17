@@ -95,6 +95,7 @@ dateEnrolled 2020/01
 email Lawrence.Zhang@ICS4U1.com
 major Computer Science
 E
+course CS-135-2 87 designing functional Programs
 
 S
 username 00000012
