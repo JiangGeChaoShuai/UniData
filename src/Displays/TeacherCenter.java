@@ -1,5 +1,38 @@
 package Displays;
 
+/*
+ * Name: Eva Chen 
+ * Date: 2020/1/17
+ * Course code: ICS4U1-01 Mr.Fernandes
+ * Title: Uni-Data Course Application
+ * Description: This class sets a GUI frame for the teacher's personal center. It will get the teacher # from the login frame and 
+ *  			load correct information of this teacher, then show them on the info panel. 
+ *  			On the main panel there are three buttons, which are current course, classroom and add courses. 
+ *  			- If user click the current course button, the main panel will switch to the current course panel, 
+ *  			  which will include a schedule and a "back" button . The schedule will include all the courses that the student
+ *  			  is taking now and the time he will take this course, and when the user click the back button, it will go back to the main
+ *  			  panel. 
+ *  			- If user click the classroom button, the main panel will switch to the classroom panel,
+ *  			  which will include a JScrollpane with courses teacher have in it. As teacher click the course button, it will show a 
+ *  			  JScrollpane with students in this class with their marks.
+ *  			  When user click the back button, it will go back to the main panel.
+ *  			- If user click the add course button, the main panel will switch to the add course panel,
+ *  			  which will include a JScrollpane with all the courses that teacher can choose. User can use the search bar to search the course
+ *  			  they want by enter the keywords and click the search button. When user click the the course, the course details will appear in
+ *  			  the label in the right of this panel. With the course details, there will also display a button "add course" if teacher don't
+ *  			  teacher this course, and he will take the place of the old teacher and become the new teacher of this course,
+ *  			  or "conflict with other course" if the time are conflict, or "already have" if the user already have this course.
+ *  			  When user click the back button, it will go back to the main panel.
+ *  			- If user click the log out button, the log in frame will loads up.
+ * Features: Error checking for sign up frame, 
+ * 			error checking for course selection frame for students and teachers, 
+ * 			it checks for time differences, 
+ * 			warning when the wrong username or password is entered,
+ *			the data are saved automatically and are visible and usable the moment it is changed
+ * Major Skills: JComponents, buffer reader, scanner, hierarchy, interface, stacking different JPanels on 
+ * 				top of each other to create desired look 
+ */
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -468,6 +501,7 @@ public class TeacherCenter implements ActionListener, PanelComponenets {
 			// if user click the current course button
 		} else if (e.getSource() == currentCourse) {
 			// show the current course panel
+			addCurrentCourseJComponents();
 			SchedulePanel schedules = new SchedulePanel(thisTeacher);
 			currentCoursePanel.add(schedules.getPanel());
 			mainPanel.setVisible(false);

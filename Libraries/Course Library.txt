@@ -19,6 +19,7 @@ E
 time Tuesday 1600 1900
 time Wednesday 1400 1700
 Student 00000011
+Student 00000012
 
 C
 className Calculus
@@ -30,6 +31,8 @@ time Thursday 900 1200
 Student 00000002
 Student 00000003
 Student 00000005
+Student 00000001
+Student 00000012
 
 C
 className Algebra

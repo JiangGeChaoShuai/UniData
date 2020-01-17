@@ -5,11 +5,30 @@ package Displays;
  * Date: 2020/1/17
  * Course code: ICS4U1-01 Mr.Fernandes
  * Title: Uni-Data Course Application
- * Description: This class sets a gui frame for the student's personal study center. It will get the student # from the login frame and 
+ * Description: This class sets a GUI frame for the student's personal study center. It will get the student # from the login frame and 
  *  			load information of this student, then show them on the info panel. On the main panel there are three buttons, which are 
- *  			current course, credit and  
- * Features: schedule, course selection, 
- * Major Skills: JComponents, buffer reader, scanner, hierarchy, interface, stacking different JPanels on top of each other to create desired look 
+ *  			current course, credit and add courses. 
+ *  			- If user click the current course button, the main panel will switch to the current course panel, 
+ *  			  which will include a schedule and a "back" button . The schedule will include all the courses that the student
+ *  			  is taking now and the time he will take this course, and when the user click the back button, it will go back to the main
+ *  			  panel. 
+ *  			- If user click the credit button, the main panel will switch to the credit panel,
+ *  			  which will include a JScrollpane with student's course and their mark on it. When user click the back button, it will go
+ *  			  back to the main panel.
+ *  			- If user click the add course button, the main panel will switch to the add course panel,
+ *  			  which will include a JScrollpane with all the courses that student can choose. User can use the search bar to search the course
+ *  			  they want by enter the keywords and click the search button. When user click the the course, the course details will appear in
+ *  			  the label in the right of this panel. With the course details, there will also display a button "add course" if student don't
+ *  			  have this course, or "conflict with other course" if student have the same kind of course or the time are conflict, 
+ *  			  or "already have" if the user already have this course.
+ *  			- If user click the log out button, the log in frame will loads up.
+ * Features: Error checking for sign up frame, 
+ * 			error checking for course selection frame for students and teachers, 
+ * 			it checks for time differences, 
+ * 			warning when the wrong username or password is entered,
+ * 			the data are saved automatically and are visible and usable the moment it is changed
+ * Major Skills: JComponents, buffer reader, scanner, hierarchy, interface, stacking different JPanels on top of 
+ * 					each other to create desired look 
  */
 
 import java.awt.BorderLayout;
@@ -88,12 +107,12 @@ public class StudentCenter implements ActionListener, PanelComponenets {
 	// Initialize all the panels
 	private void initialize() {
 
-		//set the main frame 
+		// set the main frame
 		mainFrame.setSize(WIDTH, HEIGHT);
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainFrame.setLayout(null);
-		
-		//run the methods which set the other panels
+
+		// run the methods which set the other panels
 		addMainJCompents();
 		addInfoJCompents();
 		addCurrentCourseJComponents();
@@ -107,7 +126,7 @@ public class StudentCenter implements ActionListener, PanelComponenets {
 
 	}
 
-	//add the JComponents on the main panel
+	// add the JComponents on the main panel
 	private void addMainJCompents() {
 
 		// add main
@@ -117,7 +136,7 @@ public class StudentCenter implements ActionListener, PanelComponenets {
 		mainPanel.setBackground(new Color(135, 187, 162));
 		mainPanel.setBounds(300, 0, WIDTH - 300, HEIGHT);
 
-		//title of this panel
+		// title of this panel
 		titleLabel = new JLabel("Student Center");
 		titleLabel.setBounds(0, 40, 900, 60);
 		titleLabel.setFont(new Font("Aileron", Font.PLAIN, 55));
@@ -171,7 +190,7 @@ public class StudentCenter implements ActionListener, PanelComponenets {
 		infoPanel.setBackground(new Color(201, 228, 202));
 		infoPanel.setBounds(0, 0, 300, HEIGHT);
 
-		//set the title of this panel
+		// set the title of this panel
 		subTitle = new JLabel("Student Info");
 		subTitle.setBounds(0, 0, 300, 50);
 		subTitle.setFont(new Font("Aileron", Font.PLAIN, 40));
@@ -179,66 +198,66 @@ public class StudentCenter implements ActionListener, PanelComponenets {
 		subTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		infoPanel.add(subTitle);
 
-		//set the photo of the student
+		// set the photo of the student
 		photo = new JLabel(
 				new ImageIcon(new ImageIcon("images/student.png").getImage().getScaledInstance(150, 150, 0)));
 		photo.setOpaque(true);
 		photo.setBounds(75, 65, 150, 150);
 		infoPanel.add(photo);
 
-		//set the name 
+		// set the name
 		nameLabel = new JLabel("Name:" + thisStudent.getName());
 		nameLabel.setBounds(10, 230, 300, 40);
 		nameLabel.setFont(new Font("Aileron", Font.PLAIN, 25));
 		nameLabel.setForeground(new Color(85, 130, 139));
 		infoPanel.add(nameLabel);
 
-		//set the birthday
+		// set the birthday
 		birth = new JLabel("Birthday:" + thisStudent.getBirthday());
 		birth.setBounds(10, 280, 300, 40);
 		birth.setFont(new Font("Aileron", Font.PLAIN, 25));
 		birth.setForeground(new Color(85, 130, 139));
 		infoPanel.add(birth);
 
-		//set the time enroll
+		// set the time enroll
 		timeEnroll = new JLabel("Time Enrolled:" + thisStudent.getDateEnrolled());
 		timeEnroll.setBounds(10, 330, 300, 40);
 		timeEnroll.setFont(new Font("Aileron", Font.PLAIN, 25));
 		timeEnroll.setForeground(new Color(85, 130, 139));
 		infoPanel.add(timeEnroll);
 
-		//set the email
+		// set the email
 		email = new JLabel("Email:");
 		email.setBounds(10, 380, 300, 40);
 		email.setFont(new Font("Aileron", Font.PLAIN, 25));
 		email.setForeground(new Color(85, 130, 139));
 		infoPanel.add(email);
-		
+
 		emailLabel = new JLabel(thisStudent.getEmail());
 		emailLabel.setBounds(10, 420, 300, 40);
 		emailLabel.setFont(new Font("Aileron", Font.PLAIN, 25));
 		emailLabel.setForeground(new Color(85, 130, 139));
 		infoPanel.add(emailLabel);
 
-		//set the department of the student
+		// set the department of the student
 		major = new JLabel("Major:" + thisStudent.getDepartment());
 		major.setBounds(10, 470, 300, 40);
 		major.setFont(new Font("Aileron", Font.PLAIN, 25));
 		major.setForeground(new Color(85, 130, 139));
 		infoPanel.add(major);
 
-		//set the student number
+		// set the student number
 		studentNum = new JLabel("Student #:   " + thisStudent.getUsername());
 		studentNum.setBounds(10, 650, 300, 40);
 		studentNum.setFont(new Font("Aileron", Font.PLAIN, 25));
 		studentNum.setForeground(new Color(85, 130, 139));
 		infoPanel.add(studentNum);
 
-		//add this panel to the main frame
+		// add this panel to the main frame
 		mainFrame.add(infoPanel);
 	}
 
-	//set the JComponents on the current course panel
+	// set the JComponents on the current course panel
 	private void addCurrentCourseJComponents() {
 		// TODO Auto-generated method stub
 		// set the panel of current course
@@ -247,7 +266,7 @@ public class StudentCenter implements ActionListener, PanelComponenets {
 		currentCoursePanel.setBackground(new Color(135, 187, 162));
 		currentCoursePanel.setBounds(300, 0, WIDTH - 300, HEIGHT);
 
-		// set the title of current course panel
+		// set the title of current course panel 
 		titleLabel = new JLabel("Current Course:");
 		titleLabel.setBounds(10, 20, 900, 60);
 		titleLabel.setFont(new Font("Aileron", Font.PLAIN, 50));
@@ -277,13 +296,13 @@ public class StudentCenter implements ActionListener, PanelComponenets {
 	// for credit info panel
 	private void addCreditInfoJComponents() {
 
-		//set the panel size
+		// set the panel size
 		creditPanel = new JPanel();
 		creditPanel.setLayout(null);
 		creditPanel.setBackground(new Color(135, 187, 162));
 		creditPanel.setBounds(300, 0, WIDTH - 300, HEIGHT);
 
-		//set the title of this panel
+		// set the title of this panel
 		titleLabel = new JLabel("Credit:");
 		titleLabel.setBounds(10, 20, 900, 60);
 		titleLabel.setFont(new Font("Aileron", Font.PLAIN, 50));
@@ -291,25 +310,25 @@ public class StudentCenter implements ActionListener, PanelComponenets {
 		titleLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		creditPanel.add(titleLabel, BorderLayout.CENTER);
 
-		//set the back button
+		// set the back button
 		back2 = new JButton(new ImageIcon(new ImageIcon("images/back.png").getImage().getScaledInstance(100, 50, 0)));
 		back2.setBackground(new Color(85, 130, 139));
 		back2.setBounds(750, 30, 100, 50);
 		back2.addActionListener(this);
 		creditPanel.add(back2);
 
-		//import the credit information panel
+		// import the credit information panel
 		new CreditPanel(thisStudent, creditPanel);
 
-		//add this panel to the main frame
+		// add this panel to the main frame
 		mainFrame.add(creditPanel);
 		creditPanel.setVisible(false);
 	}
 
-	//add the JComponents of the add course panel
+	// add the JComponents of the add course panel
 	private void addAddCourseJComponents() {
 
-		//set the panel
+		// set the panel
 		addCoursePanel = new JPanel();
 		addCoursePanel.setLayout(null);
 		addCoursePanel.setBackground(new Color(135, 187, 162));
@@ -482,7 +501,7 @@ public class StudentCenter implements ActionListener, PanelComponenets {
 
 	}
 
-	//set the action of the buttons
+	// set the action of the buttons
 	public void actionPerformed(ActionEvent e) {
 
 		// button to log out
@@ -490,44 +509,44 @@ public class StudentCenter implements ActionListener, PanelComponenets {
 			new LoginFrame();
 			mainFrame.dispose();
 
-		// button to get to schedule panel
+			// button to get to schedule panel
 		} else if (e.getSource() == currentCourse) {
-
+			addCurrentCourseJComponents();
 			SchedulePanel schedules = new SchedulePanel(thisStudent);
 			currentCoursePanel.add(schedules.getPanel());
 			mainPanel.setVisible(false);
 			currentCoursePanel.setVisible(true);
-			
-			//button to go back to the main panel
+
+			// button to go back to the main panel
 		} else if (e.getSource() == back1) {
 			mainPanel.setVisible(true);
 			currentCoursePanel.setVisible(false);
 
-			//button to go to the credit panel
+			// button to go to the credit panel
 		} else if (e.getSource() == creditInfo) {
 			mainPanel.setVisible(false);
 			creditPanel.setVisible(true);
 
-			//button to go back to the main panel
+			// button to go back to the main panel
 		} else if (e.getSource() == back2) {
 			mainPanel.setVisible(true);
 			creditPanel.setVisible(false);
 
-			//button to go to the add course panel
+			// button to go to the add course panel
 		} else if (e.getSource() == selectCourse) {
 			search();
 			mainPanel.setVisible(false);
 			addCoursePanel.setVisible(true);
 
-			//button to go back to the main panel
+			// button to go back to the main panel
 		} else if (e.getSource() == back3) {
 			StudentCenter.selectedCoursePanel.removeAll();
 			StudentCenter.selectedCoursePanel.revalidate();
 			StudentCenter.selectedCoursePanel.repaint();
 			mainPanel.setVisible(true);
 			addCoursePanel.setVisible(false);
-			
-			//button to run the search method
+
+			// button to run the search method
 		} else if (e.getSource() == search) {
 			System.out.println("search");
 			courseListPanel.removeAll();

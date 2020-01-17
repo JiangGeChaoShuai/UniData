@@ -1,5 +1,24 @@
 package Displays;
 
+/*
+ * Name: John Li
+ * Date: 2020/01/17
+ * Course: ICS4U1-01 Mr.Fernandes
+ * Title: Uni-Data Course Application
+ * Description: This class will load a log in frame of this program. User can choose their status is teacher or student. Then they can 
+ * 				enter their username and password, if correct, they can log in to their personal center which fetch their status. 
+ * 				If it's a new user, he can click the sign up button, then he can enter his personal information in the text field follow the 
+ * 				reminder. when complete, click creak account button and then his personal account will be created and log in to his personal
+ * 				center. 
+ * Features: Error checking for sign up frame, 
+ * 			error checking for course selection frame for students and teachers, 
+ * 			it checks for time differences, 
+ * 			warning when the wrong username or password is entered,
+ * 			the data are saved automatically and are visible and usable the moment it is changed
+ * Major Skills: JComponents, buffer reader, scanner, hierarchy, interface, stacking different JPanels on top of 
+ * 					each other to create desired look 
+ */
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;

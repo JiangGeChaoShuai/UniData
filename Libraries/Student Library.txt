@@ -8,6 +8,7 @@ email 00000001@ICS
 major Mathematics
 E
 course CS-135-1 0 Designing Functional Programs
+course MATH-137-1 0 Calculus
 
 S
 username 00000002
@@ -106,6 +107,8 @@ dateEnrolled 2020/01
 email 00000012@ICS4U1.com
 major Mathematics
 E
+course CS-135-2 0 Designing Functional Programs
+course MATH-137-1 0 Calculus
 
 S
 username 00000013

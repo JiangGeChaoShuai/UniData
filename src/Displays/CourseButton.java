@@ -213,6 +213,7 @@ public class CourseButton implements ActionListener {
 
 			panel.add(Box.createVerticalGlue());
 			panel.add(alreadyHaveCourse);
+			
 		}
 
 		// update panel
