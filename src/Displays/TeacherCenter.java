@@ -165,7 +165,7 @@ public class TeacherCenter implements ActionListener, PanelComponenets {
 		subTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		infoPanel.add(subTitle);
 
-		// set the photo of student
+		// set the photo of teacher
 		photo = new JLabel(
 				new ImageIcon(new ImageIcon("images/teacher.png").getImage().getScaledInstance(150, 150, 0)));
 		photo.setOpaque(true);
@@ -442,7 +442,7 @@ public class TeacherCenter implements ActionListener, PanelComponenets {
 
 	}
 
-	//add the course selected to the JScrollPane
+	// add the course selected to the JScrollPane
 	@Override
 	public void addCourseToScrollPanel(CourseInformation course) {
 
@@ -457,60 +457,60 @@ public class TeacherCenter implements ActionListener, PanelComponenets {
 
 	}
 
-	//run the actions of buttons
+	// run the actions of buttons
 	public void actionPerformed(ActionEvent e) {
 
-		//if user click the logout button
+		// if user click the logout button
 		if (e.getSource() == logout) {
 			new LoginFrame();
 			mainFrame.dispose();
 
-		//if user click the current course button
+			// if user click the current course button
 		} else if (e.getSource() == currentCourse) {
-			//show the current course panel
+			// show the current course panel
 			SchedulePanel schedules = new SchedulePanel(thisTeacher);
 			currentCoursePanel.add(schedules.getPanel());
 			mainPanel.setVisible(false);
 			currentCoursePanel.setVisible(true);
 
-		//if user click back on this panel
+			// if user click back on this panel
 		} else if (e.getSource() == back1) {
-			//go back to the main panel
+			// go back to the main panel
 			mainPanel.setVisible(true);
 			currentCoursePanel.setVisible(false);
 
-		//if user click the classroom panel
+			// if user click the classroom panel
 		} else if (e.getSource() == classroomInfo) {
-			//go to the classroom panel
+			// go to the classroom panel
 			new ClassroomPanel(thisTeacher, classroomPanel);
 			mainPanel.setVisible(false);
 			classroomPanel.setVisible(true);
 
-		//if user click back on this panel
+			// if user click back on this panel
 		} else if (e.getSource() == back2) {
-			//go back to the main panel
+			// go back to the main panel
 			mainPanel.setVisible(true);
 			classroomPanel.setVisible(false);
 
-		//if user click the select course button
+			// if user click the select course button
 		} else if (e.getSource() == selectCourse) {
-			//set the search method
+			// set the search method
 			search();
-			//go to the select course panel
+			// go to the select course panel
 			mainPanel.setVisible(false);
 			addCoursePanel.setVisible(true);
 
-			//if user click back on this panel
+			// if user click back on this panel
 		} else if (e.getSource() == back3) {
-			//go back to the main panel
+			// go back to the main panel
 			StudentCenter.selectedCoursePanel.removeAll();
 			StudentCenter.selectedCoursePanel.revalidate();
 			StudentCenter.selectedCoursePanel.repaint();
 			mainPanel.setVisible(true);
 			addCoursePanel.setVisible(false);
 
-			//if user click search
-		} else if (e.getSource() == search) {//run the search method
+			// if user click search
+		} else if (e.getSource() == search) {// run the search method
 			System.out.println("search");
 			courseListPanel.removeAll();
 			search();
