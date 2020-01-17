@@ -1,7 +1,7 @@
 C
 className designing functional Programs
 classCode CS-135-1
-Teacher 10002
+Teacher 10004
 E
 time Monday 1600 1800
 time Friday 1400 1700
@@ -14,7 +14,7 @@ Student 00000013
 C
 className designing functional Programs
 classCode CS-135-2
-Teacher 10002
+Teacher 10005
 E
 time Tuesday 1600 1900
 time Thursday 1400 1700
