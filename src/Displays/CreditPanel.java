@@ -56,8 +56,8 @@ public class CreditPanel {
 			
 			// label to hold course name
 			String courseName = student.getCourse().get(i).getCourseName();
-			studentInCourse.add(new JLabel(courseName));
-			studentInCourse.get(i).setFont(new Font("Aileron", Font.PLAIN, 15));
+			studentInCourse.add(new JLabel("  "+courseName));
+			studentInCourse.get(i).setFont(new Font("Aileron", Font.PLAIN, 25));
 			studentInCourse.get(i).setPreferredSize(new Dimension(300, 50));
 			studentInCourse.get(i).setForeground(new Color(255, 255, 255));
 			rows.get(i).add(studentInCourse.get(i));
@@ -69,7 +69,7 @@ public class CreditPanel {
 			int mark = student.getCourse().get(i).getCourseMark();	
 			String markFormat = String.format("%-10s %-10s\n", "Marks:", mark);
 			studentMarks.add(new JLabel(markFormat, SwingConstants.RIGHT));
-			studentMarks.get(i).setFont(new Font("Aileron", Font.PLAIN, 15));
+			studentMarks.get(i).setFont(new Font("Aileron", Font.PLAIN, 25));
 			studentMarks.get(i).setPreferredSize(new Dimension(300, 50));
 			studentMarks.get(i).setForeground(new Color(255, 255, 255));
 			rows.get(i).add(studentMarks.get(i));

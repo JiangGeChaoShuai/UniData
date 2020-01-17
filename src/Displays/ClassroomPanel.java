@@ -82,7 +82,7 @@ public class ClassroomPanel implements ActionListener {
 			courseButtonContainer.get(i).setPreferredSize(new Dimension(650, 50));
 			courseButtonContainer.get(i).setForeground(new Color(255, 255, 255));
 			courseButtonContainer.get(i).setBackground(new Color(85, 130, 139));
-			courseButtonContainer.get(i).setFont(new Font("Aileron", Font.PLAIN, 18));
+			courseButtonContainer.get(i).setFont(new Font("Aileron", Font.PLAIN, 25));
 			courseButtonContainer.get(i).setVisible(true);
 			courseButtonContainer.get(i).addActionListener(this);
 
@@ -138,7 +138,7 @@ public class ClassroomPanel implements ActionListener {
 
 			// add in the student name to panel
 			String StudentName = course.getStudentInCourse().get(i).getName();
-			studentInCourse.add(new JLabel(StudentName));
+			studentInCourse.add(new JLabel("  "+StudentName));
 			studentInCourse.get(i).setFont(new Font("Aileron", Font.PLAIN, 25));
 			studentInCourse.get(i).setPreferredSize(new Dimension(300, 50));
 			studentInCourse.get(i).setForeground(new Color(255, 255, 255));

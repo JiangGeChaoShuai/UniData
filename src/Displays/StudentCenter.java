@@ -1,5 +1,17 @@
 package Displays;
 
+/*
+ * Name: Eva Chen 
+ * Date: 2020/1/17
+ * Course code: ICS4U1-01 Mr.Fernandes
+ * Title: Uni-Data Course Application
+ * Description: This class sets a gui frame for the student's personal study center. It will get the student # from the login frame and 
+ *  			load information of this student, then show them on the info panel. On the main panel there are three buttons, which are 
+ *  			current course, credit and  
+ * Features: schedule, course selection, 
+ * Major Skills: JComponents, buffer reader, scanner, hierarchy, interface, stacking different JPanels on top of each other to create desired look 
+ */
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;

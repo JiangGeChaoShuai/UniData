@@ -16,7 +16,7 @@ birthday 1969/01/07
 email chris.wang@ICS
 major Computer Science
 E
-course CS-135-1 designing functional Programs
+course CS-135-1 Designing Functional Programs
 
 T
 username 10003
@@ -45,7 +45,7 @@ birthday 2002/06/08
 email Eva.Chen@ICS4U1.com
 major Mathematics
 E
-course CS-135-1 designing functional Programs
+course CS-135-1 Designing Functional Programs
 
 T
 username 10006
