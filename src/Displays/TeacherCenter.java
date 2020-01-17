@@ -482,6 +482,7 @@ public class TeacherCenter implements ActionListener, PanelComponenets {
 			// if user click the classroom panel
 		} else if (e.getSource() == classroomInfo) {
 			// go to the classroom panel
+			addClassroomInfoJComponents();
 			new ClassroomPanel(thisTeacher, classroomPanel);
 			mainPanel.setVisible(false);
 			classroomPanel.setVisible(true);
