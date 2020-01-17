@@ -20,16 +20,15 @@ import information.TeacherInformation;
 import interfaces.PanelComponenets;
 import readFile.ReadFile;
 
-public class TeacherCenter implements ActionListener, PanelComponenets{
+public class TeacherCenter implements ActionListener, PanelComponenets {
 
 	// JCompnent
 	JFrame mainFrame = new JFrame("Teacher Center");
 	private JPanel mainPanel, infoPanel, currentCoursePanel, classroomPanel, addCoursePanel, schedulePanel,
 			courseListPanel, addedCoursePanel;
-	private JLabel titleLabel, subTitle, photo, nameLabel, birth, studentNum, email, emailLabel, major,
+	private JLabel titleLabel, subTitle, photo, nameLabel, birthday, teacherNum, email, emailLabel, major,
 			scheduleImage, searchLabel, selectCourseLabel, addedCourseLabel;
-	private JButton logout, currentCourse, classroomInfo, selectCourse, back1, back2, back3, back4, search,
-			cancel;
+	private JButton logout, currentCourse, classroomInfo, selectCourse, back1, back2, back3, back4, search, cancel;
 	private JTextField searchBar;
 	private JScrollPane courseList, selectedCourse, addedCourse;
 
@@ -40,15 +39,18 @@ public class TeacherCenter implements ActionListener, PanelComponenets{
 
 	private ArrayList<CourseButton> allCourses = new ArrayList<CourseButton>();
 
+	// set the frame size
 	private int WIDTH = 1200;
 	private int HEIGHT = 750;
 
+	// get the info of teacher from the readfile class
 	static TeacherInformation thisTeacher;
-
 	private static ReadFile read = new ReadFile();
 
-	static JPanel selectedCourseListPanel = new JPanel();
+	// add the JPanel which in the selected course
+	static JPanel selectedCoursePanel = new JPanel();
 
+	// run the file reader
 	public static void main(String[] args) {
 
 		read.loadInformation();
@@ -59,6 +61,7 @@ public class TeacherCenter implements ActionListener, PanelComponenets{
 
 	}
 
+	// set the information of the teacher
 	public TeacherCenter(TeacherInformation teacherInformation) {
 
 		// temporary for testing
@@ -70,33 +73,38 @@ public class TeacherCenter implements ActionListener, PanelComponenets{
 
 	}
 
+	// set the frame size and add the jcomponents
 	private void initialize() {
 
 		mainFrame.setSize(WIDTH, HEIGHT);
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainFrame.setLayout(null);
+
+		// run the method that add the JComponents
 		addMainJCompents();
 		addInfoJCompents();
 		addCurrentCourseJComponents();
 		addClassroomInfoJComponents();
-		addaddCourseJComponents();
+		addAddCourseJComponents();
 
+		// load the course file
 		for (CourseInformation course : ReadFile.courseLibrary) {
 
-			allCourses.add(new CourseButton(course,selectedCourseListPanel));
+			allCourses.add(new CourseButton(course, selectedCoursePanel));
 		}
 
 	}
 
+	// set the JComponents on the main panel
 	private void addMainJCompents() {
 
-		// add main
-		// panel=========================================================================
+		// add main panel
 		mainPanel = new JPanel();
 		mainPanel.setLayout(null);
 		mainPanel.setBackground(new Color(169, 188, 208));
 		mainPanel.setBounds(300, 0, WIDTH - 300, HEIGHT);
 
+		// the title of the panel
 		titleLabel = new JLabel("Teacher Center");
 		titleLabel.setBounds(0, 40, 900, 60);
 		titleLabel.setFont(new Font("Aileron", Font.PLAIN, 55));
@@ -135,14 +143,7 @@ public class TeacherCenter implements ActionListener, PanelComponenets{
 		selectCourse.addActionListener(this);
 		mainPanel.add(selectCourse);
 
-//		schedule = new JButton(
-//				new ImageIcon(new ImageIcon("images/schedule.png").getImage().getScaledInstance(180, 80, 0)));
-//		schedule.setBackground(new Color(85, 130, 139));
-//		schedule.setBounds(100, 430, 200, 100);
-//		schedule.addActionListener(this);
-//		mainPanel.add(schedule);
-
-		// set text
+		// add this panel to the main frame
 		mainFrame.add(mainPanel);
 		mainPanel.setVisible(true);
 
@@ -151,12 +152,12 @@ public class TeacherCenter implements ActionListener, PanelComponenets{
 	private void addInfoJCompents() {
 		// TODO Auto-generated method stub
 
-		// add info
-		// panel============================================================================
+		// add info panel
 		infoPanel = new JPanel(null);
 		infoPanel.setBackground(new Color(216, 219, 226));
 		infoPanel.setBounds(0, 0, 300, HEIGHT);
 
+		// set the title of this panel
 		subTitle = new JLabel("Teacher Info");
 		subTitle.setBounds(0, 0, 300, 50);
 		subTitle.setFont(new Font("Aileron", Font.PLAIN, 40));
@@ -164,24 +165,28 @@ public class TeacherCenter implements ActionListener, PanelComponenets{
 		subTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		infoPanel.add(subTitle);
 
+		// set the photo of student
 		photo = new JLabel(
 				new ImageIcon(new ImageIcon("images/teacher.png").getImage().getScaledInstance(150, 150, 0)));
 		photo.setOpaque(true);
 		photo.setBounds(75, 65, 150, 150);
 		infoPanel.add(photo);
 
+		// set the name label
 		nameLabel = new JLabel("Name:" + thisTeacher.getName());
 		nameLabel.setBounds(10, 230, 300, 40);
 		nameLabel.setFont(new Font("Aileron", Font.PLAIN, 25));
 		nameLabel.setForeground(new Color(85, 130, 139));
 		infoPanel.add(nameLabel);
 
-		birth = new JLabel("Birthday:" + thisTeacher.getBirthday());
-		birth.setBounds(10, 280, 300, 40);
-		birth.setFont(new Font("Aileron", Font.PLAIN, 25));
-		birth.setForeground(new Color(85, 130, 139));
-		infoPanel.add(birth);
+		// set the birthday label
+		birthday = new JLabel("Birthday:" + thisTeacher.getBirthday());
+		birthday.setBounds(10, 280, 300, 40);
+		birthday.setFont(new Font("Aileron", Font.PLAIN, 25));
+		birthday.setForeground(new Color(85, 130, 139));
+		infoPanel.add(birthday);
 
+		// set the email label
 		email = new JLabel("Email:");
 		email.setBounds(10, 330, 300, 40);
 		email.setFont(new Font("Aileron", Font.PLAIN, 25));
@@ -194,21 +199,25 @@ public class TeacherCenter implements ActionListener, PanelComponenets{
 		emailLabel.setForeground(new Color(85, 130, 139));
 		infoPanel.add(emailLabel);
 
+		// set the department label
 		major = new JLabel("Major:" + thisTeacher.getDepartment());
 		major.setBounds(10, 420, 300, 40);
 		major.setFont(new Font("Aileron", Font.PLAIN, 25));
 		major.setForeground(new Color(85, 130, 139));
 		infoPanel.add(major);
 
-		studentNum = new JLabel("Teacher #:   " + thisTeacher.getUsername());
-		studentNum.setBounds(10, 650, 300, 40);
-		studentNum.setFont(new Font("Aileron", Font.PLAIN, 25));
-		studentNum.setForeground(new Color(85, 130, 139));
-		infoPanel.add(studentNum);
+		// set the teacher number
+		teacherNum = new JLabel("Teacher #:   " + thisTeacher.getUsername());
+		teacherNum.setBounds(10, 650, 300, 40);
+		teacherNum.setFont(new Font("Aileron", Font.PLAIN, 25));
+		teacherNum.setForeground(new Color(85, 130, 139));
+		infoPanel.add(teacherNum);
 
+		// add this panel to the main frame
 		mainFrame.add(infoPanel);
 	}
 
+	// set the JComponents in the current course panel
 	private void addCurrentCourseJComponents() {
 		// TODO Auto-generated method stub
 		// set the panel of current course
@@ -236,29 +245,18 @@ public class TeacherCenter implements ActionListener, PanelComponenets{
 		mainFrame.add(currentCoursePanel);
 		currentCoursePanel.setVisible(false);
 
-		// add the course of this student
-		JPanel tablePanel = new JPanel();
-		tablePanel.setBounds(100, 150, 650, 350);
-		tablePanel.setBackground(new Color(216, 219, 226));
-		//currentCoursePanel.add(tablePanel);
-
-		
-
-
-		String[] columnNames = { "Time", "Monday", "Tuseday", "Wednesday", "Thursday", "Friday" };
-		Object[][] data = { { "8:40 - 11:40:", "Kathy", "Smith", "Snowboarding" },
-				{ "13:00 - 16:00", "John", "Doe", "Rowing" }, { "14:00 - 17:00", "Sue", "Black", "Knitting" },
-				{ "16:00 - 19:00", "Jane", "White", "Speed reading" }, };
-
 	}
 
+	// set the JComponents in the classroom panel
 	private void addClassroomInfoJComponents() {
 		// TODO Auto-generated method stub
+		// set the classroom panel
 		classroomPanel = new JPanel();
 		classroomPanel.setLayout(null);
 		classroomPanel.setBackground(new Color(169, 188, 208));
 		classroomPanel.setBounds(300, 0, WIDTH - 300, HEIGHT);
 
+		// set the title of this panel
 		titleLabel = new JLabel("Classroom:");
 		titleLabel.setBounds(10, 20, 900, 60);
 		titleLabel.setFont(new Font("Aileron", Font.PLAIN, 50));
@@ -266,17 +264,20 @@ public class TeacherCenter implements ActionListener, PanelComponenets{
 		titleLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		classroomPanel.add(titleLabel, BorderLayout.CENTER);
 
+		// set the back button
 		back2 = new JButton(new ImageIcon(new ImageIcon("images/back.png").getImage().getScaledInstance(100, 50, 0)));
 		back2.setBackground(new Color(85, 130, 139));
 		back2.setBounds(750, 30, 100, 50);
 		back2.addActionListener(this);
 		classroomPanel.add(back2);
 
+		// add this panel to the main frame
 		mainFrame.add(classroomPanel);
 		classroomPanel.setVisible(false);
 	}
 
-	private void addaddCourseJComponents() {
+	// set the JComponents of the add Course panel
+	private void addAddCourseJComponents() {
 		// TODO Auto-generated method stub
 		addCoursePanel = new JPanel();
 		addCoursePanel.setLayout(null);
@@ -299,6 +300,7 @@ public class TeacherCenter implements ActionListener, PanelComponenets{
 		addCoursePanel.add(back3);
 
 		// add the course search JComponents
+		// set the title
 		searchLabel = new JLabel("Search Course:");
 		searchLabel.setBounds(50, 125, 900, 40);
 		searchLabel.setFont(new Font("Aileron", Font.PLAIN, 30));
@@ -306,18 +308,20 @@ public class TeacherCenter implements ActionListener, PanelComponenets{
 		searchLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		addCoursePanel.add(searchLabel, BorderLayout.CENTER);
 
+		// set the text field
 		searchBar = new JTextField();
 		searchBar.setBounds(50, 180, 350, 40);
 		searchBar.setFont(new Font("Aileron", Font.PLAIN, 30));
 		addCoursePanel.add(searchBar);
 
+		// set the search button
 		search = new JButton(new ImageIcon(new ImageIcon("images/search.png").getImage().getScaledInstance(35, 35, 0)));
 		search.setBounds(410, 180, 40, 40);
 		search.setBackground(new Color(85, 130, 139));
 		search.addActionListener(this);
 		addCoursePanel.add(search);
 
-		// set the list of courses that the student can select
+		// set the list of courses that the teacher can select
 		courseListPanel = new JPanel();
 		courseListPanel.setLayout(new BoxLayout(courseListPanel, BoxLayout.Y_AXIS));
 		courseListPanel.setBackground(new Color(216, 219, 226));
@@ -327,7 +331,8 @@ public class TeacherCenter implements ActionListener, PanelComponenets{
 		courseList.setBounds(50, 240, 400, 400);
 		addCoursePanel.add(courseList);
 
-		// set the list of courses that student already selected
+		// set the details of courses that teacher already selected
+		// set title
 		selectCourseLabel = new JLabel("Course Details");
 		selectCourseLabel.setBounds(505, 190, 350, 40);
 		selectCourseLabel.setFont(new Font("Aileron", Font.PLAIN, 30));
@@ -335,17 +340,17 @@ public class TeacherCenter implements ActionListener, PanelComponenets{
 		selectCourseLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		addCoursePanel.add(selectCourseLabel, BorderLayout.CENTER);
 
-		selectedCourseListPanel = new JPanel();
-		selectedCourseListPanel.setLayout(new BoxLayout(selectedCourseListPanel, BoxLayout.Y_AXIS));
-		selectedCourseListPanel.setBounds(505, 240, 350, 200);
-		selectedCourseListPanel.setBackground(new Color(216, 219, 226));
-		addCoursePanel.add(selectedCourseListPanel);
-
+		// set info label
+		selectedCoursePanel = new JPanel();
+		selectedCoursePanel.setBounds(505, 240, 350, 200);
+		selectedCoursePanel.setBackground(new Color(216, 219, 226));
+		addCoursePanel.add(selectedCoursePanel);
 
 		// add this panel to the main frame
 		mainFrame.add(addCoursePanel);
 		addCoursePanel.setVisible(false);
 
+		// load the course library file
 		for (int i = 0; i < ReadFile.courseLibrary.size(); i++) {
 			addCourseToScrollPanel(ReadFile.courseLibrary.get(i));
 		}
@@ -379,6 +384,10 @@ public class TeacherCenter implements ActionListener, PanelComponenets{
 			// search field
 			for (CourseInformation course : ReadFile.courseLibrary) {
 				if (course.getClassName().toLowerCase().contains(searchBar.getText().toLowerCase())) {
+
+					searchedCourseContainer.add(course);
+
+				} else if (course.getClassCode().toLowerCase().contains(searchBar.getText().toLowerCase())) {
 
 					searchedCourseContainer.add(course);
 
@@ -432,9 +441,8 @@ public class TeacherCenter implements ActionListener, PanelComponenets{
 		}
 
 	}
-	
-	
-	
+
+	//add the course selected to the JScrollPane
 	@Override
 	public void addCourseToScrollPanel(CourseInformation course) {
 
@@ -445,58 +453,69 @@ public class TeacherCenter implements ActionListener, PanelComponenets{
 				courseListPanel.add(courseButton.addCourseButton());
 			}
 
-			
-			
 		}
 
 	}
 
+	//run the actions of buttons
 	public void actionPerformed(ActionEvent e) {
 
+		//if user click the logout button
 		if (e.getSource() == logout) {
 			new LoginFrame();
 			mainFrame.dispose();
-			
+
+		//if user click the current course button
 		} else if (e.getSource() == currentCourse) {
-			
+			//show the current course panel
 			SchedulePanel schedules = new SchedulePanel(thisTeacher);
 			currentCoursePanel.add(schedules.getPanel());
 			mainPanel.setVisible(false);
 			currentCoursePanel.setVisible(true);
 
+		//if user click back on this panel
 		} else if (e.getSource() == back1) {
+			//go back to the main panel
 			mainPanel.setVisible(true);
 			currentCoursePanel.setVisible(false);
 
+		//if user click the classroom panel
 		} else if (e.getSource() == classroomInfo) {
+			//go to the classroom panel
 			new ClassroomPanel(thisTeacher, classroomPanel);
 			mainPanel.setVisible(false);
 			classroomPanel.setVisible(true);
 
+		//if user click back on this panel
 		} else if (e.getSource() == back2) {
+			//go back to the main panel
 			mainPanel.setVisible(true);
 			classroomPanel.setVisible(false);
 
+		//if user click the select course button
 		} else if (e.getSource() == selectCourse) {
+			//set the search method
 			search();
+			//go to the select course panel
 			mainPanel.setVisible(false);
 			addCoursePanel.setVisible(true);
 
+			//if user click back on this panel
 		} else if (e.getSource() == back3) {
-			StudentCenter.selectedCourseListPanel.removeAll();
-			StudentCenter.selectedCourseListPanel.revalidate();
-			StudentCenter.selectedCourseListPanel.repaint();
+			//go back to the main panel
+			StudentCenter.selectedCoursePanel.removeAll();
+			StudentCenter.selectedCoursePanel.revalidate();
+			StudentCenter.selectedCoursePanel.repaint();
 			mainPanel.setVisible(true);
 			addCoursePanel.setVisible(false);
 
-		} else if (e.getSource() == search) {
+			//if user click search
+		} else if (e.getSource() == search) {//run the search method
 			System.out.println("search");
 			courseListPanel.removeAll();
 			search();
 		}
 
 	}
-
-
 
 }

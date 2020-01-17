@@ -33,8 +33,6 @@ public class StudentCenter implements ActionListener, PanelComponenets {
 	private JTable schedule;
 	private JScrollPane courseList, selectedCourse, addedCourse;
 
-	private DefaultTableModel model = null;
-
 	// public static ArrayList<ReadFile> courseLibrary; // course cart
 	private ArrayList<CourseInformation> courseContainer = new ArrayList<CourseInformation>(); // container for all
 																								// filtered courses
@@ -45,12 +43,15 @@ public class StudentCenter implements ActionListener, PanelComponenets {
 	private int WIDTH = 1200;
 	private int HEIGHT = 750;
 
+	// stores the student info
 	static StudentInformation thisStudent;
 
+	// readfile for testing purpose
 	private static ReadFile read = new ReadFile();
 
-	static JPanel selectedCourseListPanel = new JPanel();
+	static JPanel selectedCoursePanel = new JPanel();
 
+	//for testing
 	public static void main(String[] args) {
 
 		read.loadInformation();
@@ -61,9 +62,9 @@ public class StudentCenter implements ActionListener, PanelComponenets {
 
 	}
 
+	// constructor of class
 	public StudentCenter(StudentInformation studentInformation) {
 
-		// temporary for testing
 
 		thisStudent = studentInformation;
 
@@ -72,6 +73,7 @@ public class StudentCenter implements ActionListener, PanelComponenets {
 
 	}
 
+	// initalize all the panels
 	private void initialize() {
 
 		mainFrame.setSize(WIDTH, HEIGHT);
@@ -85,7 +87,7 @@ public class StudentCenter implements ActionListener, PanelComponenets {
 
 		for (CourseInformation course : ReadFile.courseLibrary) {
 
-			allCourses.add(new CourseButton(course, selectedCourseListPanel));
+			allCourses.add(new CourseButton(course, selectedCoursePanel));
 		}
 
 	}
@@ -145,7 +147,6 @@ public class StudentCenter implements ActionListener, PanelComponenets {
 	}
 
 	private void addInfoJCompents() {
-		// TODO Auto-generated method stub
 
 		// add info
 		// panel============================================================================
@@ -247,8 +248,9 @@ public class StudentCenter implements ActionListener, PanelComponenets {
 
 	}
 
+	// for credit info  panel
 	private void addCreditInfoJComponents() {
-		// TODO Auto-generated method stub
+
 		creditPanel = new JPanel();
 		creditPanel.setLayout(null);
 		creditPanel.setBackground(new Color(135, 187, 162));
@@ -274,7 +276,8 @@ public class StudentCenter implements ActionListener, PanelComponenets {
 	}
 
 	private void addaddCourseJComponents() {
-		// TODO Auto-generated method stub
+
+		
 		addCoursePanel = new JPanel();
 		addCoursePanel.setLayout(null);
 		addCoursePanel.setBackground(new Color(135, 187, 162));
@@ -332,11 +335,11 @@ public class StudentCenter implements ActionListener, PanelComponenets {
 		selectCourseLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		addCoursePanel.add(selectCourseLabel, BorderLayout.CENTER);
 
-		selectedCourseListPanel = new JPanel();
-		selectedCourseListPanel.setLayout(new BoxLayout(selectedCourseListPanel, BoxLayout.Y_AXIS));
-		selectedCourseListPanel.setBounds(480, 240, 350, 200);
-		selectedCourseListPanel.setBackground(new Color(201, 228, 202));
-		addCoursePanel.add(selectedCourseListPanel);
+		selectedCoursePanel = new JPanel();
+		selectedCoursePanel.setLayout(new BoxLayout(selectedCoursePanel, BoxLayout.Y_AXIS));
+		selectedCoursePanel.setBounds(480, 240, 350, 200);
+		selectedCoursePanel.setBackground(new Color(201, 228, 202));
+		addCoursePanel.add(selectedCoursePanel);
 
 
 
@@ -376,6 +379,11 @@ public class StudentCenter implements ActionListener, PanelComponenets {
 			// search field
 			for (CourseInformation course : ReadFile.courseLibrary) {
 				if (course.getClassName().toLowerCase().contains(searchBar.getText().toLowerCase())) {
+
+					searchedCourseContainer.add(course);
+
+				}
+				else if (course.getClassCode().toLowerCase().contains(searchBar.getText().toLowerCase())) {
 
 					searchedCourseContainer.add(course);
 
@@ -430,6 +438,8 @@ public class StudentCenter implements ActionListener, PanelComponenets {
 
 	}
 
+	
+	// add the different course buttons in,
 	public void addCourseToScrollPanel(CourseInformation course) {
 
 		System.out.println(ReadFile.courseLibrary.size());
@@ -448,10 +458,12 @@ public class StudentCenter implements ActionListener, PanelComponenets {
 
 	public void actionPerformed(ActionEvent e) {
 
+		// button to log out
 		if (e.getSource() == logout) {
 			new LoginFrame();
 			mainFrame.dispose();
 			
+			// button to get to schedulle panel
 		} else if (e.getSource() == currentCourse) {
 			
 			SchedulePanel schedules = new SchedulePanel(thisStudent);
@@ -477,9 +489,9 @@ public class StudentCenter implements ActionListener, PanelComponenets {
 			addCoursePanel.setVisible(true);
 
 		} else if (e.getSource() == back3) {
-			StudentCenter.selectedCourseListPanel.removeAll();
-			StudentCenter.selectedCourseListPanel.revalidate();
-			StudentCenter.selectedCourseListPanel.repaint();
+			StudentCenter.selectedCoursePanel.removeAll();
+			StudentCenter.selectedCoursePanel.revalidate();
+			StudentCenter.selectedCoursePanel.repaint();
 			mainPanel.setVisible(true);
 			addCoursePanel.setVisible(false);
 

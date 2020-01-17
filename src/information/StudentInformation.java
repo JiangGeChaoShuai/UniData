@@ -1,7 +1,9 @@
 package information;
 
 import java.util.ArrayList;
+// commenting done
 
+// class to store the information for the students, extends the account information class
 public class StudentInformation extends AccountInformation {
 
 	private String dateEnrolled;

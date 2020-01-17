@@ -1,7 +1,10 @@
 package information;
+// commenting done
 
+// abstract class for person
 public abstract class AccountInformation {
 
+	// variable to be stored
 	private String username;
 	private String passwords;
 	private String name;
