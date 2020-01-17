@@ -1,5 +1,7 @@
 package information;
+// commenting done
 
+// stores the time variable for each course
 public class TimeOfWeek {
 
 	private String date;

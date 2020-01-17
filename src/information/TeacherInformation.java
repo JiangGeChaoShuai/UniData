@@ -2,6 +2,7 @@ package information;
 
 import java.util.ArrayList;
 
+//class to store the information for the teachers, extends the account information class
 public class TeacherInformation extends AccountInformation {
 
 	private ArrayList<CourseInfo> course = new ArrayList<CourseInfo>();

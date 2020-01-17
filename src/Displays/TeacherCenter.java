@@ -382,6 +382,10 @@ public class TeacherCenter implements ActionListener, PanelComponenets{
 
 					searchedCourseContainer.add(course);
 
+				}else if (course.getClassCode().toLowerCase().contains(searchBar.getText().toLowerCase())) {
+
+					searchedCourseContainer.add(course);
+
 				}
 
 			}

@@ -15,17 +15,20 @@ import information.TimeOfWeek;
 
 public class ReadFile {
 
+	// information where the file gets stored
 	public static ArrayList<TeacherInformation> teacherAccounts = new ArrayList<TeacherInformation>();
 	public static ArrayList<StudentInformation> studentAccounts = new ArrayList<StudentInformation>();
 	public static ArrayList<CourseInformation> courseLibrary = new ArrayList<CourseInformation>();
 
+	// scans the file and saves the information accordingly based on the header at
+	// the beginning of each line
 	public void loadInformation() {// method to scan file
 
 		teacherAccounts.clear();
 		studentAccounts.clear();
 		courseLibrary.clear();
-		
-		
+
+		// scans the student library file
 		try {
 			Scanner input = new Scanner(new FileReader("Libraries/Student Library.txt"));// try to create a scanner
 
@@ -64,21 +67,22 @@ public class ReadFile {
 
 				studentAccounts
 						.add(new StudentInformation(username, password, name, birthday, Email, dateEnrolled, major));
-				
-				if(!input.hasNext()) {
+
+				if (!input.hasNext()) {
 					break;
 				}
-				
+
+				// starts storing in the information that can have amounts different to one
 				do {
 					valueType = input.next();
-					if (valueType.equals("course")){
-						
+					if (valueType.equals("course")) {
+
 						courseCode = input.next();
 						mark = input.nextInt();
 						courseName = input.nextLine().replaceFirst(" ", "");
-						
-						studentAccounts.get(studentAccounts.size()-1).setCourse(courseCode, courseName, mark);
-						
+
+						studentAccounts.get(studentAccounts.size() - 1).setCourse(courseCode, courseName, mark);
+
 					}
 				} while (!valueType.equals("S") && input.hasNext());
 
@@ -112,11 +116,9 @@ public class ReadFile {
 			String Email = "";
 			String major = "";
 
-			
 			String courseCode = "";
 			String courseName = "";
 
-			
 			String valueType;
 			do {// continue scanning while there is a next line
 
@@ -137,26 +139,26 @@ public class ReadFile {
 					}
 				} while (!valueType.equals("E") && input.hasNext());
 
+				// starts storing in the information that can have amounts different to one
 				teacherAccounts.add(new TeacherInformation(username, password, name, birthday, Email, major));
 
-				
-				if(!input.hasNext()) {
+				if (!input.hasNext()) {
 					break;
 				}
-				
+
 				do {
 					valueType = input.next();
-					if (valueType.equals("course")){
-						
+					if (valueType.equals("course")) {
+
 						courseCode = input.next();
 
 						courseName = input.nextLine().replaceFirst(" ", "");
-						
-						teacherAccounts.get(teacherAccounts.size()-1).setCourse(courseCode, courseName);
-						
+
+						teacherAccounts.get(teacherAccounts.size() - 1).setCourse(courseCode, courseName);
+
 					}
 				} while (!valueType.equals("T") && input.hasNext());
-				
+
 				System.out.println("teacher");
 				System.out.println(username);
 				System.out.println(password);
@@ -175,6 +177,7 @@ public class ReadFile {
 			System.out.println("file not found");
 		}
 
+		// read the file for the courses
 		try {
 			Scanner input = new Scanner(new FileReader("Libraries/Course Library.txt"));// try to create a scanner
 
@@ -203,7 +206,8 @@ public class ReadFile {
 
 						for (int i = 0; i < teacherAccounts.size(); i++) {
 							if (teacherUsername.equals(teacherAccounts.get(i).getUsername())) {
-								courseLibrary.add(new CourseInformation(courseCode, courseName, teacherAccounts.get(i)));
+								courseLibrary
+										.add(new CourseInformation(courseCode, courseName, teacherAccounts.get(i)));
 								break;
 							}
 						}
@@ -212,6 +216,7 @@ public class ReadFile {
 
 				} while (!valueType.equals("E") && input.hasNext());
 
+				// starts storing in the information that can have amounts different to one
 				do {
 					valueType = input.next();
 
@@ -221,8 +226,8 @@ public class ReadFile {
 						endTime = input.nextInt();
 						input.nextLine();
 
-						courseLibrary.get(courseLibrary.size() - 1).addTime(new TimeOfWeek(dayOfWeek, beginTime, endTime));
-						
+						courseLibrary.get(courseLibrary.size() - 1)
+								.addTime(new TimeOfWeek(dayOfWeek, beginTime, endTime));
 
 					} else if (valueType.equals("Student")) {
 
@@ -248,25 +253,6 @@ public class ReadFile {
 			// TODO Auto-generated catch block
 			System.out.println("file not found");
 		}
-
-	}
-
-
-
-	public boolean checkStudentPasswords(String username, String passwords) {
-
-		for (int i = 0; i < studentAccounts.size(); i++) {
-
-			if (studentAccounts.get(i).getUsername().equals(username)) {
-
-				if (studentAccounts.get(i).getPasswords().equals(passwords)) {
-					return true;
-				}
-				return false;
-			}
-
-		}
-		return false;
 
 	}
 

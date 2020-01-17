@@ -3,11 +3,16 @@ package readFile;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 
+// saves the information in the specific format that can be read by file reader
 public class SaveFile {
 
+	//to store student information
 	public static void SaveStudentInformation() {
 
+		//string thats get written
 		String lineToWrite = "";
+		
+		
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter("Libraries/Student Library.txt"))) {
 
 			for (int i = 0; i < ReadFile.studentAccounts.size(); i++) {
@@ -68,6 +73,7 @@ public class SaveFile {
 
 	}
 
+	//to store teacher information
 	public static void SaveTeacherInformation() {
 
 		String lineToWrite = "";
@@ -127,6 +133,7 @@ public class SaveFile {
 
 	}
 
+	//to store course information
 	public static void saveCourseInformation() {
 
 		String lineToWrite = "";

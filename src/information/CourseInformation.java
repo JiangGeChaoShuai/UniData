@@ -1,7 +1,9 @@
 package information;
 
 import java.util.ArrayList;
+// commenting done
 
+// class to store information for courses that get read from course library file
 public class CourseInformation {
 
 	private ArrayList<StudentInformation> studentInCourse = new ArrayList<StudentInformation>();
@@ -69,33 +71,25 @@ public class CourseInformation {
 		return times;
 	}
 
+	// checks for conflict between two different courses
 	public boolean checkCourseTime(CourseInformation courseTimeChecker) {
 
+		
 		for (TimeOfWeek time  : this.getTimes()) {
 
 			for (TimeOfWeek time2 : courseTimeChecker.getTimes()) {
+				
 
-				System.out.println(this.getClassName());
-				System.out.println(time.getDate());
-				System.out.println(time.getBeginTime());
-				System.out.println(time.getEndTime());
-				
-				System.out.println();
-				System.out.println();
-				System.out.println(courseTimeChecker.getClassName());
-				System.out.println(time2.getDate());
-				System.out.println(time2.getBeginTime());
-				System.out.println(time2.getEndTime());
-				
-				
+				//check if date match
 				if (time.getDate().equals(time2.getDate())) {
 
 					
+					// check if class one starts while class two is going on
 					if (time.getBeginTime() >= time2.getBeginTime() && time.getBeginTime() <= time2.getEndTime()) {
 
 						return false;
 					}
-
+					// check if class two starts while class one is going on
 					if (time.getEndTime() >= time2.getBeginTime() && time.getEndTime() <= time2.getEndTime()) {
 
 						return false;

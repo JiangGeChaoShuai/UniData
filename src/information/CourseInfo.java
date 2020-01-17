@@ -1,11 +1,14 @@
 package information;
+// commenting done
 
+// stores the information that gets read from the student info class
 public class CourseInfo {
 
 	private String courseCode;
 	private String courseName;
 	private int courseMark;
 	
+	// store course info for students
 	public CourseInfo(String courseCode, String courseName, int courseMark) {
 		
 		this.courseCode = courseCode;
@@ -14,6 +17,7 @@ public class CourseInfo {
 		
 	}
 	
+	// stores course info for teachers
 	public CourseInfo(String courseCode, String courseName) {
 		this.courseCode = courseCode;
 		this.courseName = courseName;
