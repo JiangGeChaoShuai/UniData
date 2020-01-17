@@ -187,7 +187,7 @@ public class ClassroomPanel implements ActionListener {
 		goBackButton.addActionListener(this);
 		goBackButton.setFont(new Font("Aileron", Font.PLAIN, 30));
 		goBackButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-		goBackButton.setForeground(new Color(255, 255, 255));
+		goBackButton.setForeground(Color.WHITE);
 		goBackButton.setBackground(new Color(54, 73, 88));
 		classPanel.add(goBackButton);
 

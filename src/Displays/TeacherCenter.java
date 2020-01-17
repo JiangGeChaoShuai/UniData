@@ -108,14 +108,14 @@ public class TeacherCenter implements ActionListener, PanelComponenets {
 		titleLabel = new JLabel("Teacher Center");
 		titleLabel.setBounds(0, 40, 900, 60);
 		titleLabel.setFont(new Font("Aileron", Font.PLAIN, 55));
-		titleLabel.setForeground(new Color(85, 130, 139));
+		titleLabel.setForeground(new Color(59,96,100));
 		titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		mainPanel.add(titleLabel, BorderLayout.CENTER);
 
 		// log out button
 		logout = new JButton("Log Out");
 		logout.setForeground(Color.WHITE);
-		logout.setBackground(new Color(85, 130, 139));
+		logout.setBackground(new Color(59,96,100));
 		logout.setFont(new Font("Aileron", Font.PLAIN, 30));
 		logout.setBounds(700, 45, 150, 50);
 		logout.addActionListener(this);
@@ -124,21 +124,21 @@ public class TeacherCenter implements ActionListener, PanelComponenets {
 		// the buttons
 		currentCourse = new JButton(
 				new ImageIcon(new ImageIcon("images/currentCourse2.png").getImage().getScaledInstance(180, 180, 0)));
-		currentCourse.setBackground(new Color(85, 130, 139));
+		currentCourse.setBackground(new Color(59,96,100));
 		currentCourse.setBounds(100, 220, 200, 200);
 		currentCourse.addActionListener(this);
 		mainPanel.add(currentCourse);
 
 		classroomInfo = new JButton(
 				new ImageIcon(new ImageIcon("images/classroom.png").getImage().getScaledInstance(180, 180, 0)));
-		classroomInfo.setBackground(new Color(85, 130, 139));
+		classroomInfo.setBackground(new Color(59,96,100));
 		classroomInfo.setBounds(350, 220, 200, 200);
 		classroomInfo.addActionListener(this);
 		mainPanel.add(classroomInfo);
 
 		selectCourse = new JButton(
 				new ImageIcon(new ImageIcon("images/addCourse2.png").getImage().getScaledInstance(180, 180, 0)));
-		selectCourse.setBackground(new Color(85, 130, 139));
+		selectCourse.setBackground(new Color(59,96,100));
 		selectCourse.setBounds(600, 220, 200, 200);
 		selectCourse.addActionListener(this);
 		mainPanel.add(selectCourse);
@@ -230,13 +230,13 @@ public class TeacherCenter implements ActionListener, PanelComponenets {
 		titleLabel = new JLabel("Current Course:");
 		titleLabel.setBounds(10, 20, 900, 60);
 		titleLabel.setFont(new Font("Aileron", Font.PLAIN, 50));
-		titleLabel.setForeground(new Color(85, 130, 139));
+		titleLabel.setForeground(new Color(59,96,100));
 		titleLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		currentCoursePanel.add(titleLabel, BorderLayout.CENTER);
 
 		// set the back button on this panel
-		back1 = new JButton(new ImageIcon(new ImageIcon("images/back.png").getImage().getScaledInstance(100, 50, 0)));
-		back1.setBackground(new Color(85, 130, 139));
+		back1 = new JButton(new ImageIcon(new ImageIcon("images/back2.png").getImage().getScaledInstance(100, 50, 0)));
+		back1.setBackground(new Color(59,96,100));
 		back1.setBounds(750, 30, 100, 50);
 		back1.addActionListener(this);
 		currentCoursePanel.add(back1);
@@ -260,13 +260,13 @@ public class TeacherCenter implements ActionListener, PanelComponenets {
 		titleLabel = new JLabel("Classroom:");
 		titleLabel.setBounds(10, 20, 900, 60);
 		titleLabel.setFont(new Font("Aileron", Font.PLAIN, 50));
-		titleLabel.setForeground(new Color(85, 130, 139));
+		titleLabel.setForeground(new Color(59,96,100));
 		titleLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		classroomPanel.add(titleLabel, BorderLayout.CENTER);
 
 		// set the back button
-		back2 = new JButton(new ImageIcon(new ImageIcon("images/back.png").getImage().getScaledInstance(100, 50, 0)));
-		back2.setBackground(new Color(85, 130, 139));
+		back2 = new JButton(new ImageIcon(new ImageIcon("images/back2.png").getImage().getScaledInstance(100, 50, 0)));
+		back2.setBackground(new Color(59,96,100));
 		back2.setBounds(750, 30, 100, 50);
 		back2.addActionListener(this);
 		classroomPanel.add(back2);
@@ -288,13 +288,13 @@ public class TeacherCenter implements ActionListener, PanelComponenets {
 		titleLabel = new JLabel("Add Courses :");
 		titleLabel.setBounds(10, 20, 900, 60);
 		titleLabel.setFont(new Font("Aileron", Font.PLAIN, 50));
-		titleLabel.setForeground(new Color(85, 130, 139));
+		titleLabel.setForeground(new Color(59,96,100));
 		titleLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		addCoursePanel.add(titleLabel, BorderLayout.CENTER);
 
 		// set the back button on this panel
-		back3 = new JButton(new ImageIcon(new ImageIcon("images/back.png").getImage().getScaledInstance(100, 50, 0)));
-		back3.setBackground(new Color(85, 130, 139));
+		back3 = new JButton(new ImageIcon(new ImageIcon("images/back2.png").getImage().getScaledInstance(100, 50, 0)));
+		back3.setBackground(new Color(59,96,100));
 		back3.setBounds(750, 30, 100, 50);
 		back3.addActionListener(this);
 		addCoursePanel.add(back3);
@@ -304,7 +304,7 @@ public class TeacherCenter implements ActionListener, PanelComponenets {
 		searchLabel = new JLabel("Search Course:");
 		searchLabel.setBounds(50, 125, 900, 40);
 		searchLabel.setFont(new Font("Aileron", Font.PLAIN, 30));
-		searchLabel.setForeground(new Color(85, 130, 139));
+		searchLabel.setForeground(new Color(59,96,100));
 		searchLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		addCoursePanel.add(searchLabel, BorderLayout.CENTER);
 
@@ -315,9 +315,9 @@ public class TeacherCenter implements ActionListener, PanelComponenets {
 		addCoursePanel.add(searchBar);
 
 		// set the search button
-		search = new JButton(new ImageIcon(new ImageIcon("images/search.png").getImage().getScaledInstance(35, 35, 0)));
+		search = new JButton(new ImageIcon(new ImageIcon("images/search2.png").getImage().getScaledInstance(35, 35, 0)));
 		search.setBounds(410, 180, 40, 40);
-		search.setBackground(new Color(85, 130, 139));
+		search.setBackground(new Color(59,96,100));
 		search.addActionListener(this);
 		addCoursePanel.add(search);
 
@@ -336,7 +336,7 @@ public class TeacherCenter implements ActionListener, PanelComponenets {
 		selectCourseLabel = new JLabel("Course Details");
 		selectCourseLabel.setBounds(505, 190, 350, 40);
 		selectCourseLabel.setFont(new Font("Aileron", Font.PLAIN, 30));
-		selectCourseLabel.setForeground(new Color(85, 130, 139));
+		selectCourseLabel.setForeground(new Color(59,96,100));
 		selectCourseLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		addCoursePanel.add(selectCourseLabel, BorderLayout.CENTER);
 
